@@ -1,11 +1,11 @@
 package com.example.aspire.data_models;
 
-public class NhanSu {
+public class Users {
     private String name, des;
 
-    public NhanSu() { }
+    public Users() { }
 
-    public NhanSu(String name, String degree) {
+    public Users(String name, String degree) {
         this.name = name;
         this.des = degree;
     }

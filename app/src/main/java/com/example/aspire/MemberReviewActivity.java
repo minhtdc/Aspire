@@ -6,13 +6,13 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.example.aspire.adapter.MyAdapter;
-import com.example.aspire.data_models.NhanSu;
+import com.example.aspire.data_models.Users;
 
 import java.util.ArrayList;
 
 public class MemberReviewActivity extends AppCompatActivity {
     private MyAdapter adapter;
-    private ArrayList<NhanSu> listMembers;
+    private ArrayList<Users> listMembers;
     ListView listView;
 
     @Override
@@ -25,45 +25,45 @@ public class MemberReviewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        listMembers = new ArrayList<NhanSu>();
-        NhanSu nhanSu1 = new NhanSu("minh", "cho vo nhom di");
-        listMembers.add(nhanSu1);
-        NhanSu nhanSu2 = new NhanSu("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
+        listMembers = new ArrayList<Users>();
+        Users users1 = new Users("minh", "cho vo nhom di");
+        listMembers.add(users1);
+        Users users2 = new Users("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
                 "gưeỳgeukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwgfywegecygeuge" +
                 "ydgưguygứccùacrfvđfcscsca");
-        listMembers.add(nhanSu2);
-        NhanSu nhanSu4 = new NhanSu("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
+        listMembers.add(users2);
+        Users users4 = new Users("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
                 "gưeỳgeukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwgfywegecygeuge" +
                 "ydgưguygứccùacrfvđfcscsca");
-        listMembers.add(nhanSu4);
-        NhanSu nhanSu23 = new NhanSu("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
+        listMembers.add(users4);
+        Users users23 = new Users("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
                 "gưeỳgeukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwgfywegecygeuge" +
                 "ydgưguygứccùacrfvđfcscsca");
-        listMembers.add(nhanSu23);
-        NhanSu nhanSu24 = new NhanSu("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
+        listMembers.add(users23);
+        Users users24 = new Users("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
                 "gưeỳgeukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwgfywegecygeuge" +
                 "ydgưguygứccùacrfvđfcscsca");
-        listMembers.add(nhanSu24);
-        NhanSu nhanSu25 = new NhanSu("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
+        listMembers.add(users24);
+        Users users25 = new Users("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
                 "gưeỳgeukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwgfywegecygeuge" +
                 "ydgưguygứccùacrfvđfcscsca");
-        listMembers.add(nhanSu25);
-        NhanSu nhanSu21 = new NhanSu("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
+        listMembers.add(users25);
+        Users users21 = new Users("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
                 "gưeỳgeukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwgfywegecygeuge" +
                 "ydgưguygứccùacrfvđfcscsca");
-        listMembers.add(nhanSu21);
-        NhanSu nhanSu29 = new NhanSu("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
+        listMembers.add(users21);
+        Users users29 = new Users("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
                 "gưeỳgeukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwgfywegecygeuge" +
                 "ydgưguygứccùacrfvđfcscsca");
-        listMembers.add(nhanSu29);
-        NhanSu nhanSu27 = new NhanSu("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
+        listMembers.add(users29);
+        Users users27 = new Users("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
                 "gưeỳgeukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwgfywegecygeuge" +
                 "ydgưguygứccùacrfvđfcscsca");
-        listMembers.add(nhanSu27);
-        NhanSu nhanSu3 = new NhanSu("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
+        listMembers.add(users27);
+        Users users3 = new Users("nhuw", "cho vo nhom di nhaaaaaajfdjbdshbjhdsbjhdshcvdhjsdhjdshchdsbckagdfyúeùy" +
                 "gưeỳgeukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwgfywegecygeuge" +
                 "ydgưguygứccùacrfvđfcscsca");
-        listMembers.add(nhanSu3);
+        listMembers.add(users3);
 
         adapter = new MyAdapter(this, R.layout.list_member_review_layout, listMembers);
         //adapter = new ArrayAdapter<NhanSu>(this,android.R.layout.simple_list_item_1, arrNhanSu);

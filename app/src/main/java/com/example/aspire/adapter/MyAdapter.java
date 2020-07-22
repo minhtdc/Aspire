@@ -9,17 +9,17 @@ import android.widget.TextView;
 
 
 import com.example.aspire.R;
-import com.example.aspire.data_models.NhanSu;
+import com.example.aspire.data_models.Users;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends ArrayAdapter<NhanSu> {
+public class MyAdapter extends ArrayAdapter<Users> {
     private Activity context;
     private int layoutID;
-    private ArrayList<NhanSu> listMembers;
+    private ArrayList<Users> listMembers;
 
 
-    public MyAdapter(Activity context, int resource, ArrayList<NhanSu> list) {
+    public MyAdapter(Activity context, int resource, ArrayList<Users> list) {
         super(context, resource, list);
         this.context = context;
         this.layoutID = resource;
@@ -53,9 +53,9 @@ public class MyAdapter extends ArrayAdapter<NhanSu> {
         }
 
         //
-        NhanSu nhanSu = listMembers.get(position);
-        viewHolder.txtName.setText(nhanSu.getName());
-        viewHolder.txtDes.setText(nhanSu.getDes());
+        Users users = listMembers.get(position);
+        viewHolder.txtName.setText(users.getName());
+        viewHolder.txtDes.setText(users.getDes());
 
         return convertView;
     }
