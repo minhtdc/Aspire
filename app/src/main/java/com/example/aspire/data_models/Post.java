@@ -1,4 +1,4 @@
-package com.example.aspire;
+package com.example.aspire.data_models;
 
 public class Post {
     String userAvatar, userName, userPosition, userTimePost, userTitlePost, userContentPost, userViewPost, userCountCommentPost;
