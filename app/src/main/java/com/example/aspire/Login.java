@@ -15,5 +15,6 @@ public class Login extends AppCompatActivity {
     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.login_activity);
     //huyen
+    //minh
   }
 }
