@@ -14,7 +14,7 @@ public class Starting extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    setContentView(R.layout.starting_activity);
+    setContentView(R.layout.starting_layout);
 
     Button btn_login = findViewById(R.id.btn_login);
     Button btn_sign = (Button) findViewById(R.id.btn_signUp);

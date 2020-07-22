@@ -18,7 +18,7 @@ public class MemberReviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.member_review_layout);
+        setContentView(R.layout.member_option_layout);
         setTitle("Duyệt thành viên");
         listView = findViewById(R.id.listMember);
 
@@ -65,7 +65,7 @@ public class MemberReviewActivity extends AppCompatActivity {
                 "ydgưguygứccùacrfvđfcscsca");
         listMembers.add(users3);
 
-        adapter = new MyAdapter(this, R.layout.list_member_review_layout, listMembers);
+        adapter = new MyAdapter(this, R.layout.list_member_option_layout, listMembers);
         //adapter = new ArrayAdapter<NhanSu>(this,android.R.layout.simple_list_item_1, arrNhanSu);
         listView.setAdapter(adapter);
 

@@ -11,6 +11,6 @@ public class SignUp extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    setContentView(R.layout.sign_up_activity);
+    setContentView(R.layout.sign_up_layout);
   }
 }
