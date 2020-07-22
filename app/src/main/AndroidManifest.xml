@@ -18,14 +18,14 @@
 
         </activity>
         <activity android:name=".JoinGroupActivity">
+
+        </activity>
+        <activity android:name=".MemberOptionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MemberReviewActivity">
-
         </activity>
 
 <!--        //Tran Minh Phuc-->

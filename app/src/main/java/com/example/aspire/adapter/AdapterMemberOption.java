@@ -1,9 +1,13 @@
 package com.example.aspire.adapter;
 
 import android.app.Activity;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,9 +32,9 @@ public class AdapterMemberOption extends ArrayAdapter<Users> {
 
     //define view holder
     static class ViewHolder {
-        ImageView imgUser;
-        TextView txtName;
-        TextView txtDes;
+        ImageView userAvata;
+        TextView userName;
+        TextView userDetail;
     }
 
     @Override
@@ -41,8 +45,9 @@ public class AdapterMemberOption extends ArrayAdapter<Users> {
             viewHolder = new ViewHolder();
             convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
 
-            viewHolder.txtName = (TextView) convertView.findViewById(R.id.userName);
-            viewHolder.txtDes = (TextView) convertView.findViewById(R.id.userDesciption);
+            viewHolder.userAvata = (ImageView) convertView.findViewById(R.id.userAvatar);
+            viewHolder.userName = (TextView) convertView.findViewById(R.id.userName);
+            viewHolder.userDetail = (TextView) convertView.findViewById(R.id.edtGroupJoin);
 
             //binging the view in convertView coresponding
             convertView.setTag(viewHolder);
@@ -54,7 +59,7 @@ public class AdapterMemberOption extends ArrayAdapter<Users> {
 
         //
         Users users = listMembers.get(position);
-        viewHolder.txtName.setText(users.getUserName());
+        viewHolder.userName.setText(users.getUserName());
 
         return convertView;
     }
