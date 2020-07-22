@@ -18,16 +18,18 @@
         <activity android:name=".LoginActivity"></activity>
 
         <activity android:name=".MemberOptionActivity">
+
+        </activity>
+        <activity android:name=".MembersActivity"></activity>
+        <activity android:name=".NewFeedActivity"></activity>
+        <activity android:name=".NonGroupManageActivity"></activity>
+        <activity android:name=".PostListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MembersActivity"></activity>
-        <activity android:name=".NewFeedActivity"></activity>
-        <activity android:name=".NonGroupManageActivity"></activity>
-        <activity android:name=".PostListActivity"></activity>
         <activity android:name=".SettingActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".StartingActivity"></activity>

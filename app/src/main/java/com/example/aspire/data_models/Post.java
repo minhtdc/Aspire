@@ -1,10 +1,13 @@
 package com.example.aspire.data_models;
 
-public class Post {
-    String userAvatar, userName, userPosition, userTimePost, userTitlePost, userContentPost, userViewPost, userCountCommentPost;
+import com.example.aspire.R;
 
-    public Post(String userAvatar, String userName, String userPosition, String userTimePost, String userTitlePost, String userContentPost, String userViewPost, String userCountCommentPost) {
-        this.userAvatar = userAvatar;
+public class Post {
+    int userAvatar;
+    String userName, userPosition, userTimePost, userTitlePost, userContentPost, userViewPost, userCountCommentPost;
+
+    public Post(String userName, String userPosition, String userTimePost, String userTitlePost, String userContentPost, String userViewPost, String userCountCommentPost) {
+        this.userAvatar = R.drawable.avt;
         this.userName = userName;
         this.userPosition = userPosition;
         this.userTimePost = userTimePost;
@@ -14,11 +17,11 @@ public class Post {
         this.userCountCommentPost = userCountCommentPost;
     }
 
-    public String getUserAvatar() {
+    public int getUserAvatar() {
         return userAvatar;
     }
 
-    public void setUserAvatar(String userAvatar) {
+    public void setUserAvatar(int userAvatar) {
         this.userAvatar = userAvatar;
     }
 
