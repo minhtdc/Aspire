@@ -61,7 +61,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/boder_radius_grey"
+                android:background="@drawable/my_border"
                 android:hint="Bạn đang nghĩ gì ?"
                 android:paddingLeft="10dp"></EditText>
         </LinearLayout>

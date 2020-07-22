@@ -36,7 +36,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/khungvuong"
+                android:background="@drawable/my_border"
                 android:hint="Nhập nhóm cần tìm kiếm"
                 android:textSize="10sp"></EditText>
         </LinearLayout>
