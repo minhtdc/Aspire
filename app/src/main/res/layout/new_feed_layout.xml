@@ -48,6 +48,7 @@
             android:gravity="center">
 
             <Button
+                android:textAllCaps="false"
                 android:id="@+id/btnTimKiem"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
@@ -62,7 +63,7 @@
         android:layout_weight="5">
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/listNew"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
     </LinearLayout>
