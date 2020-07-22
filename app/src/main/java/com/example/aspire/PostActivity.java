@@ -3,10 +3,10 @@ package com.example.aspire;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.aspire.data_models.Post;
 
 import java.util.ArrayList;
 
