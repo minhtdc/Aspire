@@ -23,8 +23,9 @@ public class StartingActivity extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         //Starting a new Intent
-        Intent nextScreen = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(nextScreen);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
       }
     });
 
@@ -32,8 +33,9 @@ public class StartingActivity extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         //Starting a new Intent
-        Intent nextScreen = new Intent(getApplicationContext(), SignUpActivity.class);
-        startActivity(nextScreen);
+        Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
       }
     });
   }

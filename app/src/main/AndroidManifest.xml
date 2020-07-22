@@ -11,19 +11,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AddPostActivity"></activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".PostActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".StartingActivity" />
+        <activity android:name=".CommentsActivity"></activity>
         <activity android:name=".CreateGroupActivity"></activity>
+        <activity android:name=".GroupManageActivity"></activity>
         <activity android:name=".JoinGroupActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+
         <activity android:name=".MemberOptionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- //Tran Minh Phuc -->
+        </activity>
+        <activity android:name=".MembersActivity"></activity>
+        <activity android:name=".NewFeedActivity"></activity>
+        <activity android:name=".NonGroupManageActivity"></activity>
+        <activity android:name=".PostListActivity"></activity>
+        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".StartingActivity"></activity>
+
+
+
+        <!-- //Tran Minh Phuc -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

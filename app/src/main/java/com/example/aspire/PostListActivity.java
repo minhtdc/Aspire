@@ -9,5 +9,7 @@ public class PostListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.post_list_layout);
+
     }
 }
