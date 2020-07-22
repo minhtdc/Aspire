@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JoinGroupActivity"
+    android:orientation="vertical"
+    android:background="@drawable/bg_gradient_main"
+    android:padding="10dp">
+
+    //Group infomation
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@drawable/my_border"
+        android:layout_marginBottom="20dp"
+        android:alpha="0.5">
+        <TextView
+            android:id="@+id/txtGroupInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+    //Reson to join the group
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:alpha="0.5"
+        android:background="@drawable/my_border">
+        <EditText
+            android:id="@+id/edtGroupJoin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:hint="@string/hintJoinGroup"
+            android:backgroundTint="#00000000" />
+
+    </LinearLayout>
+
+    //button
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnJoin"
+            style="@style/JoinGroupButtonStyle"
+            android:text="@string/btnJoin"
+            android:layout_marginRight="50dp" />
+        <Button
+            android:id="@+id/btnCancel"
+            style="@style/JoinGroupButtonStyle"
+            android:text="@string/btnCancel"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+</LinearLayout>

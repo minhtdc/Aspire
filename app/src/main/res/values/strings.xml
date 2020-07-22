@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Aspire</string>
+<!--   Minh Nguyen-->
+    //join group
+    <string name="btnJoin">Tham gia</string>
+    <string name="btnCancel">Hủy</string>
+    <string name="hintJoinGroup">Lý do tại sao bạn muốn xin vào group</string>
+
+    //create group
+    <string name="createGroupName">Tên Nhóm</string>
+    <string name="hintCreateGroupName">Đặt tên nhóm</string>
+    <string name="txtAvataGroup">Ảnh Đại diện</string>
+    <string name="txtAvataGroupNote">Không bắt buộc</string>
+    <string name="btnCreateGroup">Tạo nhóm</string>
+
+<!--    Ngoc Huyen-->
+    <string name="btnPost">Đăng bài</string>
+    <string name="txtViewName">Tên</string>
+    <string name="txtHindTitle">Nhập tiêu đề bài viết</string>
+    <string name="txtHintDes">Nhập nội dung bài viết</string>
+    <string name="txtViewChangePass">Đổi mật khẩu</string>
+    <string name="txtViewChangeName">Đổi tên</string>
+    <string name="edtOldPass">Nhập mật khẩu cũ</string>
+    <string name="edtNewPass">Nhập mật khẩu mới</string>
+    <string name="edtNewPassAgain">Nhập lại mật khẩu mới</string>
+    <string name="btnConfirm">Xác nhận</string>
+    <string name="edtOldName">Nhập tên cũ</string>
+    <string name="txtViewHereOldName">Tên cũ ở đây</string>
+    <string name="txtViewUsername">Tên người dùng</string>
+    <string name="edtWriteComments">Viết bình luận</string>
+    <string name="btnPostCmt">Đăng</string>
+
+<!--    Le Van Bi-->
+    <string name="btnTimKiem">Tìm kiếm</string>
+    <string name="btnThem">Thêm</string>
+    <string name="btnXoa">Xóa</string>
+    <string name="btnTaoNhom">Tạo Nhóm</string>
+    <string name="btnTroLai">Trở Lại</string>
+    <string name="btnThanhVien">Tất cả thành viên</string>
+
+</resources>
