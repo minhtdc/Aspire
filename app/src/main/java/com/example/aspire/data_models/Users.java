@@ -1,28 +1,49 @@
 package com.example.aspire.data_models;
 
+import android.media.Image;
+
 public class Users {
-    private String name, des;
+    private String userID, userName, userPass, userAvata;
 
-    public Users() { }
-
-    public Users(String name, String degree) {
-        this.name = name;
-        this.des = degree;
+    public Users() {
     }
 
-    public String getName() {
-        return name;
+    public Users(String userID, String userName, String userPass, String userAvata) {
+        this.userID = userID;
+        this.userName = userName;
+        this.userPass = userPass;
+        this.userAvata = userAvata;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getUserID() {
+        return userID;
     }
 
-    public String getDes() {
-        return des;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public void setDes(String des) {
-        this.des = des;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPass() {
+        return userPass;
+    }
+
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
+    }
+
+    public String getUserAvata() {
+        return userAvata;
+    }
+
+    public void setUserAvata(String userAvata) {
+        this.userAvata = userAvata;
     }
 }

@@ -13,13 +13,13 @@ import com.example.aspire.data_models.Users;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends ArrayAdapter<Users> {
+public class AdapterMemberOption extends ArrayAdapter<Users> {
     private Activity context;
     private int layoutID;
     private ArrayList<Users> listMembers;
 
 
-    public MyAdapter(Activity context, int resource, ArrayList<Users> list) {
+    public AdapterMemberOption(Activity context, int resource, ArrayList<Users> list) {
         super(context, resource, list);
         this.context = context;
         this.layoutID = resource;
@@ -54,8 +54,7 @@ public class MyAdapter extends ArrayAdapter<Users> {
 
         //
         Users users = listMembers.get(position);
-        viewHolder.txtName.setText(users.getName());
-        viewHolder.txtDes.setText(users.getDes());
+        viewHolder.txtName.setText(users.getUserName());
 
         return convertView;
     }

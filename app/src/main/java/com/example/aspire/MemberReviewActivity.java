@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.example.aspire.adapter.MyAdapter;
+import com.example.aspire.adapter.AdapterMemberOption;
 import com.example.aspire.data_models.Users;
 
 import java.util.ArrayList;
 
 public class MemberReviewActivity extends AppCompatActivity {
-    private MyAdapter adapter;
+    private AdapterMemberOption adapter;
     private ArrayList<Users> listMembers;
     ListView listView;
 
@@ -65,7 +65,7 @@ public class MemberReviewActivity extends AppCompatActivity {
                 "ydgưguygứccùacrfvđfcscsca");
         listMembers.add(users3);
 
-        adapter = new MyAdapter(this, R.layout.list_member_option_layout, listMembers);
+        adapter = new AdapterMemberOption(this, R.layout.list_member_option_layout, listMembers);
         //adapter = new ArrayAdapter<NhanSu>(this,android.R.layout.simple_list_item_1, arrNhanSu);
         listView.setAdapter(adapter);
 
