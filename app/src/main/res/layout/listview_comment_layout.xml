@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/txtViewUsername"
                     android:layout_margin="10dp"
-                    android:textColor="@color/colorText"/>
+                    android:textColor="@color/textColor"/>
 
                 <TextView
                     android:id="@+id/txtViewCmt"
