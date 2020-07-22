@@ -131,14 +131,14 @@ không mọi người oiwiiiiii. Hellooooooooooooooooooooooooooooooooooooooooooo
                 android:gravity="end">
             </TextView>
         </LinearLayout>
-        <TextView
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bình luận"
             android:gravity="center"
-            android:background="@drawable/solid_grey"
+            android:background="@drawable/button_effect"
             android:padding="10dp"
-            ></TextView>
+            ></Button>
 
     </LinearLayout>
 

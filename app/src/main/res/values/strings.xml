@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Aspire</string>
-<!--   Minh Nguyen-->
+    <!--   Minh Nguyen-->
     //join group
     <string name="btnJoin">Tham gia</string>
     <string name="btnCancel">Hủy</string>
@@ -13,7 +13,7 @@
     <string name="txtAvataGroupNote">Không bắt buộc</string>
     <string name="btnCreateGroup">Tạo nhóm</string>
 
-<!--    Ngoc Huyen-->
+    <!--    Ngoc Huyen-->
     <string name="btnPost">Đăng bài</string>
     <string name="txtViewName">Tên</string>
     <string name="txtHindTitle">Nhập tiêu đề bài viết</string>
@@ -30,7 +30,7 @@
     <string name="edtWriteComments">Viết bình luận</string>
     <string name="btnPostCmt">Đăng</string>
 
-<!--    Le Van Bi-->
+    <!--    Le Van Bi-->
     <string name="btnTimKiem">Tìm kiếm</string>
     <string name="btnThem">Thêm</string>
     <string name="btnXoa">Xóa</string>

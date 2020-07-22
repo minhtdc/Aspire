@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class Starting extends AppCompatActivity {
+public class StartingActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class Starting extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         //Starting a new Intent
-        Intent nextScreen = new Intent(getApplicationContext(), Login.class);
+        Intent nextScreen = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(nextScreen);
       }
     });
@@ -32,7 +32,7 @@ public class Starting extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         //Starting a new Intent
-        Intent nextScreen = new Intent(getApplicationContext(), SignUp.class);
+        Intent nextScreen = new Intent(getApplicationContext(), SignUpActivity.class);
         startActivity(nextScreen);
       }
     });
