@@ -15,9 +15,6 @@
 <!-- ngoc huyen-->
     <color name="colorBgWhite">#FFFFFF</color>
     <color name="colorRadius">#F783AC</color>
-    <color name="colorStartGradient">#6EE2FF</color>
-    <color name="colorEndGradient">#FFB0EF</color>
-    <color name="colorText">#000000</color>
 
 <!--    Như Trần-->
     <color name="colorWhite">#fff</color>
