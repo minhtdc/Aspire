@@ -29,9 +29,6 @@
         <activity android:name=".JoinGroupActivity">
 
         </activity>
-        <activity android:name=".LoginActivity">
-
-        </activity>
 
         <activity android:name=".MemberOptionActivity">
 
@@ -51,13 +48,31 @@
         <activity android:name=".SettingActivity">
 
         </activity>
+<<<<<<< HEAD
         <activity android:name=".SignUpActivity">
 
         </activity>
         <activity android:name=".StartingActivity">
+=======
+
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Starting">
 
         </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:theme="@style/Starting">
 
+        </activity>
+        <activity
+            android:name=".StartingActivity"
+            android:theme="@style/Starting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+>>>>>>> Minh-Phúc
+
+        </activity>
 
 
         <!-- //Tran Minh Phuc -->
