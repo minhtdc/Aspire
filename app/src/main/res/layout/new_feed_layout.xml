@@ -34,11 +34,13 @@
             android:gravity="center">
 
             <EditText
+                android:id="@+id/edtSearch"
+                android:background="@drawable/custom_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_border"
-                android:hint="Nhập nhóm cần tìm kiếm"
-                android:textSize="10sp"></EditText>
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:hint="Tìm kiếm"/>
         </LinearLayout>
 
         <LinearLayout
@@ -49,7 +51,7 @@
 
             <Button
                 android:textAllCaps="false"
-                android:id="@+id/btnTimKiem"
+                android:id="@+id/btnSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:background="@drawable/bg_gradient_main"
