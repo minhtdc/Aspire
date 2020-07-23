@@ -112,13 +112,13 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginBottom="10dp"
-          android:hint="Fullname">
+          android:hint="Email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:inputType="textEmailAddress" />
       </com.google.android.material.textfield.TextInputLayout>
 
       <com.google.android.material.textfield.TextInputLayout
@@ -154,7 +154,7 @@
       </com.google.android.material.textfield.TextInputLayout>
 
       <Button
-          android:id="@+id/btn_login"
+          android:id="@+id/btn_signUp"
           android:layout_width="300dp"
           android:layout_height="45dp"
           android:layout_gravity="center"
