@@ -14,14 +14,15 @@
 
         </activity>
         <activity android:name=".CommentsActivity">
+<<<<<<< HEAD
 
         </activity>
         <activity android:name=".CreateGroupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+=======
+>>>>>>> Ngọc-Huyền
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".GroupManageActivity">
 
@@ -46,10 +47,21 @@
 
         </activity>
         <activity android:name=".SettingActivity">
+<<<<<<< HEAD
 
         </activity>
 <<<<<<< HEAD
         <activity android:name=".SignUpActivity">
+=======
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".StartingActivity"></activity>
+>>>>>>> Ngọc-Huyền
 
         </activity>
         <activity android:name=".StartingActivity">
