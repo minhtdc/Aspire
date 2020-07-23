@@ -47,7 +47,7 @@ public class AdapterMemberOption extends ArrayAdapter<Users> {
 
             viewHolder.userAvata = (ImageView) convertView.findViewById(R.id.userAvatar);
             viewHolder.userName = (TextView) convertView.findViewById(R.id.userName);
-            viewHolder.userDetail = (TextView) convertView.findViewById(R.id.edtGroupJoin);
+            viewHolder.userDetail = (TextView) convertView.findViewById(R.id.userDesciption);
 
             //binging the view in convertView coresponding
             convertView.setTag(viewHolder);
@@ -60,6 +60,7 @@ public class AdapterMemberOption extends ArrayAdapter<Users> {
         //
         Users users = listMembers.get(position);
         viewHolder.userName.setText(users.getUserName());
+        viewHolder.userDetail.setText("Cho vô nhóm nha");
 
         return convertView;
     }

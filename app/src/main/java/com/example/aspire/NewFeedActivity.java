@@ -1,6 +1,8 @@
 package com.example.aspire;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,8 +26,6 @@ public class NewFeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_feed_layout);
         setTitle("Trang chủ");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
 
         listNewFeed = findViewById(R.id.listNew);
 
@@ -38,6 +38,8 @@ public class NewFeedActivity extends AppCompatActivity {
         listNew.add(newfeed1);
         listNew.add(newfeed2);
         listNewFeed.setAdapter(adapter);
+
+
 
     }
 }
