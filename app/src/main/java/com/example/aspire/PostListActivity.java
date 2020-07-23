@@ -1,6 +1,9 @@
 package com.example.aspire;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +21,7 @@ public class PostListActivity extends AppCompatActivity {
     ListView listPost;
     private MyPostListAdapter adapter;
     private ArrayList<Post> listPostMember;
+    Button cmt;
 
 
     @Override
@@ -26,6 +30,7 @@ public class PostListActivity extends AppCompatActivity {
         setContentView(R.layout.post_list_layout);
 
         listPost = findViewById(R.id.listPost);
+        cmt = findViewById(R.id.btnComment);
 
 
         listPostMember = new ArrayList<Post>();
@@ -39,6 +44,15 @@ public class PostListActivity extends AppCompatActivity {
         adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout,listPostMember);
 
         listPost.setAdapter(adapter);
+
+//        cmt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), CommentsActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 }
