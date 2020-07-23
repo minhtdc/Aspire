@@ -32,7 +32,7 @@
         <activity android:name=".MemberOptionActivity">
 
         </activity>
-        <activity android:name=".MembersActivity">//
+        <activity android:name=".MembersActivity">
 
         </activity>
         <activity android:name=".NewFeedActivity">
