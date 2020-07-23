@@ -25,10 +25,12 @@
     <string name="edtNewPassAgain">Nhập lại mật khẩu mới</string>
     <string name="btnConfirm">Xác nhận</string>
     <string name="edtOldName">Nhập tên cũ</string>
+    <string name="edtNewName">Nhập tên mới</string>
     <string name="txtViewHereOldName">Tên cũ ở đây</string>
     <string name="txtViewUsername">Tên người dùng</string>
     <string name="edtWriteComments">Viết bình luận</string>
     <string name="btnPostCmt">Đăng</string>
+
 
     <!--    Le Van Bi-->
     <string name="btnTimKiem">Tìm kiếm</string>

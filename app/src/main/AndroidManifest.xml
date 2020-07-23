@@ -12,11 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AddPostActivity"></activity>
         <activity android:name=".CommentsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".CreateGroupActivity"></activity>
         <activity android:name=".GroupManageActivity"></activity>
@@ -32,7 +28,13 @@
         <activity android:name=".PostListActivity">
 
         </activity>
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".SettingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".StartingActivity"></activity>
 
