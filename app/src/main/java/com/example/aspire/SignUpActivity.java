@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aspire.data_models.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignUpActivity extends AppCompatActivity {
     private EditText edt_fullname, edt_username, edt_password, edt_re_password, edt_email;
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
-    private Dialog epicDialog;
+    Dialog epicDialog = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     //Get value form input
+                    Users userAuth = new Users();
+                    boolean result = false;
                     final String
                             fullName = (String) edt_fullname.getText().toString(),
                             email = (String) edt_email.getText().toString(),
@@ -54,67 +57,19 @@ public class SignUpActivity extends AppCompatActivity {
                             re_password = (String) edt_re_password.getText().toString();
 
                     // Check validate data submit
-                    mFirebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener() {
-                        @Override
-                        public void onComplete(@NonNull Task task) {
-                            if (task.isSuccessful()) {
-                                showNotification("Đăng ký thành công", String.format("Bạn đã đăng ký thành công với email là %s, hãy thử đăng nhập ngay nào!", email), true);
-                            } else {
-                                showNotification("Đăng ký không thành công", "Có lẻ tài khoản của bạn đã trùng với ai đó hoặc có vấn đề về máy chủ", false);
-                            }
-                        }
-                    });
+                    userAuth.createUserWithEmailAndPassword( email, password);
+
+                    if (Users.result) {
+                        Notification.signUp(epicDialog, SignUpActivity.this, "Đăng ký thành công", String.format("Bạn đã đăng ký thành công với email là %s, hãy thử đăng nhập ngay nào!", email), true);
+                    } else {
+                        Notification.signUp(epicDialog, SignUpActivity.this, "Đăng ký không thành công", "Có lẻ tài khoản của bạn đã trùng với ai đó hoặc có vấn đề về máy chủ", false);
+                    }
+
                 } catch (Exception ex) {
                     Toast.makeText(SignUpActivity.this, "Vui lòng nhập đúng dữ liệu", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    private void showNotification(String title, String desNotification, boolean isSuccess) {
-        epicDialog.setContentView(R.layout.epic_popup_negative);
-        epicDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        //Set content
-        CardView card = epicDialog.findViewById(R.id.card_notification);
-        TextView txt_title = epicDialog.findViewById(R.id.txt_title);
-        TextView txt_desNotification = epicDialog.findViewById(R.id.txt_desNotification);
-        ImageView img_notification = epicDialog.findViewById(R.id.img_notification);
-        Button btn_success = epicDialog.findViewById(R.id.btn_success);
-        String colorIsSuccess = "";
-
-        //Set config notification
-        if (isSuccess) {
-            colorIsSuccess = "#4CAF50";
-            img_notification.setImageResource(R.mipmap.icon_success);
-            btn_success.setText("Đăng nhập");
-
-            btn_success.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Starting a new Intent
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(intent);
-                }
-            });
-        } else {
-            colorIsSuccess = "#FF675C";
-            img_notification.setImageResource(R.mipmap.icon_error);
-            btn_success.setText("Đã hiểu");
-
-            btn_success.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    epicDialog.dismiss();
-                }
-            });
-        }
-
-        txt_title.setText(title);
-        txt_desNotification.setText(desNotification);
-        card.setCardBackgroundColor(Color.parseColor(colorIsSuccess));
-        epicDialog.show();
     }
 
     @Override
