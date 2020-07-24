@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,12 +24,11 @@ public class GroupManageActivity extends AppCompatActivity {
             setTitle("Danh sách nhóm");
             listGroupManage = findViewById(R.id.listGroup);
 
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeButtonEnabled(true);
+
             // get view from layout
             ImageView imgUser = (ImageView) findViewById(R.id.userAvatar);
             // Button btnXoa = (Button) findViewById(R.id.btnXoa);
-            EditText edtUserName = (EditText) findViewById(R.id.edtName);
+            TextView txtName = (TextView) findViewById(R.id.txtName);
 
             listMember = new ArrayList<MemberManage>();
 
