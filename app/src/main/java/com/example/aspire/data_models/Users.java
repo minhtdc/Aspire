@@ -1,5 +1,6 @@
 package com.example.aspire.data_models;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.media.Image;
 import android.util.Log;
@@ -7,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.aspire.Notification;
+import com.example.aspire.SignUpActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -59,16 +62,16 @@ public class Users {
         this.userAvata = userAvata;
     }
 
-    public void createUserWithEmailAndPassword(String email, String password) throws InterruptedException {
+    public void createUserWithEmailAndPassword(final String email, String password, final Dialog epicDialog, final Context context) throws InterruptedException {
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
         fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    result = true;
+                    Notification.signUp(epicDialog, context, "Đăng ký thành công", String.format("Bạn đã đăng ký thành công với email là %s, hãy thử đăng nhập ngay nào!", email), true);
                 } else {
-                    result = false;
+                    Notification.signUp(epicDialog, context, "Đăng ký không thành công", "Có lẻ tài khoản của bạn đã trùng với ai đó hoặc có vấn đề về máy chủ", false);
                 }
             }
         });

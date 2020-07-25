@@ -57,13 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
                             re_password = (String) edt_re_password.getText().toString();
 
                     // Check validate data submit
-                    userAuth.createUserWithEmailAndPassword( email, password);
-
-                    if (Users.result) {
-                        Notification.signUp(epicDialog, SignUpActivity.this, "Đăng ký thành công", String.format("Bạn đã đăng ký thành công với email là %s, hãy thử đăng nhập ngay nào!", email), true);
-                    } else {
-                        Notification.signUp(epicDialog, SignUpActivity.this, "Đăng ký không thành công", "Có lẻ tài khoản của bạn đã trùng với ai đó hoặc có vấn đề về máy chủ", false);
-                    }
+                    userAuth.createUserWithEmailAndPassword(email, password, epicDialog, SignUpActivity.this);
 
                 } catch (Exception ex) {
                     Toast.makeText(SignUpActivity.this, "Vui lòng nhập đúng dữ liệu", Toast.LENGTH_SHORT).show();
