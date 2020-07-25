@@ -18,15 +18,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aspire.data_models.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import org.json.JSONException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText edt_email, edt_password;
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private Dialog epicDialog;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,27 @@ public class LoginActivity extends AppCompatActivity {
 
         this.edt_email = findViewById(R.id.edt_email);
         this.edt_password = findViewById(R.id.edt_password);
+        epicDialog = new Dialog(this);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        // Create new post at /user-posts/$userid/$postid and at
+        // /posts/$postid simultaneously
+        String key = mDatabase.child("users").push().getKey();
+        String userId = "tESTid", username = "TestUsername", password = "passTest", userAvata = "T";
+        Users post = new Users(userId, username, password, userAvata);
+        Map<String, Object> postValues = null;
+        try {
+            postValues = post.toMap(post.toJSON());
+        } catch (JSONException e) {
+
+        }
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/posts/" + key, postValues);
+        childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
+
+        mDatabase.updateChildren(childUpdates);
+
 
         //get view frm layout
         Button btnLogin;
@@ -43,28 +73,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    Users user = new Users();
                     String email = edt_email.getText().toString();
                     String password = edt_password.getText().toString();
-                    mFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener() {
-                        @NonNull
-                        @Override
-                        protected Object clone() throws CloneNotSupportedException {
-                            Toast.makeText(LoginActivity.this, "Dang ddăng nhập!", Toast.LENGTH_SHORT).show();
-                            return super.clone();
-                        }
 
-                        @Override
-                        public void onComplete(@NonNull Task task) {
-                            if (task.isSuccessful()) {
-                                Intent intent = new Intent(getApplicationContext(), NewFeedActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                showNotification("Đăng nhập không thành công", "Hãy thử đăng nhập lại, chắc là bạn đã nhập sai gì đó!", false);
-                            }
-                        }
-                    });
+                    user.loginUserWithEmailAndPassword(email, password, epicDialog, LoginActivity.this);
                 } catch (Exception e) {
                     Toast.makeText(LoginActivity.this, "Vui lòng nhập đủ và đúng thông tin đăng nhập!", Toast.LENGTH_SHORT).show();
                 }
@@ -79,51 +92,4 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
-
-    private void showNotification(String title, String desNotification, boolean isSuccess) {
-        epicDialog.setContentView(R.layout.epic_popup_negative);
-        epicDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        //Set content
-        CardView card = epicDialog.findViewById(R.id.card_notification);
-        TextView txt_title = epicDialog.findViewById(R.id.txt_title);
-        TextView txt_desNotification = epicDialog.findViewById(R.id.txt_desNotification);
-        ImageView img_notification = epicDialog.findViewById(R.id.img_notification);
-        Button btn_success = epicDialog.findViewById(R.id.btn_success);
-        String colorIsSuccess = "";
-
-        //Set config notification
-        if (isSuccess) {
-            colorIsSuccess = "#4CAF50";
-            img_notification.setImageResource(R.mipmap.icon_success);
-            btn_success.setText("Đăng nhập");
-
-            btn_success.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Starting a new Intent
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(intent);
-                }
-            });
-        } else {
-            colorIsSuccess = "#FF675C";
-            img_notification.setImageResource(R.mipmap.icon_error);
-            btn_success.setText("Đã hiểu");
-
-            btn_success.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    epicDialog.dismiss();
-                }
-            });
-        }
-
-        txt_title.setText(title);
-        txt_desNotification.setText(desNotification);
-        card.setCardBackgroundColor(Color.parseColor(colorIsSuccess));
-        epicDialog.show();
-    }
-
 }
