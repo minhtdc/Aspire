@@ -1,5 +1,6 @@
 package com.example.aspire;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +28,7 @@ public class Notification {
 
         //Set config notification
         if (isSuccess) {
-            colorIsSuccess = "#4CAF50";
+            colorIsSuccess = "#DA4CAF50";
             img_notification.setImageResource(R.mipmap.icon_success);
             btn_success.setText("Đăng nhập");
 
@@ -38,10 +39,14 @@ public class Notification {
                     Intent intent = new Intent(context, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     context.startActivity(intent);
+
+                    //Finish activity sign up
+                    Activity activity = (Activity) context;
+                    activity.finish();
                 }
             });
         } else {
-            colorIsSuccess = "#FF675C";
+            colorIsSuccess = "#D0FF675C";
             img_notification.setImageResource(R.mipmap.icon_error);
             btn_success.setText("Đã hiểu");
 
@@ -72,7 +77,7 @@ public class Notification {
         String colorIsSuccess = "";
 
         //Set config notification
-        colorIsSuccess = "#FF675C";
+        colorIsSuccess = "#D0FF675C";
         img_notification.setImageResource(R.mipmap.icon_error);
         btn_success.setText("Đã hiểu");
 
@@ -87,9 +92,5 @@ public class Notification {
         txt_desNotification.setText(desNotification);
         card.setCardBackgroundColor(Color.parseColor(colorIsSuccess));
         epicDialog.show();
-    }
-
-    public static void switchActivity(Context context){
-
     }
 }
