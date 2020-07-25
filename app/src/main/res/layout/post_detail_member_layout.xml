@@ -132,6 +132,7 @@ không mọi người oiwiiiiii. Hellooooooooooooooooooooooooooooooooooooooooooo
             </TextView>
         </LinearLayout>
         <Button
+            android:id="@+id/btnComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bình luận"

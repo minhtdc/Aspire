@@ -23,7 +23,7 @@ public class MembersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.members_layout);
-            setTitle("Danh sách nhóm");
+            setTitle("Thành viên nhóm");
         listMembersManage = findViewById(R.id.listMember);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -35,9 +35,9 @@ public class MembersActivity extends AppCompatActivity {
 
             listMember = new ArrayList<MemberManage>();
 
-        MemberManage memberManage1 = new MemberManage("avatar nhom 1","hihi");
+        MemberManage memberManage1 = new MemberManage("avatar tv1","huynhoc");
         listMember.add(memberManage1);
-        MemberManage memberManage2 = new MemberManage("avatar nhom2","liuliu");
+        MemberManage memberManage2 = new MemberManage("avatar tv2","duynhoc");
         listMember.add(memberManage2);
             adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
         listMembersManage.setAdapter(adapter);
