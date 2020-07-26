@@ -31,6 +31,10 @@
     <string name="edtWriteComments">Viết bình luận</string>
     <string name="btnPostCmt">Đăng</string>
 
+    <!-- Nhu Tran Dep Gai -->
+    <string name="btnGoToMember">Thành viên</string>
+    <string name="edtHintPost">Bạn đang nghĩ gì ?</string>
+
 
     <!--    Le Van Bi-->
     <string name="btnTimKiem">Tìm kiếm</string>
