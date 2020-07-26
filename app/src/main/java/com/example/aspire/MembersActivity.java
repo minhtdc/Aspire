@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,7 +32,7 @@ public class MembersActivity extends AppCompatActivity {
             // get view from layout
             ImageView imgUser = (ImageView) findViewById(R.id.userAvatar);
            // Button btnXoa = (Button) findViewById(R.id.btnXoa);
-            EditText edtUserName = (EditText) findViewById(R.id.edtName);
+            TextView edtUserName = (TextView) findViewById(R.id.txtName);
 
             listMember = new ArrayList<MemberManage>();
 
