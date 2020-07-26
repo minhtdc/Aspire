@@ -33,7 +33,6 @@ public class Users {
     private String userPass;
     private String userAvatar;
     private String email;
-    private DatabaseReference mDatabase;
     private FirebaseAuth fAuth;
 
     public String getUserID() {
@@ -106,7 +105,7 @@ public class Users {
     }
 
     private void addUserInformation(String UserID, Users user) throws JSONException {
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         Map<String, Object> postValues = null;
         Log.d("JSON User: ", user.toJSON(user).toString());
 
