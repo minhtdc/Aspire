@@ -3,6 +3,7 @@ package com.example.aspire;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.room.Query;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -32,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
+    public String userLogin;
     private EditText edt_email, edt_password;
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private Dialog epicDialog;
