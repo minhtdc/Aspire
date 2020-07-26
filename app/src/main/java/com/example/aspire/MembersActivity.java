@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,14 +27,14 @@ public class MembersActivity extends AppCompatActivity {
             setTitle("Thành viên nhóm");
         listMembersManage = findViewById(R.id.listMember);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
             // get view from layout
             ImageView imgUser = (ImageView) findViewById(R.id.userAvatar);
-           // Button btnXoa = (Button) findViewById(R.id.btnXoa);
-            EditText edtUserName = (EditText) findViewById(R.id.edtName);
+           // Button btnDelete = (Button) findViewById(R.id.btnDelete);
+            TextView txtName = (TextView) findViewById(R.id.txtName);
 
             listMember = new ArrayList<MemberManage>();
+
 
             adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
         listMembersManage.setAdapter(adapter);
