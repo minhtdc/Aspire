@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -32,7 +33,7 @@ public class AdapterMemberManage extends ArrayAdapter<MemberManage> {
     //define view holder
     static class ViewHolder {
         ImageView imgUser;
-        EditText edtName;
+        TextView txtName;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class AdapterMemberManage extends ArrayAdapter<MemberManage> {
 
 
 
-            viewHolder.edtName = (EditText) convertView.findViewById(R.id.edtName);
+            viewHolder.txtName = (TextView) convertView.findViewById(R.id.txtName);
 
             //binging the view in convertView coresponding
             convertView.setTag(viewHolder);
@@ -58,7 +59,7 @@ public class AdapterMemberManage extends ArrayAdapter<MemberManage> {
 
         //
         MemberManage memberManage = listMembersManage.get(position);
-        viewHolder.edtName.setText(memberManage.getUserName());
+        viewHolder.txtName.setText(memberManage.getUserName());
 
 
         return convertView;

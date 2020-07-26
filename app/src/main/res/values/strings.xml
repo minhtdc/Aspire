@@ -39,5 +39,6 @@
     <string name="btnTaoNhom">Tạo Nhóm</string>
     <string name="btnTroLai">Trở Lại</string>
     <string name="btnThanhVien">Tất cả thành viên</string>
+    <string name="hintSeach">Tìm kiếm</string>
 
 </resources>

@@ -33,8 +33,8 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
     //define view holder
     static class ViewHolder {
         ImageView imgUser;
-        EditText edtName;
-        EditText edtPeople;
+        TextView txtName;
+        TextView txtPeople;
     }
 
     @Override
@@ -48,8 +48,8 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
 
 
             viewHolder.imgUser =(ImageView) convertView.findViewById(R.id.imgHinhAnh);
-            viewHolder.edtName = (EditText) convertView.findViewById(R.id.edtuserName);
-            viewHolder.edtPeople = (EditText) convertView.findViewById(R.id.edtPeople);
+            viewHolder.txtName = (TextView) convertView.findViewById(R.id.txtuserName);
+            viewHolder.txtPeople = (TextView) convertView.findViewById(R.id.txtPeople);
 
             //binging the view in convertView coresponding
             convertView.setTag(viewHolder);
@@ -61,8 +61,8 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
 
         //
         Newfeed newfeed = listNew.get(position);
-        viewHolder.edtName.setText(newfeed.getUserName());
-        viewHolder.edtPeople.setText(newfeed.getUserPeople());
+        viewHolder.txtName.setText(newfeed.getUserName());
+        viewHolder.txtPeople.setText(newfeed.getUserPeople());
 
         return convertView;
     }

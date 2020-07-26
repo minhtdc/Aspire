@@ -31,11 +31,6 @@ public class GroupManageActivity extends AppCompatActivity {
             EditText edtUserName = (EditText) findViewById(R.id.edtName);
 
             listMember = new ArrayList<MemberManage>();
-
-            MemberManage memberManage1 = new MemberManage("avatar nhom 1","hihi");
-            listMember.add(memberManage1);
-            MemberManage memberManage2 = new MemberManage("avatar nhom2","liuliu");
-            listMember.add(memberManage2);
             adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
             listGroupManage.setAdapter(adapter);
     }

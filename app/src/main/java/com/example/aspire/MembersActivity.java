@@ -35,10 +35,6 @@ public class MembersActivity extends AppCompatActivity {
 
             listMember = new ArrayList<MemberManage>();
 
-        MemberManage memberManage1 = new MemberManage("avatar tv1","huynhoc");
-        listMember.add(memberManage1);
-        MemberManage memberManage2 = new MemberManage("avatar tv2","duynhoc");
-        listMember.add(memberManage2);
             adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
         listMembersManage.setAdapter(adapter);
 
