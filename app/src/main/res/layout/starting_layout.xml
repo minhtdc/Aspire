@@ -7,32 +7,19 @@
     android:background="@drawable/bg_gradient_main"
     tools:context=".StartingActivity">
 
-  <TextView
-      android:id="@+id/textView4"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="It's easier to sign up now"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
   <ImageView
       android:id="@+id/imageView"
-      android:layout_width="match_parent"
-      android:layout_height="215dp"
-      android:contentDescription="TODO"
+      android:layout_width="190dp"
+      android:layout_height="174dp"
       android:src="@mipmap/logo_main_shadow"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      tools:ignore="MissingConstraints"
-      tools:layout_editor_absoluteY="16dp" />
+      tools:ignore="MissingConstraints" />
 
   <TextView
       android:id="@+id/textView2"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="200dp"
       android:fontFamily="sans-serif"
       android:text="Aspire"
       android:textColor="#FFF"
@@ -40,7 +27,7 @@
       android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/imageView" />
+      app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
   <TextView
       android:id="@+id/textView"
@@ -59,27 +46,40 @@
       android:id="@+id/textView3"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="36dp"
+      android:layout_marginTop="44dp"
       android:fontFamily="sans-serif-medium"
       android:text="Welcome"
       android:textColor="#343434"
       android:textSize="40sp"
       android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.497"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+  <TextView
+      android:id="@+id/textView4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="4dp"
+      android:text="It's easier to sign up now"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
   <Button
       android:id="@+id/btn_login"
       android:layout_width="300dp"
       android:layout_height="40dp"
-      android:layout_marginTop="40dp"
+      android:layout_marginTop="56dp"
       android:background="@drawable/bg_button_gradent_main"
       android:fontFamily="@font/allerta"
       android:text="Login"
       android:textColor="#FFFFFF"
       android:textSize="28sp"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.495"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -90,9 +90,12 @@
       android:layout_marginTop="8dp"
       android:background="@drawable/bg_button_radius"
       android:text="Sign Up"
+      app:layout_constraintBottom_toTopOf="@+id/imageView3"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.497"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+      app:layout_constraintTop_toBottomOf="@+id/btn_login"
+      app:layout_constraintVertical_bias="0.12" />
 
   <ImageView
       android:id="@+id/imageView3"

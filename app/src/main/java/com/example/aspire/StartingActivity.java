@@ -37,7 +37,6 @@ public class StartingActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -48,7 +47,6 @@ public class StartingActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
-                finish();
             }
         });
     }
