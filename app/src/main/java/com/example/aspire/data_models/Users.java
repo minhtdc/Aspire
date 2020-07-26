@@ -146,6 +146,11 @@ public class Users {
         });
     }
 
+    public boolean isLogged(){
+        fAuth = FirebaseAuth.getInstance();
+        return fAuth.getCurrentUser() != null;
+    }
+
     public JSONObject toJSON(Users user) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("user_name", user.getUserName());
