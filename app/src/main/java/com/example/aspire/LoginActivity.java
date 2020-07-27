@@ -3,7 +3,6 @@ package com.example.aspire;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.room.Query;
 
 import android.app.Dialog;
 import android.content.Intent;

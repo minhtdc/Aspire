@@ -33,17 +33,17 @@ public class PostListActivity extends AppCompatActivity {
         cmt = findViewById(R.id.btnComment);
 
 
-//        listPostMember = new ArrayList<Post>();
-//        Post post1 = new Post("Nhu Tran", "Thanh vien", "1 gio truoc", "Tieu de test 1",
-//                "Noi dung testb 1 ", "2 luot xem", "4 binh luan");
-//        Post post2 = new Post("Nhu Tran", "Thanh vien",
-//                "1 gio truoc", "Tieu de test 1", "Noi dung testb 1 ", "2 luot xem",
-//                "4 binh luan");
-//        listPostMember.add(post1);
-//        listPostMember.add(post2);
-//        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout,listPostMember);
-//
-//        listPost.setAdapter(adapter);
+        listPostMember = new ArrayList<Post>();
+        Post post1 = new Post("Nhu Tran", "Thanh vien", "1 gio truoc", "Tieu de test 1",
+                "Noi dung testb 1 ", "2 luot xem", "4 binh luan");
+        Post post2 = new Post("Nhu Tran", "Thanh vien",
+                "1 gio truoc", "Tieu de test 1", "Noi dung testb 1 ", "2 luot xem",
+                "4 binh luan");
+        listPostMember.add(post1);
+        listPostMember.add(post2);
+        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout,listPostMember);
+
+        listPost.setAdapter(adapter);
 
 //        cmt.setOnClickListener(new View.OnClickListener() {
 //            @Override

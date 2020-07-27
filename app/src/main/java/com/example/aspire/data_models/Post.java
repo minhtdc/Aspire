@@ -3,71 +3,81 @@ package com.example.aspire.data_models;
 import com.example.aspire.R;
 
 public class Post {
-    String commentID, contentPost, titlePost, userID, postID, countCommentPost;
+    int userAvatar;
+    String userName, userPosition, userTimePost, userTitlePost, userContentPost, userViewPost, userCountCommentPost;
 
-    public Post() {
-        this.commentID = "";
-        this.contentPost = "";
-        this.titlePost = "";
-        this.userID = "";
-        this.postID = "";
-        this.countCommentPost = "";
+    public Post(String userName, String userPosition, String userTimePost, String userTitlePost, String userContentPost, String userViewPost, String userCountCommentPost) {
+        this.userAvatar = R.drawable.avt;
+        this.userName = userName;
+        this.userPosition = userPosition;
+        this.userTimePost = userTimePost;
+        this.userTitlePost = userTitlePost;
+        this.userContentPost = userContentPost;
+        this.userViewPost = userViewPost;
+        this.userCountCommentPost = userCountCommentPost;
     }
 
-    public Post(String commentID, String contentPost, String titlePost, String userID, String postID, String countCommentPost) {
-        this.commentID = commentID;
-        this.contentPost = contentPost;
-        this.titlePost = titlePost;
-        this.userID = userID;
-        this.postID = postID;
-        this.countCommentPost = countCommentPost;
+    public int getUserAvatar() {
+        return userAvatar;
     }
 
-    public String getCommentID() {
-        return commentID;
+    public void setUserAvatar(int userAvatar) {
+        this.userAvatar = userAvatar;
     }
 
-    public void setCommentID(String commentID) {
-        this.commentID = commentID;
+    public String getUserName() {
+        return userName;
     }
 
-    public String getContentPost() {
-        return contentPost;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setContentPost(String contentPost) {
-        this.contentPost = contentPost;
+    public String getUserPosition() {
+        return userPosition;
     }
 
-    public String getTitlePost() {
-        return titlePost;
+    public void setUserPosition(String userPosition) {
+        this.userPosition = userPosition;
     }
 
-    public void setTitlePost(String titlePost) {
-        this.titlePost = titlePost;
+    public String getUserTimePost() {
+        return userTimePost;
     }
 
-    public String getUserID() {
-        return userID;
+    public void setUserTimePost(String userTimePost) {
+        this.userTimePost = userTimePost;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public String getUserTitlePost() {
+        return userTitlePost;
     }
 
-    public String getPostID() {
-        return postID;
+    public void setUserTitlePost(String userTitlePost) {
+        this.userTitlePost = userTitlePost;
     }
 
-    public void setPostID(String postID) {
-        this.postID = postID;
+    public String getUserContentPost() {
+        return userContentPost;
     }
 
-    public String getCountCommentPost() {
-        return countCommentPost;
+    public void setUserContentPost(String userContentPost) {
+        this.userContentPost = userContentPost;
     }
 
-    public void setCountCommentPost(String countCommentPost) {
-        this.countCommentPost = countCommentPost;
+    public String getUserViewPost() {
+        return userViewPost;
+    }
+
+    public void setUserViewPost(String userViewPost) {
+        this.userViewPost = userViewPost;
+    }
+
+    public String getUserCountCommentPost() {
+        return userCountCommentPost;
+    }
+
+    public void setUserCountCommentPost(String userCountCommentPost) {
+        this.userCountCommentPost = userCountCommentPost;
     }
 }
