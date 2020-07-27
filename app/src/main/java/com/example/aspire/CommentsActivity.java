@@ -23,6 +23,8 @@ public class CommentsActivity extends AppCompatActivity {
         //get view from layout
         listView = findViewById(R.id.listViewComments);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         //test add dữ liệu
         listComments = new ArrayList<Comments>();
         Comments cmt1 = new Comments("Huyen Nguyen", "Hi, Min Min. Hi, Nhu Tran :) ");

@@ -36,6 +36,11 @@
     <string name="edtHintPost">Bạn đang nghĩ gì ?</string>
 
 
+    <string name="txtViewUserId">User_Id</string>
+    <string name="btnYourGroup">Nhóm của bạn</string>
+    <string name="btnManageGroup">Nhóm bạn quản lý</string>
+    <string name="btnLogOut">Đăng xuất</string>
+    <string name="btnSetting">Cài đặt</string>
     <!--    Le Van Bi-->
     <string name="btnTimKiem">Tìm kiếm</string>
     <string name="btnThem">Thêm</string>
@@ -43,5 +48,6 @@
     <string name="btnTaoNhom">Tạo Nhóm</string>
     <string name="btnTroLai">Trở Lại</string>
     <string name="btnThanhVien">Tất cả thành viên</string>
+    <string name="hintSeach">Tìm kiếm</string>
 
 </resources>

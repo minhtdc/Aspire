@@ -21,13 +21,14 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
-            <EditText
-
-
-                android:id="@+id/edtName"
+            <TextView
+                android:background="@drawable/custom_edittext"
+                android:id="@+id/txtName"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:padding="8dp"
                 android:hint="Tên thành viên" />
         </LinearLayout>
         <LinearLayout
@@ -37,7 +38,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
             <Button
-                android:id="@+id/btnDeny"
+                android:id="@+id/btnDelete"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/deny">

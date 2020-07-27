@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,14 +32,10 @@ public class MembersActivity extends AppCompatActivity {
             // get view from layout
             ImageView imgUser = (ImageView) findViewById(R.id.userAvatar);
            // Button btnXoa = (Button) findViewById(R.id.btnXoa);
-            EditText edtUserName = (EditText) findViewById(R.id.edtName);
+            TextView edtUserName = (TextView) findViewById(R.id.txtName);
 
             listMember = new ArrayList<MemberManage>();
 
-        MemberManage memberManage1 = new MemberManage("avatar tv1","huynhoc");
-        listMember.add(memberManage1);
-        MemberManage memberManage2 = new MemberManage("avatar tv2","duynhoc");
-        listMember.add(memberManage2);
             adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
         listMembersManage.setAdapter(adapter);
 

@@ -1,5 +1,6 @@
 package com.example.aspire;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -33,13 +34,8 @@ public class NewFeedActivity extends AppCompatActivity {
 
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listNew);
 
-        Newfeed newfeed1 = new Newfeed("avatar nha", "bi le", "nva");
-        Newfeed newfeed2 = new Newfeed("avatar ne", "huy le", "hvt");
-        listNew.add(newfeed1);
-        listNew.add(newfeed2);
         listNewFeed.setAdapter(adapter);
 
 
-
+        }
     }
-}
