@@ -24,15 +24,14 @@ public class GroupManageActivity extends AppCompatActivity {
             setTitle("Danh sách nhóm");
             listGroupManage = findViewById(R.id.listGroup);
 
-
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
             // get view from layout
             ImageView imgUser = (ImageView) findViewById(R.id.userAvatar);
             // Button btnXoa = (Button) findViewById(R.id.btnXoa);
-            TextView txtName = (TextView) findViewById(R.id.txtName);
+            TextView edtUserName = (TextView) findViewById(R.id.txtName);
 
             listMember = new ArrayList<MemberManage>();
-
-
             adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
             listGroupManage.setAdapter(adapter);
     }

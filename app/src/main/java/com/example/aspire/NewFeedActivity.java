@@ -1,5 +1,6 @@
 package com.example.aspire;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -33,11 +34,8 @@ public class NewFeedActivity extends AppCompatActivity {
 
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listNew);
 
-
-        
         listNewFeed.setAdapter(adapter);
 
 
-
+        }
     }
-}

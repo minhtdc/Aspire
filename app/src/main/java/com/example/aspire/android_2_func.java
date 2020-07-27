@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 public class android_2_func {
     AlertDialog dialog;
     Activity activity;
+
     public static Map<String, Object> jsonToMap(JSONObject json) throws JSONException {
         Map<String, Object> retMap = new HashMap<String, Object>();
 
