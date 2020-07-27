@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "212346987315",
-    "firebase_url": "https://aspire-85d22.firebaseio.com",
-    "project_id": "aspire-85d22",
-    "storage_bucket": "aspire-85d22.appspot.com"
+    "project_number": "933120633475",
+    "firebase_url": "https://aspire-4d2b8.firebaseio.com",
+    "project_id": "aspire-4d2b8",
+    "storage_bucket": "aspire-4d2b8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:212346987315:android:a1835dd17a581183149446",
+        "mobilesdk_app_id": "1:933120633475:android:04135ff60ea45d107189b6",
         "android_client_info": {
           "package_name": "com.example.aspire"
         }
       },
       "oauth_client": [
         {
-          "client_id": "212346987315-7pdvmkqpu93i841b1k6ju7m23t9e1lf7.apps.googleusercontent.com",
+          "client_id": "933120633475-bt4m75snd60o5p4ua2banmsu55uvsm35.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.aspire",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "212346987315-rhp2dqh73tpjrd69sf54csh6a6uc0g1a.apps.googleusercontent.com",
+          "client_id": "933120633475-mc6icbcdfo85qo59jq3vmnrho84n05d7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBtGrncpF3z2nJE2ErQk2iJTK27hdmjWx4"
+          "current_key": "AIzaSyD-EyI3zW1gRYfh1ekiKMamUgEulAN3vms"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "212346987315-rhp2dqh73tpjrd69sf54csh6a6uc0g1a.apps.googleusercontent.com",
+              "client_id": "933120633475-mc6icbcdfo85qo59jq3vmnrho84n05d7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

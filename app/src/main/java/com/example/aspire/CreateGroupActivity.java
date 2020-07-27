@@ -8,11 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.aspire.data_models.Groups;
+import com.example.aspire.data_models.Users;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONException;
 
+import java.security.acl.Group;
+
 public class CreateGroupActivity extends AppCompatActivity {
     public  Groups groups;
+    private DatabaseReference mFirebaseDatabase;
+    private FirebaseDatabase mFirebaseInstace;
+    private String Id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +40,10 @@ public class CreateGroupActivity extends AppCompatActivity {
         btnCreateGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                groups = new Groups("admin","member","minhh");
-                try {
-                    groups.addGroupToDatabase("10", groups);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("message");
 
-
+                myRef.setValue("Hello, World!");
             }
         });
     }
