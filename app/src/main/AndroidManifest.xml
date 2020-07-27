@@ -17,7 +17,11 @@
 
         </activity>
         <activity android:name=".CreateGroupActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".GroupManageActivity">
 
@@ -59,11 +63,7 @@
         <activity
             android:name=".StartingActivity"
             android:theme="@style/Starting">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
 

@@ -17,7 +17,7 @@ import org.json.JSONException;
 import java.security.acl.Group;
 
 public class CreateGroupActivity extends AppCompatActivity {
-    public  Groups groups;
+    public Groups groups;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstace;
     private String Id;
@@ -37,14 +37,15 @@ public class CreateGroupActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//
-//        myRef.setValue("Hello, World!");
 
         btnCreateGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("message");
+
+                myRef.setValue("Hello, World!");
 
             }
         });
