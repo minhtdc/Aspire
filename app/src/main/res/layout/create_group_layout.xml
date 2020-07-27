@@ -27,6 +27,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/edtGroupName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/my_border"
@@ -89,6 +90,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.5">
         <Button
+            android:id="@+id/btnCreateGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnCreateGroup"

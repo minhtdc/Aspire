@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -47,7 +48,6 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     //Get value form input
-                    Users userAuth = new Users();
                     boolean result = false;
                     final String
                             fullName = (String) edt_fullname.getText().toString(),
@@ -55,18 +55,25 @@ public class SignUpActivity extends AppCompatActivity {
                             userName = (String) edt_username.getText().toString(),
                             password = (String) edt_password.getText().toString(),
                             re_password = (String) edt_re_password.getText().toString();
-
                     // Check validate data submit
-                    userAuth.createUserWithEmailAndPassword( email, password);
-
-                    if (Users.result) {
-                        Notification.signUp(epicDialog, SignUpActivity.this, "Đăng ký thành công", String.format("Bạn đã đăng ký thành công với email là %s, hãy thử đăng nhập ngay nào!", email), true);
+                    if (fullName.equals("") || email.equals("") || userName.equals("") || password.equals("") || re_password.equals("")) {
+                        Toast.makeText(SignUpActivity.this, "Vui lòng nhập đúng dữ liệu", Toast.LENGTH_SHORT).show();
                     } else {
-                        Notification.signUp(epicDialog, SignUpActivity.this, "Đăng ký không thành công", "Có lẻ tài khoản của bạn đã trùng với ai đó hoặc có vấn đề về máy chủ", false);
+                        if (android_2_func.isValidEmailId(email)) {
+                            if (!password.equals(re_password)) {
+                                Notification.error(epicDialog, SignUpActivity.this,
+                                        "Đăng ký không thành công",
+                                        "Mật khẩu xác nhận của bạn không đúng như trước!");
+                            } else {
+                                Users userAuth = new Users(userName, password, email, fullName);
+                                userAuth.createUserWithEmailAndPassword(epicDialog, SignUpActivity.this, userAuth);
+                            }
+                        } else {
+                            Toast.makeText(SignUpActivity.this, "Email không đúng", Toast.LENGTH_SHORT).show();
+                        }
                     }
-
                 } catch (Exception ex) {
-                    Toast.makeText(SignUpActivity.this, "Vui lòng nhập đúng dữ liệu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Lỗi trong quá trình đăng ký", Toast.LENGTH_SHORT).show();
                 }
             }
         });
