@@ -8,11 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aspire.adapter.AdapterNewfeed;
 import com.example.aspire.data_models.Newfeed;
+import com.example.aspire.data_models.Users;
 
 import java.util.ArrayList;
 
@@ -21,6 +23,8 @@ public class NewFeedActivity extends AppCompatActivity {
     private AdapterNewfeed adapter;
     private ArrayList<Newfeed> listNew;
     ListView listNewFeed;
+    Button btnSearch;
+    EditText editSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,18 @@ public class NewFeedActivity extends AppCompatActivity {
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listNew);
 
         listNewFeed.setAdapter(adapter);
+
+        btnSearch =findViewById(R.id.btnSearch);
+        editSearch = findViewById(R.id.edtSearch);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Users users = new Users();
+                if(users.isLogged()){
+                    editSearch.setText("Chào mừng" + users.getUserName());
+                }
+            }
+        });
 
 
         }

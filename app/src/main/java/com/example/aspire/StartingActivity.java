@@ -17,13 +17,13 @@ public class StartingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.starting_layout);
-//        //Check user logged
+        //Check user logged
 //        Users user = new Users();
 //        if (user.isLogged()) {
 //            Intent intent = new Intent(getApplicationContext(), NewFeedActivity.class);
 //            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 //            startActivity(intent);
-//            Toast.makeText(this, "Welcome you comeback", Toast.LENGTH_SHORT).show();
+//           Toast.makeText(this, "Welcome you comeback", Toast.LENGTH_SHORT).show();
 //            finish();
 //        }
 
