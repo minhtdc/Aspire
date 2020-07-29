@@ -32,10 +32,6 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
 
     //define view holder
     static class ViewHolder {
-<<<<<<< HEAD
-=======
-        ImageView imgUser;
->>>>>>> Minh-Nguyễn
         TextView txtName;
         TextView txtPeople;
     }
@@ -49,11 +45,7 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
             viewHolder = new AdapterNewfeed.ViewHolder();
             convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
 
-<<<<<<< HEAD
-=======
 
-            viewHolder.imgUser =(ImageView) convertView.findViewById(R.id.imgHinhAnh);
->>>>>>> Minh-Nguyễn
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.txtuserName);
             viewHolder.txtPeople = (TextView) convertView.findViewById(R.id.txtPeople);
 

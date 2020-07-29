@@ -9,30 +9,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
->>>>>>> Minh-Nguyễn
 import java.util.HashMap;
 import java.util.Map;
 
 public class Groups {
-<<<<<<< HEAD
-    private String groupID, adminId, memberID, groupName;
-    private DatabaseReference mDatabase;
-
-    public Groups() {
-    }
-
-    public Groups(String groupID, String adminId, String memberID, String groupName) {
-        this.groupID = groupID;
-        this.adminId = adminId;
-        this.memberID = memberID;
-        this.groupName = groupName;
-    }
-
-    //get/set
-=======
     private String groupID, adminId, groupName, groupInfo;
     private DatabaseReference mDatabase;
     private ArrayList<String> listIDMember;
@@ -52,7 +33,6 @@ public class Groups {
     //get/set
 
 
->>>>>>> Minh-Nguyễn
     public String getGroupID() {
         return groupID;
     }
@@ -69,17 +49,6 @@ public class Groups {
         this.adminId = adminId;
     }
 
-<<<<<<< HEAD
-    public String getMemberID() {
-        return memberID;
-    }
-
-    public void setMemberID(String memberID) {
-        this.memberID = memberID;
-    }
-
-=======
->>>>>>> Minh-Nguyễn
     public String getGroupName() {
         return groupName;
     }
@@ -88,10 +57,6 @@ public class Groups {
         this.groupName = groupName;
     }
 
-<<<<<<< HEAD
-    //cac ham
-
-=======
     public DatabaseReference getmDatabase() {
         return mDatabase;
     }
@@ -141,7 +106,6 @@ public class Groups {
         json.put("admin_id", group.getAdminId());
         return json;
     }
->>>>>>> Minh-Nguyễn
 
 }
 
