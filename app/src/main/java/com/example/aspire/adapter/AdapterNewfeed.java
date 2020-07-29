@@ -32,7 +32,6 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
 
     //define view holder
     static class ViewHolder {
-        ImageView imgUser;
         TextView txtName;
         TextView txtPeople;
     }
@@ -47,7 +46,6 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
             convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
 
 
-            viewHolder.imgUser =(ImageView) convertView.findViewById(R.id.imgHinhAnh);
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.txtuserName);
             viewHolder.txtPeople = (TextView) convertView.findViewById(R.id.txtPeople);
 
