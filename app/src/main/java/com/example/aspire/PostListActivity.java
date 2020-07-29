@@ -22,8 +22,7 @@ public class PostListActivity extends AppCompatActivity {
     private MyPostListAdapter adapter;
     private ArrayList<Post> listPostMember;
     Button cmt;
-    Button btnAddPost;
-    Button btnShowMember;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,7 @@ public class PostListActivity extends AppCompatActivity {
 
         listPost = findViewById(R.id.listPost);
         cmt = findViewById(R.id.btnComment);
-        btnShowMember = findViewById(R.id.btnGoToMember);
+
 
         listPostMember = new ArrayList<Post>();
         Post post1 = new Post("Nhu Tran", "Thanh vien", "1 gio truoc", "Tieu de test 1",
@@ -54,15 +53,6 @@ public class PostListActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-
-        btnShowMember.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
-            }
-        });
 
     }
 }

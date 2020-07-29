@@ -61,17 +61,12 @@
             android:layout_weight="5"
             android:padding="5dp">
 
-            <Button
-                android:id="@+id/btnAddPost"
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/my_border"
                 android:hint="@string/edtHintPost"
-<<<<<<< HEAD
-                android:paddingLeft="10dp"></Button>
-=======
                 android:paddingLeft="10dp"></EditText>
->>>>>>> Minh-Nguyễn
         </LinearLayout>
     </LinearLayout>
 

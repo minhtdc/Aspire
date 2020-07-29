@@ -40,9 +40,6 @@ public class NewFeedActivity extends AppCompatActivity {
 
         listNewFeed.setAdapter(adapter);
 
-<<<<<<< HEAD
-
-=======
 //        Toast.makeText(this, Users.userID, Toast.LENGTH_LONG).show();
 
         btnSearch =findViewById(R.id.btnSearch);
@@ -56,6 +53,5 @@ public class NewFeedActivity extends AppCompatActivity {
                 }
             }
         });
->>>>>>> Minh-Nguyễn
         }
     }
