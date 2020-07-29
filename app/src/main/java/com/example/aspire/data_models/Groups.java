@@ -85,11 +85,11 @@ public class Groups {
     public void addGroupToDatabase(Groups group) throws JSONException {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         Map<String, Object> postValues = null;
-        Log.d("JSON User: ", group.toJSON(group).toString());
 
         try {
             postValues = android_2_func.toMap(group.toJSON(group));
         } catch (JSONException e) {
+            Log.d("JSON User: ", group.toJSON(group).toString());
         }
 
         Map<String, Object> childUpdates = new HashMap<>();

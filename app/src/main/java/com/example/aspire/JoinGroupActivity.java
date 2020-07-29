@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aspire.data_models.Groups;
+import com.example.aspire.data_models.Users;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,23 +23,25 @@ public class JoinGroupActivity extends AppCompatActivity {
         final TextView txtGroupInfo;
 
 
-        txtGroupInfo = findViewById(R.id.txtGroupInfo);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join_group_layout);
+        txtGroupInfo = findViewById(R.id.txtGroupInfo);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        Users users = new Users();
+        txtGroupInfo.setText(users.getUserName());
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hello, World!");
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                String value = snapshot.getValue(String.class);
+                //Toast.makeText(JoinGroupActivity.this, value, Toast.LENGTH_SHORT).show();
+                //txtGroupInfo.setText(value);
             }
 
             @Override
@@ -46,5 +49,6 @@ public class JoinGroupActivity extends AppCompatActivity {
 
             }
         });
+
     }
 }
