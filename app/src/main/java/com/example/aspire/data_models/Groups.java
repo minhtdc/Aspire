@@ -102,6 +102,7 @@ public class Groups {
     public JSONObject toJSON(Groups group) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("group_name", group.getGroupName());
+        json.put("group_id", group.getGroupName());
         json.put("group_info", group.getGroupInfo());
         json.put("admin_id", group.getAdminId());
         return json;

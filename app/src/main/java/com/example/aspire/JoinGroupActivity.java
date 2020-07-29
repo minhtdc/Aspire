@@ -22,26 +22,28 @@ public class JoinGroupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         final TextView txtGroupInfo;
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join_group_layout);
         txtGroupInfo = findViewById(R.id.txtGroupInfo);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        Users users = new Users();
-        txtGroupInfo.setText(users.getUserName());
-
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-        myRef.addValueEventListener(new ValueEventListener() {
+
+        final DatabaseReference group = database.getReference("groups");
+        group.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue(String.class);
-                //Toast.makeText(JoinGroupActivity.this, value, Toast.LENGTH_SHORT).show();
-                //txtGroupInfo.setText(value);
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    //lấy key của dữ liệu
+                    String key = data.getKey();
+                    if (key == "-MDO_NZb1_UPUjrhmBq3"){
+                        String value = data.getValue().toString();
+                        txtGroupInfo.setText(value);
+                    }
+
+                }
             }
 
             @Override
@@ -49,6 +51,7 @@ public class JoinGroupActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
 }
