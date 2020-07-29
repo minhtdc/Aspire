@@ -17,11 +17,7 @@
 
         </activity>
         <activity android:name=".CreateGroupActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".GroupManageActivity">
 
@@ -38,7 +34,11 @@
 
         </activity>
         <activity android:name=".NewFeedActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".NonGroupManageActivity">
 
