@@ -15,14 +15,23 @@
             android:orientation="vertical">
 
             <TextView
+<<<<<<< HEAD
+=======
+                android:background="@drawable/custom_edittext"
+>>>>>>> Minh-Nguyễn
                 android:id="@+id/txtuserName"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:padding="15dp"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:background="@drawable/custom_edittext"
                 android:hint="Tên nhóm"
                 android:layout_marginBottom="10dp"/>
+=======
+                android:hint="Tên nhóm" />
+
+>>>>>>> Minh-Nguyễn
             <TextView
                 android:background="@drawable/custom_edittext"
                 android:id="@+id/txtPeople"

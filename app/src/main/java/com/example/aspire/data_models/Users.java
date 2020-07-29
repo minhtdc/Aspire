@@ -34,15 +34,19 @@ public class Users {
     private String userAvatar;
     private String email;
     private FirebaseAuth fAuth;
+<<<<<<< HEAD
 
     public String getUserID() {
         return userID;
     }
+=======
+>>>>>>> Minh-Nguyễn
 
     public String getUserName() {
         return userName;
     }
 
+<<<<<<< HEAD
     public String getUserPass() {
         return userPass;
     }
@@ -65,6 +69,38 @@ public class Users {
         android_2_func = new android_2_func();
     }
 
+=======
+    public String getUserID() {
+        return this.userID;
+    }
+
+    public String getUserPass() {
+        return userPass;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    private android_2_func android_2_func;
+
+    public Users() {
+        android_2_func = new android_2_func();
+        fAuth = FirebaseAuth.getInstance();
+        if (fAuth != null) {
+            this.userID = fAuth.getCurrentUser().getUid();
+        }
+    }
+
+>>>>>>> Minh-Nguyễn
     public Users(String userName, String userPass, String email, String fullName) {
         this.userName = userName;
         this.userPass = userPass;
@@ -122,7 +158,11 @@ public class Users {
 
     public void loginUserWithEmailAndPassword(final String email, String password, final Dialog epicDialog, final Context context) throws InterruptedException {
         android_2_func.showLoading(context);
+<<<<<<< HEAD
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
+=======
+        final FirebaseAuth fAuth = FirebaseAuth.getInstance();
+>>>>>>> Minh-Nguyễn
 
         fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -146,7 +186,11 @@ public class Users {
         });
     }
 
+<<<<<<< HEAD
     public boolean isLogged(){
+=======
+    public boolean isLogged() {
+>>>>>>> Minh-Nguyễn
         fAuth = FirebaseAuth.getInstance();
         return fAuth.getCurrentUser() != null;
     }
