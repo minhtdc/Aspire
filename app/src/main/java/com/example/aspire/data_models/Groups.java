@@ -22,11 +22,10 @@ public class Groups {
         listIDMember = new ArrayList<String>();
     }
 
-    public Groups(String groupID, String adminId, String groupName, DatabaseReference mDatabase, String groupInfo, ArrayList<String> listIDMember) {
+    public Groups(String groupID, String adminId, String groupName, String groupInfo, ArrayList<String> listIDMember) {
         this.groupID = groupID;
         this.adminId = adminId;
         this.groupName = groupName;
-        this.mDatabase = mDatabase;
         this.groupInfo = groupInfo;
         this.listIDMember = new ArrayList<String>();
     }

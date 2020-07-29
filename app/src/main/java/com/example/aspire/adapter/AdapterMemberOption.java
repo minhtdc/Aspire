@@ -13,17 +13,18 @@ import android.widget.TextView;
 
 
 import com.example.aspire.R;
+import com.example.aspire.data_models.Requests;
 import com.example.aspire.data_models.Users;
 
 import java.util.ArrayList;
 
-public class AdapterMemberOption extends ArrayAdapter<Users> {
+public class AdapterMemberOption extends ArrayAdapter<Requests> {
     private Activity context;
     private int layoutID;
-    private ArrayList<Users> listMembers;
+    private ArrayList<Requests> listMembers;
 
 
-    public AdapterMemberOption(Activity context, int resource, ArrayList<Users> list) {
+    public AdapterMemberOption(Activity context, int resource, ArrayList<Requests> list) {
         super(context, resource, list);
         this.context = context;
         this.layoutID = resource;
@@ -58,9 +59,9 @@ public class AdapterMemberOption extends ArrayAdapter<Users> {
         }
 
         //
-        Users users = listMembers.get(position);
-        viewHolder.userName.setText(users.getUserName());
-        viewHolder.userDetail.setText("Cho vô nhóm nha");
+       Requests requests = listMembers.get(position);
+        viewHolder.userName.setText(requests.getMemberID());
+        viewHolder.userDetail.setText(requests.getContent());
 
         return convertView;
     }
