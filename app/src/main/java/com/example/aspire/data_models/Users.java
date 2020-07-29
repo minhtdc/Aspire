@@ -35,12 +35,12 @@ public class Users {
     private String email;
     private FirebaseAuth fAuth;
 
-    public String getUserID() {
-        return userID;
-    }
-
     public String getUserName() {
         return userName;
+    }
+
+    public String getUserID() {
+        return this.userID;
     }
 
     public String getUserPass() {
@@ -63,6 +63,10 @@ public class Users {
 
     public Users() {
         android_2_func = new android_2_func();
+        fAuth = FirebaseAuth.getInstance();
+        if (fAuth != null) {
+            this.userID = fAuth.getCurrentUser().getUid();
+        }
     }
 
     public Users(String userName, String userPass, String email, String fullName) {
@@ -122,7 +126,7 @@ public class Users {
 
     public void loginUserWithEmailAndPassword(final String email, String password, final Dialog epicDialog, final Context context) throws InterruptedException {
         android_2_func.showLoading(context);
-        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        final FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
         fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -146,7 +150,7 @@ public class Users {
         });
     }
 
-    public boolean isLogged(){
+    public boolean isLogged() {
         fAuth = FirebaseAuth.getInstance();
         return fAuth.getCurrentUser() != null;
     }

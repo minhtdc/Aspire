@@ -9,7 +9,7 @@
     //create group
     <string name="createGroupName">Tên Nhóm</string>
     <string name="hintCreateGroupName">Đặt tên nhóm</string>
-    <string name="txtAvataGroup">Ảnh Đại diện</string>
+    <string name="txtAvataGroup">Thông tin nhóm</string>
     <string name="txtAvataGroupNote">Không bắt buộc</string>
     <string name="btnCreateGroup">Tạo nhóm</string>
 
