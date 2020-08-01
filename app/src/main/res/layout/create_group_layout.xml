@@ -27,6 +27,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/edtGroupName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/my_border"
@@ -35,7 +36,6 @@
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
-            android:singleLine="true"
             android:alpha="0.5"/>
 
     </LinearLayout>
@@ -71,13 +71,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8"
-            android:gravity="center_horizontal">
-        <ImageView
-            android:layout_width="900px"
-            android:layout_height="900px"
-            android:scaleType="centerCrop"
-            android:background="@mipmap/ic_launcher"/>
+            android:layout_weight="8">
+        <EditText
+            android:id="@+id/edtGroupInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/my_border"
+            android:gravity="top"
+            android:hint="Thông tin nhóm"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:alpha="0.5"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -89,6 +94,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.5">
         <Button
+            android:id="@+id/btnCreateGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnCreateGroup"

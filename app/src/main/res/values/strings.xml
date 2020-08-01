@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Aspire</string>
-<!--   Minh Nguyen-->
+    <!--   Minh Nguyen-->
     //join group
     <string name="btnJoin">Tham gia</string>
     <string name="btnCancel">Hủy</string>
@@ -9,11 +9,11 @@
     //create group
     <string name="createGroupName">Tên Nhóm</string>
     <string name="hintCreateGroupName">Đặt tên nhóm</string>
-    <string name="txtAvataGroup">Ảnh Đại diện</string>
+    <string name="txtAvataGroup">Thông tin nhóm</string>
     <string name="txtAvataGroupNote">Không bắt buộc</string>
     <string name="btnCreateGroup">Tạo nhóm</string>
 
-<!--    Ngoc Huyen-->
+    <!--    Ngoc Huyen-->
     <string name="btnPost">Đăng bài</string>
     <string name="txtViewName">Tên</string>
     <string name="txtHindTitle">Nhập tiêu đề bài viết</string>
@@ -25,17 +25,29 @@
     <string name="edtNewPassAgain">Nhập lại mật khẩu mới</string>
     <string name="btnConfirm">Xác nhận</string>
     <string name="edtOldName">Nhập tên cũ</string>
+    <string name="edtNewName">Nhập tên mới</string>
     <string name="txtViewHereOldName">Tên cũ ở đây</string>
     <string name="txtViewUsername">Tên người dùng</string>
     <string name="edtWriteComments">Viết bình luận</string>
     <string name="btnPostCmt">Đăng</string>
 
-<!--    Le Van Bi-->
+    <!-- Nhu Tran Dep Gai -->
+    <string name="btnGoToMember">Thành viên</string>
+    <string name="edtHintPost">Bạn đang nghĩ gì ?</string>
+
+
+    <string name="txtViewUserId">User_Id</string>
+    <string name="btnYourGroup">Nhóm của bạn</string>
+    <string name="btnManageGroup">Nhóm bạn quản lý</string>
+    <string name="btnLogOut">Đăng xuất</string>
+    <string name="btnSetting">Cài đặt</string>
+    <!--    Le Van Bi-->
     <string name="btnTimKiem">Tìm kiếm</string>
     <string name="btnThem">Thêm</string>
     <string name="btnXoa">Xóa</string>
     <string name="btnTaoNhom">Tạo Nhóm</string>
     <string name="btnTroLai">Trở Lại</string>
     <string name="btnThanhVien">Tất cả thành viên</string>
+    <string name="hintSeach">Tìm kiếm</string>
 
 </resources>

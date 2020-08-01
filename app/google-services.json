@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "212346987315",
+    "firebase_url": "https://aspire-85d22.firebaseio.com",
+    "project_id": "aspire-85d22",
+    "storage_bucket": "aspire-85d22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212346987315:android:ef10a1e91eb47f04149446",
+        "android_client_info": {
+          "package_name": "com.example.aspire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212346987315-rhp2dqh73tpjrd69sf54csh6a6uc0g1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtGrncpF3z2nJE2ErQk2iJTK27hdmjWx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212346987315-rhp2dqh73tpjrd69sf54csh6a6uc0g1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
