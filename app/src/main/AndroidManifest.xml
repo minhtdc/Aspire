@@ -27,18 +27,18 @@
         </activity>
 
         <activity android:name=".MemberOptionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MembersActivity">
 
 
         </activity>
         <activity android:name=".NewFeedActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".NonGroupManageActivity">
 
@@ -64,14 +64,6 @@
             android:name=".StartingActivity"
             android:theme="@style/Starting">
 
-
-        </activity>
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
 
