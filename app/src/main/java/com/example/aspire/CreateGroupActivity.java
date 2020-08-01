@@ -44,7 +44,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         btnCreateGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edtGroupName.getText().toString() !=  "" && edtGroupInfo.getText().toString() != "") {
+                if (edtGroupName.getText().toString() != "" && edtGroupInfo.getText().toString() != "") {
                     Groups group = new Groups();
                     //tạo ra id group không trùng
                     mDatabase = FirebaseDatabase.getInstance().getReference("groups");
@@ -53,15 +53,16 @@ public class CreateGroupActivity extends AppCompatActivity {
                     group.setGroupID(groupID);
                     group.setGroupName(edtGroupName.getText().toString());
                     group.setGroupInfo(edtGroupInfo.getText().toString());
-                    group.setAdminId("admin");
+                    Users user = new Users();
+                    group.setAdminID(user.getUserID());
+                    //group.setAdminId("admin");
                     try {
                         group.addGroupToDatabase(group);
                         Toast.makeText(CreateGroupActivity.this, "Tạo nhóm thành công!", Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }
-                else {
+                } else {
                     Toast.makeText(CreateGroupActivity.this, "Tên nhóm không được để trống!", Toast.LENGTH_SHORT).show();
                 }
             }
