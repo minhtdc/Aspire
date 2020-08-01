@@ -6,6 +6,7 @@ import com.example.aspire.android_2_func;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,24 +15,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Groups {
-    private String groupID, adminId, groupName, groupInfo;
+    private String groupID, adminID, groupName, groupInfo;
     private DatabaseReference mDatabase;
     private ArrayList<String> listIDMember;
 
     public Groups() {
-        listIDMember = new ArrayList<String>();
     }
 
-    public Groups(String groupID, String adminId, String groupName, DatabaseReference mDatabase, String groupInfo, ArrayList<String> listIDMember) {
+    public Groups(String groupID, String adminID, String groupName, String groupInfo, ArrayList<String> listIDMember) {
         this.groupID = groupID;
-        this.adminId = adminId;
+        this.adminID = adminID;
         this.groupName = groupName;
-        this.mDatabase = mDatabase;
         this.groupInfo = groupInfo;
-        this.listIDMember = new ArrayList<String>();
+        this.listIDMember = listIDMember;
     }
-    //get/set
-
 
     public String getGroupID() {
         return groupID;
@@ -41,12 +38,12 @@ public class Groups {
         this.groupID = groupID;
     }
 
-    public String getAdminId() {
-        return adminId;
+    public String getAdminID() {
+        return adminID;
     }
 
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
+    public void setAdminID(String adminID) {
+        this.adminID = adminID;
     }
 
     public String getGroupName() {
@@ -57,18 +54,6 @@ public class Groups {
         this.groupName = groupName;
     }
 
-    public DatabaseReference getmDatabase() {
-        return mDatabase;
-    }
-
-    public void setmDatabase(DatabaseReference mDatabase) {
-        this.mDatabase = mDatabase;
-    }
-
-    public ArrayList<String> getListIDMember() {
-        return listIDMember;
-    }
-
     public String getGroupInfo() {
         return groupInfo;
     }
@@ -77,19 +62,23 @@ public class Groups {
         this.groupInfo = groupInfo;
     }
 
+    public ArrayList<String> getListIDMember() {
+        return listIDMember;
+    }
+
     public void setListIDMember(ArrayList<String> listIDMember) {
         this.listIDMember = listIDMember;
     }
 
-    //ham ađ group
+    // thêm group vào database
     public void addGroupToDatabase(Groups group) throws JSONException {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         Map<String, Object> postValues = null;
-        Log.d("JSON User: ", group.toJSON(group).toString());
 
         try {
             postValues = android_2_func.toMap(group.toJSON(group));
         } catch (JSONException e) {
+            Log.d("JSON Groups: ", group.toJSON(group).toString());
         }
 
         Map<String, Object> childUpdates = new HashMap<>();
@@ -98,14 +87,32 @@ public class Groups {
         mDatabase.updateChildren(childUpdates);
     }
 
+//    private void SeachGroupInformation(String GroupID, String userNameID, Newfeed newfeed) throws JSONException {
+//        mDatabase = FirebaseDatabase.getInstance().getReference();
+//        Map<String, Object> postValues = null;
+//        Log.d("JSON Group: ", newfeed.toJSON(newfeed).toString());
+//
+//        try {
+//            postValues = android_2_func.toMap(newfeed.toJSON(newfeed));
+//        } catch (JSONException e) {
+//        }
+//
+//        Map<String, Object> childUpdates = new HashMap<>();
+//        childUpdates.put("/groups/" + GroupID + userNameID, postValues);
+//
+//        mDatabase.updateChildren(childUpdates);
+//    }
+
     //
     public JSONObject toJSON(Groups group) throws JSONException {
         JSONObject json = new JSONObject();
-        json.put("group_name", group.getGroupName());
-        json.put("group_info", group.getGroupInfo());
-        json.put("admin_id", group.getAdminId());
+        json.put("groupName", group.getGroupName());
+        json.put("groupInfo", group.getGroupInfo());
+        json.put("adminID", group.getAdminID());
+        json.put("groupID", group.getGroupID());
         return json;
     }
-
 }
+
+
 

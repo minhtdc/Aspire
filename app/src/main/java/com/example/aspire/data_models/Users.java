@@ -39,7 +39,7 @@ public class Users {
         return userName;
     }
 
-    public String getUserID(){
+    public String getUserID() {
         return this.userID;
     }
 
@@ -64,8 +64,9 @@ public class Users {
     public Users() {
         android_2_func = new android_2_func();
         fAuth = FirebaseAuth.getInstance();
-
-        this.userID = fAuth.getCurrentUser().getUid();
+        if (fAuth != null) {
+            this.userID = fAuth.getCurrentUser().getUid();
+        }
     }
 
     public Users(String userName, String userPass, String email, String fullName) {
@@ -149,7 +150,7 @@ public class Users {
         });
     }
 
-    public boolean isLogged(){
+    public boolean isLogged() {
         fAuth = FirebaseAuth.getInstance();
         return fAuth.getCurrentUser() != null;
     }

@@ -28,8 +28,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_margin="8dp"
-                android:padding="8dp"
-                android:hint="Tên thành viên" />
+                android:padding="15dp"
+                android:text="Tên thành viên" />
         </LinearLayout>
         <LinearLayout
             android:gravity="center"

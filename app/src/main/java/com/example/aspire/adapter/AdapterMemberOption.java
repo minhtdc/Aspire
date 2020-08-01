@@ -1,6 +1,8 @@
 package com.example.aspire.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,20 +12,23 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.example.aspire.MemberOptionActivity;
 import com.example.aspire.R;
+import com.example.aspire.data_models.Requests;
 import com.example.aspire.data_models.Users;
 
 import java.util.ArrayList;
 
-public class AdapterMemberOption extends ArrayAdapter<Users> {
+public class AdapterMemberOption extends ArrayAdapter<Requests> {
     private Activity context;
     private int layoutID;
-    private ArrayList<Users> listMembers;
+    private ArrayList<Requests> listMembers;
 
 
-    public AdapterMemberOption(Activity context, int resource, ArrayList<Users> list) {
+    public AdapterMemberOption(Activity context, int resource, ArrayList<Requests> list) {
         super(context, resource, list);
         this.context = context;
         this.layoutID = resource;
@@ -38,7 +43,7 @@ public class AdapterMemberOption extends ArrayAdapter<Users> {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         //create new view for the ListView
         final ViewHolder viewHolder;
         if (convertView == null) {
@@ -58,10 +63,46 @@ public class AdapterMemberOption extends ArrayAdapter<Users> {
         }
 
         //
-        Users users = listMembers.get(position);
-        viewHolder.userName.setText(users.getUserName());
-        viewHolder.userDetail.setText("Cho vô nhóm nha");
+       Requests requests = listMembers.get(position);
+        viewHolder.userName.setText(requests.getMemberID());
+        viewHolder.userDetail.setText(requests.getContent());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //tạo hộp thoại
+                AlertDialog.Builder qs = new AlertDialog.Builder(context);
+                //thiết lập tiêu đề
+                qs.setTitle("Xác nhận");
+                qs.setMessage("Bạn có muốn thêm thành viên này vào nhóm không?");
+                //nút đồng ý
+                qs.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(context, "Đồng ý " + getItem(position).getMemberID(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                //nút từ chối
+                qs.setNegativeButton("Từ chối", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(context, "Từ chối " + getItem(position).getMemberID(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                //Tạo dialog
+                AlertDialog al = qs.create();
+                //Hiển thị
+                al.show();
+
+            }
+        });
 
         return convertView;
     }
+
+
 }
+

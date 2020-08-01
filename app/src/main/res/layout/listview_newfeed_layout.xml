@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_edittext">
     //khung 3
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/imgHinhAnh"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-           android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -22,22 +12,22 @@
             android:orientation="vertical">
 
             <TextView
-                android:background="@drawable/custom_edittext"
                 android:id="@+id/txtuserName"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:hint="Tên nhóm" />
+                android:text="Tên nhóm"
+                android:padding="15dp"
+                android:layout_marginBottom="10dp"/>
 
             <TextView
-                android:background="@drawable/custom_edittext"
                 android:id="@+id/txtPeople"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:hint="Người lập nhóm"
+                android:text="Người lập nhóm"
+                android:padding="15dp"
                 />
 
         </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

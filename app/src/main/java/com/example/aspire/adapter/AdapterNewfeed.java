@@ -1,29 +1,22 @@
 package com.example.aspire.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import com.example.aspire.R;
-import com.example.aspire.data_models.Newfeed;
-import com.example.aspire.data_models.Users;
+import com.example.aspire.data_models.Groups;
 
 import java.util.ArrayList;
 
-public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
+public class AdapterNewfeed extends ArrayAdapter<Groups> {
     private Activity context;
     private int layoutID;
-    private ArrayList<Newfeed> listNew;
+    private ArrayList<Groups> listNew;
 
-    public AdapterNewfeed(Activity context, int resource, ArrayList<Newfeed> list) {
+    public AdapterNewfeed(Activity context, int resource, ArrayList<Groups> list) {
         super(context, resource, list);
         this.context = context;
         this.layoutID = resource;
@@ -32,7 +25,6 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
 
     //define view holder
     static class ViewHolder {
-        ImageView imgUser;
         TextView txtName;
         TextView txtPeople;
     }
@@ -46,8 +38,6 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
             viewHolder = new AdapterNewfeed.ViewHolder();
             convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
 
-
-            viewHolder.imgUser =(ImageView) convertView.findViewById(R.id.imgHinhAnh);
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.txtuserName);
             viewHolder.txtPeople = (TextView) convertView.findViewById(R.id.txtPeople);
 
@@ -56,13 +46,13 @@ public class AdapterNewfeed extends ArrayAdapter<Newfeed> {
         }
         //re-uses the view in convertView
         else {
-            viewHolder = (AdapterNewfeed.ViewHolder) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         //
-        Newfeed newfeed = listNew.get(position);
-        viewHolder.txtName.setText(newfeed.getUserName());
-        viewHolder.txtPeople.setText(newfeed.getUserPeople());
+        Groups groups = listNew.get(position);
+        viewHolder.txtName.setText(groups.getGroupName());
+        viewHolder.txtPeople.setText(groups.getGroupInfo());
 
         return convertView;
     }
