@@ -1,7 +1,6 @@
 package com.example.aspire;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,18 +31,15 @@ public class MembersActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
             // get view from layout
             ImageView imgUser = (ImageView) findViewById(R.id.userAvatar);
-            final Button btnDelete = (Button) findViewById(R.id.btnDelete);
+           // Button btnXoa = (Button) findViewById(R.id.btnXoa);
             TextView edtUserName = (TextView) findViewById(R.id.txtName);
 
             listMember = new ArrayList<MemberManage>();
 
-        MemberManage m1 = new MemberManage("ml", "ssds");
-        MemberManage m2 = new MemberManage("xaax", "ssdqwdqeqs");
-
-        listMember.add(m1);
-        listMember.add(m2);
             adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
         listMembersManage.setAdapter(adapter);
+
+
 
     }
 }

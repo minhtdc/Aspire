@@ -2,14 +2,10 @@ package com.example.aspire.data_models;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.example.aspire.android_2_func;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,7 +81,8 @@ public class Groups {
         this.listIDMember = listIDMember;
     }
 
-    //ham add group
+
+    //
     public void addGroupToDatabase(Groups group) throws JSONException {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         Map<String, Object> postValues = null;
@@ -118,7 +115,6 @@ public class Groups {
 //        mDatabase.updateChildren(childUpdates);
 //    }
 
-
     //
     public JSONObject toJSON(Groups group) throws JSONException {
         JSONObject json = new JSONObject();
@@ -126,7 +122,8 @@ public class Groups {
         json.put("group_info", group.getGroupInfo());
         json.put("admin_id", group.getAdminId());
         return json;
-
     }
 }
+
+
 

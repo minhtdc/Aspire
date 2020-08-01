@@ -30,7 +30,8 @@
             android:id="@+id/txtGroupInfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/my_border"/>
+            android:background="@drawable/my_border"
+            android:padding="15dp"/>
 
     </LinearLayout>
 
