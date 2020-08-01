@@ -44,10 +44,8 @@ public class NewFeedActivity extends AppCompatActivity {
 
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listGroup);
         listViewGroup.setAdapter(adapter);
-//        Newfeed new1 = new Newfeed ("Soonn","Poon");
-//        Newfeed new2 = new Newfeed ("Leeee","Cannnn");
-//        listNew.add(new1);
-//        listNew.add(new2);
+
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myGroups = database.getReference("groups");
         myGroups.addValueEventListener(new ValueEventListener() {

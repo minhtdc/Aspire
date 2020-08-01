@@ -34,8 +34,6 @@ public class MemberOptionActivity extends AppCompatActivity {
         setContentView(R.layout.member_option_layout);
         setTitle("Duyệt thành viên");
         listView = findViewById(R.id.listMember);
-        btnAccept = findViewById(R.id.btnAccept);
-        btnDeny = findViewById(R.id.btnDeny);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -53,8 +51,7 @@ public class MemberOptionActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 adapter.clear();
                 //vòng lặp để lấy dữ liệu khi có sự thay đổi trên Firebase
-                for (DataSnapshot data: snapshot.getChildren())
-                {
+                for (DataSnapshot data : snapshot.getChildren()) {
                     //lấy key của dữ liệu
                     String key = data.getKey();
                     //lấy giá trị của key (nội dung)
@@ -69,11 +66,6 @@ public class MemberOptionActivity extends AppCompatActivity {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
     }
 }
