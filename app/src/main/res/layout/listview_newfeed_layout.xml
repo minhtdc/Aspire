@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_edittext">
     //khung 3
 
         <LinearLayout
@@ -11,7 +12,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:background="@drawable/custom_edittext"
                 android:id="@+id/txtuserName"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -21,7 +21,6 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
-                android:background="@drawable/custom_edittext"
                 android:id="@+id/txtPeople"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
