@@ -16,7 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:hint="Tên nhóm"
+                android:text="Tên nhóm"
                 android:padding="15dp"
                 android:layout_marginBottom="10dp"/>
 
@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:hint="Người lập nhóm"
+                android:text="Người lập nhóm"
                 android:padding="15dp"
                 />
 

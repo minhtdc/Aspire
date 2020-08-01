@@ -12,10 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aspire.adapter.AdapterNewfeed;
-<<<<<<< HEAD
 import com.example.aspire.data_models.Newfeed;
 import com.example.aspire.data_models.Users;
-=======
 import com.example.aspire.data_models.Groups;
 import com.example.aspire.data_models.Users;
 import com.google.firebase.database.DataSnapshot;
@@ -23,25 +21,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
->>>>>>> Văn-Bi
 
 import java.util.ArrayList;
 
 public class NewFeedActivity extends AppCompatActivity {
 
     private AdapterNewfeed adapter;
-<<<<<<< HEAD
-    private ArrayList<Newfeed> listNew;
-    ListView listNewFeed;
-    Button btnSearch;
-    EditText editSearch;
-=======
+
     private ArrayList<Groups> listGroup;
     ListView listViewGroup;
     Button btnSearch;
     EditText editSearch;
-
->>>>>>> Văn-Bi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +54,7 @@ public class NewFeedActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 adapter.clear();
-                for (DataSnapshot data:snapshot.getChildren()){
+                for (DataSnapshot data : snapshot.getChildren()) {
                     String key = data.getKey();
                     Groups group = data.getValue(Groups.class);
                     group.setGroupID(key);
@@ -72,12 +62,13 @@ public class NewFeedActivity extends AppCompatActivity {
                     adapter.add(group);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        
+
 //        Toast.makeText(this, Users.userID, Toast.LENGTH_LONG).show();
         btnSearch = findViewById(R.id.btnSearch);
         editSearch = findViewById(R.id.edtSearch);
@@ -85,29 +76,11 @@ public class NewFeedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Users users = new Users();
-                if(users.isLogged()){
+                if (users.isLogged()) {
                     editSearch.setText("Chào mừng" + users.getUserID());
                 }
             }
         });
-        }
-
-<<<<<<< HEAD
-//        Toast.makeText(this, Users.userID, Toast.LENGTH_LONG).show();
-
-        btnSearch =findViewById(R.id.btnSearch);
-        editSearch = findViewById(R.id.edtSearch);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Users users = new Users();
-                if(users.isLogged()){
-                    editSearch.setText("Chào mừng" + users.getUserID());
-                }
-            }
-        });
-        }
-=======
-
->>>>>>> Văn-Bi
     }
+
+}

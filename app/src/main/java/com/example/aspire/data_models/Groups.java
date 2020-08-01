@@ -2,20 +2,10 @@ package com.example.aspire.data_models;
 
 import android.util.Log;
 
-<<<<<<< HEAD
 import com.example.aspire.android_2_func;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-=======
-import androidx.annotation.NonNull;
 
-import com.example.aspire.android_2_func;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
->>>>>>> Văn-Bi
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -91,11 +81,8 @@ public class Groups {
         this.listIDMember = listIDMember;
     }
 
-<<<<<<< HEAD
-    //ham ađ group
-=======
-    //ham add group
->>>>>>> Văn-Bi
+
+    //
     public void addGroupToDatabase(Groups group) throws JSONException {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         Map<String, Object> postValues = null;
@@ -112,8 +99,6 @@ public class Groups {
         mDatabase.updateChildren(childUpdates);
     }
 
-<<<<<<< HEAD
-=======
 //    private void SeachGroupInformation(String GroupID, String userNameID, Newfeed newfeed) throws JSONException {
 //        mDatabase = FirebaseDatabase.getInstance().getReference();
 //        Map<String, Object> postValues = null;
@@ -130,8 +115,6 @@ public class Groups {
 //        mDatabase.updateChildren(childUpdates);
 //    }
 
-
->>>>>>> Văn-Bi
     //
     public JSONObject toJSON(Groups group) throws JSONException {
         JSONObject json = new JSONObject();
@@ -139,12 +122,8 @@ public class Groups {
         json.put("group_info", group.getGroupInfo());
         json.put("admin_id", group.getAdminId());
         return json;
-<<<<<<< HEAD
     }
-
-=======
-
-    }
->>>>>>> Văn-Bi
 }
+
+
 
