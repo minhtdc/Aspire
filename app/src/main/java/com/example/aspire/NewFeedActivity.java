@@ -2,20 +2,16 @@ package com.example.aspire;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aspire.adapter.AdapterNewfeed;
-import com.example.aspire.data_models.Newfeed;
 import com.example.aspire.data_models.Users;
 import com.example.aspire.data_models.Groups;
-import com.example.aspire.data_models.Users;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,10 +40,8 @@ public class NewFeedActivity extends AppCompatActivity {
 
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listGroup);
         listViewGroup.setAdapter(adapter);
-//        Newfeed new1 = new Newfeed ("Soonn","Poon");
-//        Newfeed new2 = new Newfeed ("Leeee","Cannnn");
-//        listNew.add(new1);
-//        listNew.add(new2);
+
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myGroups = database.getReference("groups");
         myGroups.addValueEventListener(new ValueEventListener() {
@@ -58,7 +52,6 @@ public class NewFeedActivity extends AppCompatActivity {
                     String key = data.getKey();
                     Groups group = data.getValue(Groups.class);
                     group.setGroupID(key);
-                    Toast.makeText(NewFeedActivity.this, key, Toast.LENGTH_SHORT).show();
                     adapter.add(group);
                 }
             }
@@ -69,7 +62,6 @@ public class NewFeedActivity extends AppCompatActivity {
             }
         });
 
-//        Toast.makeText(this, Users.userID, Toast.LENGTH_LONG).show();
         btnSearch = findViewById(R.id.btnSearch);
         editSearch = findViewById(R.id.edtSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {

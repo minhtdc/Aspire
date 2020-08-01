@@ -10,7 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0429803c-dc9c-4217-8d27-869353a152d3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/listview_members_manage_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_members_manage_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aspire/CreateGroupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aspire/CreateGroupActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aspire/NewFeedActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aspire/NewFeedActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aspire/adapter/AdapterNewfeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aspire/adapter/AdapterNewfeed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aspire/data_models/Groups.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aspire/data_models/Groups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aspire/data_models/Newfeed.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/listview_newfeed_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_newfeed_layout.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,30 +175,30 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="437" y="196" key="#PSD/0.0.1536.834@0.0.1536.834" timestamp="1595773323204" />
-    <state x="574" y="139" width="687" height="567" key="#com.intellij.ide.util.MemberChooser" timestamp="1596036906477">
+    <state x="574" y="139" width="687" height="567" key="#com.intellij.ide.util.MemberChooser" timestamp="1596278348997">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="139" width="687" height="567" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1596036906477" />
+    <state x="574" y="139" width="687" height="567" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1596278348997" />
     <state x="421" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596036949805">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="421" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1596036949805" />
-    <state width="1491" height="211" key="GridCell.Tab.0.bottom" timestamp="1596039209851">
+    <state width="1476" height="209" key="GridCell.Tab.0.bottom" timestamp="1596275481684">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1491" height="211" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596039209851" />
-    <state width="1491" height="211" key="GridCell.Tab.0.center" timestamp="1596039209851">
+    <state width="1476" height="209" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596275481684" />
+    <state width="1476" height="209" key="GridCell.Tab.0.center" timestamp="1596275481683">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1491" height="211" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1596039209851" />
-    <state width="1491" height="211" key="GridCell.Tab.0.left" timestamp="1596039209851">
+    <state width="1476" height="209" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1596275481683" />
+    <state width="1476" height="209" key="GridCell.Tab.0.left" timestamp="1596275481683">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1491" height="211" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1596039209851" />
-    <state width="1491" height="211" key="GridCell.Tab.0.right" timestamp="1596039209851">
+    <state width="1476" height="209" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1596275481683" />
+    <state width="1476" height="209" key="GridCell.Tab.0.right" timestamp="1596275481684">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1491" height="211" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1596039209851" />
+    <state width="1476" height="209" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1596275481684" />
     <state width="1491" height="264" key="GridCell.Tab.1.bottom" timestamp="1596006763082">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
