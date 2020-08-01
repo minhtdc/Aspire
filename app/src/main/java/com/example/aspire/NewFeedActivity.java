@@ -70,7 +70,7 @@ public class NewFeedActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Users users = new Users();
                 if (users.isLogged()) {
-                    editSearch.setText("Chào mừng" + users.getUserID());
+                    editSearch.setText(users.getUserID());
                 }
             }
         });

@@ -41,23 +41,6 @@ public class Users {
 
     private android_2_func android_2_func;
 
-    public Users() {
-        android_2_func = new android_2_func();
-//        fAuth = FirebaseAuth.getInstance();
-//        if (fAuth != null) {
-//            this.userID = fAuth.getCurrentUser().getUid();
-//        }
-    }
-
-    public Users(String userName, String userPass, String email, String fullName) {
-        this.userName = userName;
-        this.userPass = userPass;
-        this.userAvatar = userAvatar;
-        this.email = email;
-        this.fullName = fullName;
-        android_2_func = new android_2_func();
-    }
-
     public String getUserID() {
         return userID;
     }
@@ -90,8 +73,6 @@ public class Users {
         return email;
     }
 
-    private android_2_func android_2_func;
-
     public Users() {
         android_2_func = new android_2_func();
         fAuth = FirebaseAuth.getInstance();
@@ -100,8 +81,6 @@ public class Users {
             this.userID = fAuth.getCurrentUser().getUid();
             // Get a reference to our posts
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-            getInstance();
         }
     }
 
@@ -112,6 +91,12 @@ public class Users {
         this.email = email;
         this.full_name = full_name;
         android_2_func = new android_2_func();
+
+        if (fAuth.getCurrentUser() != null) {
+            this.userID = fAuth.getCurrentUser().getUid();
+            // Get a reference to our posts
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        }
     }
 
 
@@ -201,37 +186,5 @@ public class Users {
         json.put("fullName", user.getFullName());
         json.put("userAvatar", Character.toString(user.getFullName().toUpperCase().charAt(0)));
         return json;
-    }
-
-    public void getInstance() {
-        if (fAuth != null) {
-            this.userID = fAuth.getCurrentUser().getUid();
-
-            // Get a reference to our posts
-            final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            this.mDatabase = database.getReference("users");
-            this.mDatabase.addValueEventListener(new ValueEventListener() {
-
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                        String key = childSnapshot.getKey();
-                        if (key.equals(fAuth.getCurrentUser().getUid())) {
-                            userMain = new Users(
-                                    childSnapshot.child("full_name").getValue().toString(),
-                                    "",
-                                    fAuth.getCurrentUser().getEmail(),
-                                    childSnapshot.child("full_name").getValue().toString());
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-        }
-
     }
 }
