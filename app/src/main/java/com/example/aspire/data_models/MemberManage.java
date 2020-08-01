@@ -17,10 +17,9 @@ public class MemberManage {
     private com.example.aspire.android_2_func android_2_func;
     private DatabaseReference mDatabase;
 
-    public MemberManage(String userAvatar, String userName, DatabaseReference mDatabase) {
+    public MemberManage(String userAvatar, String userName) {
         this.userAvatar = userAvatar;
         this.userName = userName;
-        this.mDatabase = mDatabase;
         }
 
     public String getUserAvatar() {

@@ -39,16 +39,43 @@ public class Users {
     private DatabaseReference mDatabase;
     private Users userMain;
 
-    public String getUserName() {
-        return user_name;
+    private android_2_func android_2_func;
+
+    public Users() {
+        android_2_func = new android_2_func();
+//        fAuth = FirebaseAuth.getInstance();
+//        if (fAuth != null) {
+//            this.userID = fAuth.getCurrentUser().getUid();
+//        }
+    }
+
+    public Users(String userName, String userPass, String email, String fullName) {
+        this.userName = userName;
+        this.userPass = userPass;
+        this.userAvatar = userAvatar;
+        this.email = email;
+        this.fullName = fullName;
+        android_2_func = new android_2_func();
     }
 
     public String getUserID() {
-        return this.userID;
+        return userID;
     }
 
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getUserName() {
+        return user_name;
+    }
+    
     public String getUserPass() {
         return userPass;
+    }
+
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
     }
 
     public String getUserAvatar() {
@@ -87,6 +114,8 @@ public class Users {
         android_2_func = new android_2_func();
     }
 
+
+
     public void createUserWithEmailAndPassword(final Dialog epicDialog, final Context context, final Users user) throws InterruptedException {
         fAuth = FirebaseAuth.getInstance();
         android_2_func.showLoading(context);
@@ -101,6 +130,7 @@ public class Users {
                     public void run() {
                         if (task.isSuccessful()) {
                             try {
+                                user.setUserID(fAuth.getUid());
                                 addUserInformation(fAuth.getUid(), user);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -166,9 +196,10 @@ public class Users {
 
     public JSONObject toJSON(Users user) throws JSONException {
         JSONObject json = new JSONObject();
-        json.put("user_name", user.getUserName());
-        json.put("full_name", user.getFullName());
-        json.put("avatar", Character.toString(user.getFullName().toUpperCase().charAt(0)));
+        json.put("userName", user.getUserName());
+        json.put("userID", user.getUserID());
+        json.put("fullName", user.getFullName());
+        json.put("userAvatar", Character.toString(user.getFullName().toUpperCase().charAt(0)));
         return json;
     }
 

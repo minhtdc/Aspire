@@ -1,21 +1,15 @@
 package com.example.aspire.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 
 
 import com.example.aspire.R;
 import com.example.aspire.data_models.MemberManage;
-import com.example.aspire.data_models.Newfeed;
-import com.example.aspire.data_models.Users;
 
 import java.util.ArrayList;
 
@@ -44,8 +38,6 @@ public class AdapterMemberManage extends ArrayAdapter<MemberManage> {
             //create new item for listview
             viewHolder = new AdapterMemberManage.ViewHolder();
             convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
-
-
 
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.txtName);
 
