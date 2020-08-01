@@ -35,38 +35,14 @@ public class Users {
     private String email;
     private FirebaseAuth fAuth;
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getUserID() {
-        return this.userID;
-    }
-
-    public String getUserPass() {
-        return userPass;
-    }
-
-    public String getUserAvatar() {
-        return userAvatar;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     private android_2_func android_2_func;
 
     public Users() {
         android_2_func = new android_2_func();
-        fAuth = FirebaseAuth.getInstance();
-        if (fAuth != null) {
-            this.userID = fAuth.getCurrentUser().getUid();
-        }
+//        fAuth = FirebaseAuth.getInstance();
+//        if (fAuth != null) {
+//            this.userID = fAuth.getCurrentUser().getUid();
+//        }
     }
 
     public Users(String userName, String userPass, String email, String fullName) {
@@ -77,6 +53,56 @@ public class Users {
         this.fullName = fullName;
         android_2_func = new android_2_func();
     }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getUserPass() {
+        return userPass;
+    }
+
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
 
     public void createUserWithEmailAndPassword(final Dialog epicDialog, final Context context, final Users user) throws InterruptedException {
         fAuth = FirebaseAuth.getInstance();
@@ -92,6 +118,7 @@ public class Users {
                     public void run() {
                         if (task.isSuccessful()) {
                             try {
+                                user.setUserID(fAuth.getUid());
                                 addUserInformation(fAuth.getUid(), user);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -157,9 +184,10 @@ public class Users {
 
     public JSONObject toJSON(Users user) throws JSONException {
         JSONObject json = new JSONObject();
-        json.put("user_name", user.getUserName());
-        json.put("full_name", user.getFullName());
-        json.put("avatar", Character.toString(user.getFullName().toUpperCase().charAt(0)));
+        json.put("userName", user.getUserName());
+        json.put("userID", user.getUserID());
+        json.put("fullName", user.getFullName());
+        json.put("userAvatar", Character.toString(user.getFullName().toUpperCase().charAt(0)));
         return json;
     }
 }
