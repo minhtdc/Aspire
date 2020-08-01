@@ -38,7 +38,6 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
             viewHolder = new AdapterNewfeed.ViewHolder();
             convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
 
-
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.txtuserName);
             viewHolder.txtPeople = (TextView) convertView.findViewById(R.id.txtPeople);
 
