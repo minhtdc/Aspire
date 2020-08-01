@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+<!--    Minh Nguyễn-->
+    <color name="borders">#bfbaba</color>
+    <color name="textColor">#000000</color>
+    //bg gradient main
+    <color name="startColor">#6EE2FF</color>
+    <color name="endColor">#FFB0EF</color>
+
+
+<!-- ngoc huyen-->
+    <color name="colorBgWhite">#FFFFFF</color>
+    <color name="colorRadius">#F783AC</color>
+
+<!--    Như Trần-->
+    <color name="colorWhite">#fff</color>
+    <color name="colorRed">#fa0505</color>
+
+</resources>

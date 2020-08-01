@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_gradient_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="right|center"
+        android:paddingRight="20dp">
+            <Button
+                android:id="@+id/btnPost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_effect"
+                android:text="@string/btnPost" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgViewAvatar"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/anhdaidien"/>
+            <TextView
+                android:id="@+id/txtViewUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtViewUsername"
+                android:textColor="@color/textColor"
+                android:textSize="20dp"
+                android:layout_margin="25dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <EditText
+                android:id="@+id/edtTitle"
+                android:background="@drawable/custom_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:hint="@string/txtHindTitle"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4">
+            <EditText
+                android:id="@+id/edtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_edittext"
+                android:gravity="top"
+                android:layout_margin="8dp"
+                android:padding="10dp"
+                android:hint="@string/txtHintDes"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="250dp">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/library"
+                android:scaleX="0.45"
+                android:scaleY="0.85"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

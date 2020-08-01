@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/my_border"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:alpha="0.8">
+
+    //avt
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userAvatar"
+            android:layout_width="160px"
+            android:layout_height="160px"
+            android:src="@drawable/minh"
+            android:scaleType="centerCrop">
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    </LinearLayout>
+
+    //info
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        android:orientation="vertical">
+
+        //name
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true">
+
+            </TextView>
+        </LinearLayout>
+
+        //desciption user
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/userDesciption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    //check
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnAccept"
+            android:layout_marginRight="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/accept">
+
+        </Button>
+        <Button
+            android:id="@+id/btnDeny"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/deny">
+
+        </Button>
+
+    </LinearLayout>
+
+
+</LinearLayout>
