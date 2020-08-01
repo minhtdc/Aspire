@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -68,15 +69,11 @@ public class MemberOptionActivity extends AppCompatActivity {
             }
         });
 
-//        btnDeny.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Requests request = new Requests();
-//                DatabaseReference remove = FirebaseDatabase.getInstance().getReference("requests").child(request.getGroupID());
-//                remove.removeValue();
-//                Toast.makeText(MemberOptionActivity.this, "Đã xóa yêu cầu tham gia", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+            }
+        });
     }
 }
