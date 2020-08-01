@@ -40,8 +40,6 @@ public class NewFeedActivity extends AppCompatActivity {
 
         listNewFeed.setAdapter(adapter);
 
-//        Toast.makeText(this, Users.userID, Toast.LENGTH_LONG).show();
-
         btnSearch =findViewById(R.id.btnSearch);
         editSearch = findViewById(R.id.edtSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {

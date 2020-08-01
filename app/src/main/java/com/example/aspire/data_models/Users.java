@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.aspire.LoginActivity;
 import com.example.aspire.Notification;
 import com.example.aspire.SwitchActivity;
 import com.example.aspire.android_2_func;
@@ -17,8 +16,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,18 +30,20 @@ import java.util.Map;
 
 public class Users {
     private String userID;
-    private String userName;
-    private String fullName;
+    private String user_name;
+    private String full_name;
     private String userPass;
-    private String userAvatar;
+    private String avatar;
     private String email;
     private FirebaseAuth fAuth;
+    private DatabaseReference mDatabase;
+    private Users userMain;
 
     public String getUserName() {
-        return userName;
+        return user_name;
     }
 
-    public String getUserID(){
+    public String getUserID() {
         return this.userID;
     }
 
@@ -48,11 +52,11 @@ public class Users {
     }
 
     public String getUserAvatar() {
-        return userAvatar;
+        return avatar;
     }
 
     public String getFullName() {
-        return fullName;
+        return full_name;
     }
 
     public String getEmail() {
@@ -65,15 +69,21 @@ public class Users {
         android_2_func = new android_2_func();
         fAuth = FirebaseAuth.getInstance();
 
-        this.userID = fAuth.getCurrentUser().getUid();
+        if (fAuth.getCurrentUser() != null) {
+            this.userID = fAuth.getCurrentUser().getUid();
+            // Get a reference to our posts
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+            getInstance();
+        }
     }
 
-    public Users(String userName, String userPass, String email, String fullName) {
-        this.userName = userName;
+    public Users(String user_name, String userPass, String email, String full_name) {
+        this.user_name = user_name;
         this.userPass = userPass;
-        this.userAvatar = userAvatar;
+        this.avatar = Character.toString(full_name.toUpperCase().charAt(0));
         this.email = email;
-        this.fullName = fullName;
+        this.full_name = full_name;
         android_2_func = new android_2_func();
     }
 
@@ -149,7 +159,7 @@ public class Users {
         });
     }
 
-    public boolean isLogged(){
+    public boolean isLogged() {
         fAuth = FirebaseAuth.getInstance();
         return fAuth.getCurrentUser() != null;
     }
@@ -160,5 +170,37 @@ public class Users {
         json.put("full_name", user.getFullName());
         json.put("avatar", Character.toString(user.getFullName().toUpperCase().charAt(0)));
         return json;
+    }
+
+    public void getInstance() {
+        if (fAuth != null) {
+            this.userID = fAuth.getCurrentUser().getUid();
+
+            // Get a reference to our posts
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            this.mDatabase = database.getReference("users");
+            this.mDatabase.addValueEventListener(new ValueEventListener() {
+
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        String key = childSnapshot.getKey();
+                        if (key.equals(fAuth.getCurrentUser().getUid())) {
+                            userMain = new Users(
+                                    childSnapshot.child("full_name").getValue().toString(),
+                                    "",
+                                    fAuth.getCurrentUser().getEmail(),
+                                    childSnapshot.child("full_name").getValue().toString());
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
     }
 }

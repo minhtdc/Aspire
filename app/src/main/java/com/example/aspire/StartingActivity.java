@@ -23,7 +23,7 @@ public class StartingActivity extends AppCompatActivity {
 //            Intent intent = new Intent(getApplicationContext(), NewFeedActivity.class);
 //            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 //            startActivity(intent);
-//           Toast.makeText(this, "Welcome you comeback", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Welcome you comeback", Toast.LENGTH_SHORT).show();
 //            finish();
 //        }
 
