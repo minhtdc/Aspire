@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.aspire.R;
 import com.example.aspire.data_models.Groups;
+import com.example.aspire.data_models.Users;
 
 import java.util.ArrayList;
 
@@ -53,6 +54,16 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
         Groups groups = listNew.get(position);
         viewHolder.txtName.setText(groups.getGroupName());
         viewHolder.txtPeople.setText(groups.getGroupInfo());
+
+        //sự kiện click lên list view
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // kiểm tra xem người dùng này đã có trong nhóm chưa
+                Users user = new Users();
+
+            }
+        });
 
         return convertView;
     }
