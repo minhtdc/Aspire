@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Groups {
-    private String groupID, adminID, groupName, groupInfo, adminName;
+    private String groupID, adminID, groupName, groupInfo;
     private DatabaseReference mDatabase;
     private ArrayList<String> listIDMember;
 
@@ -28,16 +28,8 @@ public class Groups {
         this.groupName = groupName;
         this.groupInfo = groupInfo;
         this.listIDMember = listIDMember;
-        this.adminName = adminName;
     }
 
-    public String getAdminName() {
-        return adminName;
-    }
-
-    public void setAdminName(String adminName) {
-        this.adminName = adminName;
-    }
 
     public String getGroupID() {
         return groupID;
@@ -118,7 +110,6 @@ public class Groups {
         json.put("groupName", group.getGroupName());
         json.put("groupInfo", group.getGroupInfo());
         json.put("adminID", group.getAdminID());
-        json.put("adminName", group.getAdminID());
         json.put("groupID", group.getGroupID());
         return json;
     }

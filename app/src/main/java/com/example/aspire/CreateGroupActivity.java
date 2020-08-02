@@ -55,7 +55,6 @@ public class CreateGroupActivity extends AppCompatActivity {
                     group.setGroupInfo(edtGroupInfo.getText().toString());
                     Users user = new Users();
                     group.setAdminID(user.getUserID());
-                    group.setAdminName(user.getFullName());
                     //group.setAdminId("admin");
                     try {
                         group.addGroupToDatabase(group);
