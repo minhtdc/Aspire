@@ -39,6 +39,13 @@ public class Users {
 
     public Users() {
         android_2_func = new android_2_func();
+        fAuth = FirebaseAuth.getInstance();
+
+        if (fAuth.getCurrentUser() != null) {
+            this.userID = fAuth.getCurrentUser().getUid();
+            // Get a reference to our posts
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        }
     }
 
     public Users(String userName, String userPass, String email, String fullName) {
@@ -48,6 +55,12 @@ public class Users {
         this.email = email;
         this.fullName = fullName;
         android_2_func = new android_2_func();
+
+        if (fAuth.getCurrentUser() != null) {
+            this.userID = fAuth.getCurrentUser().getUid();
+            // Get a reference to our posts
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        }
     }
 
     public String getUserID() {
