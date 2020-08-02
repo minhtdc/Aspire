@@ -9,6 +9,7 @@
         android:layout_weight="1"
         >
         <Button
+            android:id="@+id/btnAddGroup"
             android:background="@drawable/bg_gradient_main"
             android:text="+"
             android:layout_width="match_parent"

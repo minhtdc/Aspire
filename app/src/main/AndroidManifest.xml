@@ -30,17 +30,17 @@
 
         </activity>
         <activity android:name=".MembersActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".NewFeedActivity">
 
         </activity>
         <activity android:name=".NonGroupManageActivity">
+
+        </activity>
+
+        <activity android:name=".PersonPageActivity">
 
         </activity>
         <activity android:name=".PostListActivity">
@@ -63,7 +63,11 @@
         <activity
             android:name=".StartingActivity"
             android:theme="@style/Starting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
 

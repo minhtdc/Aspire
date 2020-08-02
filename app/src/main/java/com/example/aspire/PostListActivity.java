@@ -24,6 +24,7 @@ public class PostListActivity extends AppCompatActivity {
     Button cmt;
     Button btnAddPost;
     Button btnShowMember;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +34,17 @@ public class PostListActivity extends AppCompatActivity {
         cmt = findViewById(R.id.btnComment);
         btnAddPost = findViewById(R.id.btnAddPost);
         btnShowMember = findViewById(R.id.btnGoToMember);
+
+
         listPostMember = new ArrayList<Post>();
         Post post1 = new Post("Nhu Tran", "Thanh vien", "1 gio truoc", "Tieu de test 1",
-                "Noi dung testb 1 ", "2 luot xem", "4 binh luan", "1");
+                "Noi dung testb 1 ", "2 luot xem", "4 binh luan", "2");
         Post post2 = new Post("Nhu Tran", "Thanh vien",
                 "1 gio truoc", "Tieu de test 1", "Noi dung testb 1 ", "2 luot xem",
-                "4 binh luan", "2");
+                "4 binh luan", "1");
         listPostMember.add(post1);
         listPostMember.add(post2);
-        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout,listPostMember);
+        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember);
 
         listPost.setAdapter(adapter);
 
@@ -63,10 +66,11 @@ public class PostListActivity extends AppCompatActivity {
             }
         });
 
+
         btnShowMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MemberOptionActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }
