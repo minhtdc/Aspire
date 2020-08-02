@@ -36,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                edt_password.requestFocus();
+
                 Users user = new Users();
                 String email = edt_email.getText().toString();
                 String password = edt_password.getText().toString();

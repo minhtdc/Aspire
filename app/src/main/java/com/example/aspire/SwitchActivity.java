@@ -8,7 +8,9 @@ import com.example.aspire.signUp.InputEmailActivity;
 import com.example.aspire.signUp.InputFullNameActivity;
 import com.example.aspire.signUp.InputPasswordActivity;
 import com.example.aspire.signUp.InputUsernameActivity;
+import com.example.aspire.signUp.SignUpErrorActivity;
 import com.example.aspire.signUp.SignUpSuccessActivity;
+import com.example.aspire.signUp.StartSignUp;
 
 public class SwitchActivity {
     public static void goToNewFeed(final Context context) {
@@ -20,7 +22,7 @@ public class SwitchActivity {
 
     public static void goToSignUp(final Context context) {
         //Starting a new Intent
-        Intent intent = new Intent(context, SignUpActivity.class);
+        Intent intent = new Intent(context, StartSignUp.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         context.startActivity(intent);
     }
@@ -49,6 +51,13 @@ public class SwitchActivity {
     public static void goToSignUpSuccess(final Context context) {
         //Starting a new Intent
         Intent intent = new Intent(context, SignUpSuccessActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
+
+    public static void goToSignUpError(final Context context) {
+        //Starting a new Intent
+        Intent intent = new Intent(context, SignUpErrorActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         context.startActivity(intent);
     }

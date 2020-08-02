@@ -22,6 +22,9 @@
         <activity android:name=".PostListActivity" />
         <activity android:name=".SettingActivity" /> <!-- //Tran Minh Phuc -->
         <activity
+            android:name=".signUp.SignUpErrorActivity"
+            android:theme="@style/Signup" />
+        <activity
             android:name=".signUp.SignUpSuccessActivity"
             android:theme="@style/Signup" />
         <activity

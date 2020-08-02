@@ -1,75 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/card_notification"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:background="#FFF"
+    android:padding="10dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/txt_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Sai mật khẩu"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="4dp" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_notification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            app:cardBackgroundColor="#D0FF675C">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
-                android:orientation="vertical">
+    <TextView
+        android:id="@+id/txt_desNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Test desciption notification"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title"
+        app:layout_constraintVertical_bias="0.186" />
 
-                <TextView
-                    android:textColor="#FFF"
-                    android:id="@+id/txt_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/img_notification"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:src="@mipmap/icon_success" />
-
-                <TextView
-                    android:paddingRight="10dp"
-                    android:paddingLeft="10dp"
-                    android:id="@+id/txt_desNotification"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:textColor="#FFF"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/btn_success"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20sp"
-                    android:background="@drawable/bg_button_radius"
-                    android:textColor="#232323"
-                    android:textSize="25sp" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-    </RelativeLayout>
+    <Button
+        android:id="@+id/btn_success"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_button_radius"
+        android:text="Ok"
+        android:textColor="#2196F3"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_desNotification"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
