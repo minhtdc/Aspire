@@ -24,25 +24,28 @@
         android:layout_height="0dp"
         android:layout_weight="9"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:orientation="horizontal"
             android:padding="10dp">
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgViewAvatar"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@mipmap/anhdaidien"/>
+                android:src="@mipmap/anhdaidien" />
+
             <TextView
                 android:id="@+id/txtViewUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="25dp"
                 android:text="@string/txtViewUsername"
                 android:textColor="@color/textColor"
-                android:textSize="20dp"
-                android:layout_margin="25dp"/>
+                android:textSize="20dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -55,8 +58,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                android:padding="8dp"
-                android:hint="@string/txtHindTitle"/>
+                android:padding="10dp"
+                android:hint="@string/txtHindTitle"
+                android:gravity="top"/>
         </LinearLayout>
 
         <LinearLayout
@@ -74,18 +78,6 @@
                 android:hint="@string/txtHintDes"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="250dp">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/library"
-                android:scaleX="0.45"
-                android:scaleY="0.85"/>
-        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
