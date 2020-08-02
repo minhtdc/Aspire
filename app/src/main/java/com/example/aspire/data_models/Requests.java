@@ -67,15 +67,13 @@ public class Requests {
         }
 
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/requests/" + request.getGroupID(), postValues);
+        childUpdates.put("/groups/" + request.getGroupID() + "/requests/" + request.getMemberID(), postValues);
 
         mDatabase.updateChildren(childUpdates);
     }
 
     public JSONObject toJSON(Requests request) throws JSONException {
         JSONObject json = new JSONObject();
-        json.put("adminID", request.getAdminID());
-        json.put("memberID", request.getMemberID());
         json.put("content", request.getContent());
         return json;
     }

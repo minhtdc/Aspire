@@ -3,6 +3,7 @@ package com.example.aspire.adapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,8 @@ import com.example.aspire.MemberOptionActivity;
 import com.example.aspire.R;
 import com.example.aspire.data_models.Requests;
 import com.example.aspire.data_models.Users;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -26,6 +29,7 @@ public class AdapterMemberOption extends ArrayAdapter<Requests> {
     private Activity context;
     private int layoutID;
     private ArrayList<Requests> listMembers;
+    private Intent intent;
 
 
     public AdapterMemberOption(Activity context, int resource, ArrayList<Requests> list) {
@@ -67,6 +71,9 @@ public class AdapterMemberOption extends ArrayAdapter<Requests> {
         viewHolder.userName.setText(requests.getMemberID());
         viewHolder.userDetail.setText(requests.getContent());
 
+        intent = AdapterNewfeed.intent;
+        final String idGroup = (intent.getBundleExtra("group")).getString("groupID");
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +87,13 @@ public class AdapterMemberOption extends ArrayAdapter<Requests> {
                 qs.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(context, "Đồng ý " + getItem(position).getMemberID(), Toast.LENGTH_SHORT).show();
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("groups").child(idGroup).child("listMembers").child(getItem(position).getMemberID());
+                        myRef.setValue("member");
+                        Toast.makeText(context, "Thêm thành công",Toast.LENGTH_SHORT).show();
+                        DatabaseReference del = database.getReference("groups").child(idGroup).child("requests").child(getItem(position).getMemberID());
+                        del.removeValue();
+
                     }
                 });
 
@@ -88,7 +101,11 @@ public class AdapterMemberOption extends ArrayAdapter<Requests> {
                 qs.setNegativeButton("Từ chối", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(context, "Từ chối " + getItem(position).getMemberID(), Toast.LENGTH_SHORT).show();
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("groups").child(idGroup).child("requests").child(getItem(position).getMemberID());
+                        myRef.removeValue();
+                        Toast.makeText(context, "Từ chối thành công",Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
