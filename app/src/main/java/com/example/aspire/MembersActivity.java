@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aspire.adapter.AdapterMemberManage;
 import com.example.aspire.data_models.MemberManage;
+import com.example.aspire.data_models.Requests;
 import com.example.aspire.data_models.Users;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,7 +47,7 @@ public class MembersActivity extends AppCompatActivity {
         //lấy đối tượng FirebaseDatabase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         //Kết nối tới node có tên là contacts (node này do ta định nghĩa trong CSDL Firebase)
-        DatabaseReference myRef = database.getReference("members");
+        DatabaseReference myRef = database.getReference("requests");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -57,7 +58,7 @@ public class MembersActivity extends AppCompatActivity {
                     String key = data.getKey();
                     //lấy giá trị của key (nội dung)
                     MemberManage memberManage = data.getValue(MemberManage.class);
-                    memberManage.setMemberID(key);
+                    memberManage.setAdminID(key);
                     adapter.add(memberManage);
                 }
             }
