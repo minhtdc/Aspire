@@ -1,6 +1,9 @@
 package com.example.aspire;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -14,25 +17,30 @@ import com.example.aspire.data_models.MemberManage;
 import java.util.ArrayList;
 
 public class GroupManageActivity extends AppCompatActivity {
-        private AdapterMemberManage adapter;
-        private ArrayList<MemberManage> listMember;
-        ListView listGroupManage;
+
+    Button addGroup;
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.group_manager_layout);
-            setTitle("Danh sách nhóm");
-            listGroupManage = findViewById(R.id.listGroup);
+            setTitle("Nhóm bạn quản lí");
+
+            addGroup = findViewById(R.id.btnAddGroup);
+
 
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
-            // get view from layout
-            ImageView imgUser = (ImageView) findViewById(R.id.userAvatar);
-            // Button btnXoa = (Button) findViewById(R.id.btnXoa);
-            TextView edtUserName = (TextView) findViewById(R.id.txtName);
 
-            listMember = new ArrayList<MemberManage>();
-            adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
-            listGroupManage.setAdapter(adapter);
+            addGroup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(GroupManageActivity.this, CreateGroupActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(intent);
+                }
+            });
+
+
     }
 }

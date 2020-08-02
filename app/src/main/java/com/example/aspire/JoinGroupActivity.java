@@ -1,24 +1,20 @@
 package com.example.aspire;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.aspire.data_models.Groups;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.aspire.adapter.AdapterNewfeed;
 import com.example.aspire.data_models.Requests;
 import com.example.aspire.data_models.Users;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 
@@ -29,6 +25,7 @@ public class JoinGroupActivity extends AppCompatActivity {
         final TextView txtGroupInfo;
         final EditText edtGroupJoin;
         final Button btnJoin, btnCancel;
+        final Intent intent;
 
 
         super.onCreate(savedInstanceState);
@@ -42,8 +39,11 @@ public class JoinGroupActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         final Requests request = new Requests();
 
+        //Lấy thông tin nhom từ màn hình newfeed
+        intent = AdapterNewfeed.intent;
 
-        txtGroupInfo.setText("Group info");
+
+        txtGroupInfo.setText((intent.getBundleExtra("group")).getString("groupInfo"));
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,10 +56,11 @@ public class JoinGroupActivity extends AppCompatActivity {
                 }
                 //
                 else{
-                    request.setGroupID("-MDO_NZb1_UPUjrhmBq3");
-                    request.setAdminID("zoLTQiwpsxgLjXkUFrvr5v5y9Kx1");
+                    request.setGroupID((intent.getBundleExtra("group")).getString("groupID"));
+                    request.setAdminID((intent.getBundleExtra("group")).getString("adminID"));
                     request.setContent(edtGroupJoin.getText().toString());
-                    request.setMemberID("TavlafWDc5SsUdv0jsYjsA7g5nX2");
+                    Users user = new Users();
+                    request.setMemberID(user.getUserID());
                         try {
                             request.addRequestsToDatabase(request);
                             Toast.makeText(JoinGroupActivity.this, "Gửi yêu càu thành công", Toast.LENGTH_SHORT).show();

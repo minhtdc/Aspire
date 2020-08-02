@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Group id là: " />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -21,7 +22,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_API_27" />
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="3300f7286102843b" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -47,6 +51,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KotlinCodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="ProjectId" id="1f289w3mviUw1MbFIEGd8kWU4g7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,12 +63,13 @@
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_24" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-01T02:46:22.836Z" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="PsdUISettings">
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
@@ -174,29 +182,42 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="437" y="196" key="#PSD/0.0.1536.834@0.0.1536.834" timestamp="1595773323204" />
-    <state x="574" y="139" width="687" height="567" key="#com.intellij.ide.util.MemberChooser" timestamp="1596280613453">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="496" y="58" key="#app" timestamp="1596289903628">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="496" y="58" key="#app/0.0.1536.824@0.0.1536.824" timestamp="1596289903628" />
+    <state x="574" y="137" width="687" height="567" key="#com.intellij.ide.util.MemberChooser" timestamp="1596379668991">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="137" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1596379668991" />
     <state x="574" y="139" width="687" height="567" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1596280613453" />
     <state x="421" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596036949805">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="421" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1596036949805" />
-    <state width="1476" height="209" key="GridCell.Tab.0.bottom" timestamp="1596275481684">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="625" y="225" key="AndroidCreateXmlResourceDialog" timestamp="1596298292105">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="625" y="225" key="AndroidCreateXmlResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1596298292105" />
+    <state width="1476" height="602" key="GridCell.Tab.0.bottom" timestamp="1596385626988">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1476" height="602" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596385626988" />
     <state width="1476" height="209" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596275481684" />
-    <state width="1476" height="209" key="GridCell.Tab.0.center" timestamp="1596275481683">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1476" height="602" key="GridCell.Tab.0.center" timestamp="1596385626988">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1476" height="602" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596385626988" />
     <state width="1476" height="209" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1596275481683" />
-    <state width="1476" height="209" key="GridCell.Tab.0.left" timestamp="1596275481683">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1476" height="602" key="GridCell.Tab.0.left" timestamp="1596385626988">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1476" height="602" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596385626988" />
     <state width="1476" height="209" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1596275481683" />
-    <state width="1476" height="209" key="GridCell.Tab.0.right" timestamp="1596275481684">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1476" height="602" key="GridCell.Tab.0.right" timestamp="1596385626988">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1476" height="602" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596385626988" />
     <state width="1476" height="209" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1596275481684" />
     <state width="1491" height="264" key="GridCell.Tab.1.bottom" timestamp="1596006763082">
       <screen x="0" y="0" width="1536" height="834" />
@@ -214,10 +235,22 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1491" height="264" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1596006763082" />
+    <state x="277" y="55" key="SettingsEditor" timestamp="1596341559338">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1596341559338" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1596368925097">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1596368925097" />
     <state x="396" y="160" key="psd.add.library.dependency.panel.dimension" timestamp="1595772988668">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="396" y="160" key="psd.add.library.dependency.panel.dimension/0.0.1536.834@0.0.1536.834" timestamp="1595772988668" />
+    <state x="426" y="189" key="run.anything.popup" timestamp="1596352131732">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="426" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596352131732" />
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1595773296307">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

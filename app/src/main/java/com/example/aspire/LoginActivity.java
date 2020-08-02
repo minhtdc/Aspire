@@ -49,13 +49,17 @@ public class LoginActivity extends AppCompatActivity {
         //get view frm layout
         Button btnLogin;
         btnLogin = findViewById(R.id.btn_login);
+
+
+
+
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Users user = new Users();
                 String email = edt_email.getText().toString();
                 String password = edt_password.getText().toString();
-
                 //Check validate form login
                 if (email.equals("") && password.equals("")) {
                     Toast.makeText(LoginActivity.this, "Vui lòng nhập đủ và đúng thông tin đăng nhập!", Toast.LENGTH_SHORT).show();
@@ -67,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             Toast.makeText(LoginActivity.this, "Lỗi đăng nhập!", Toast.LENGTH_SHORT).show();
                         }
-                    }else{
+                    } else {
                         Toast.makeText(LoginActivity.this, "Email nhập không đúng như định dạng", Toast.LENGTH_SHORT).show();
                     }
                 }

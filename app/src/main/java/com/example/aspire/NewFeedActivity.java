@@ -1,17 +1,19 @@
 package com.example.aspire;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aspire.adapter.AdapterNewfeed;
-import com.example.aspire.data_models.Users;
 import com.example.aspire.data_models.Groups;
+import com.example.aspire.data_models.Users;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +30,7 @@ public class NewFeedActivity extends AppCompatActivity {
     ListView listViewGroup;
     Button btnSearch;
     EditText editSearch;
+    ImageView imgAVT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class NewFeedActivity extends AppCompatActivity {
         setContentView(R.layout.new_feed_layout);
         setTitle("Trang chủ");
 
+        imgAVT = findViewById(R.id.imgAVT);
         listViewGroup = findViewById(R.id.listNew);
         listGroup = new ArrayList<Groups>();
 
@@ -42,6 +46,7 @@ public class NewFeedActivity extends AppCompatActivity {
         listViewGroup.setAdapter(adapter);
 
 
+        // đưa dữ liệu từ db lên listview
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myGroups = database.getReference("groups");
         myGroups.addValueEventListener(new ValueEventListener() {
@@ -59,6 +64,17 @@ public class NewFeedActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+
+        //click vào hình ảnh
+        imgAVT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NewFeedActivity.this, PersonPageActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
             }
         });
 

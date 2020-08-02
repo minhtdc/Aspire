@@ -30,6 +30,7 @@ public class Groups {
         this.listIDMember = listIDMember;
     }
 
+
     public String getGroupID() {
         return groupID;
     }
