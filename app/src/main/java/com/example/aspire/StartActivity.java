@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.aspire.signUp.StartSignUp;
+
 public class StartActivity extends AppCompatActivity {
 
     @Override
@@ -39,7 +41,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Starting a new Intent
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StartSignUp.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }

@@ -55,6 +55,7 @@ public class Users {
         this.email = email;
         this.fullName = fullName;
         android_2_func = new android_2_func();
+        fAuth = FirebaseAuth.getInstance();
 
         if (fAuth.getCurrentUser() != null) {
             this.userID = fAuth.getCurrentUser().getUid();
@@ -131,7 +132,9 @@ public class Users {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            Notification.signUp(epicDialog, context, "Đăng ký thành công", String.format("Bạn đã đăng ký thành công với email là %s, hãy thử đăng nhập ngay nào!", email), true);
+                            SwitchActivity.goToSignUpSuccess(context);
+                            Activity activity = (Activity) context;
+                            activity.finish();
                         } else {
                             Notification.signUp(epicDialog, context, "Đăng ký không thành công", "Có lẻ tài khoản của bạn đã trùng với ai đó hoặc có vấn đề về máy chủ", false);
                         }

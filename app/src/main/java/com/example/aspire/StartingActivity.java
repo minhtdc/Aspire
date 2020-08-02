@@ -51,7 +51,13 @@ public class StartingActivity extends AppCompatActivity {
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(StartingActivity.this, pairs);
                     startActivity(intent, options.toBundle());
-                    finish();
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            finish();
+                        }
+                    }, 1000);
                 }
             }
         }, SPLASH_SCREEN);
