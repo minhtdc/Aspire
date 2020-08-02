@@ -58,8 +58,6 @@ public class AddPostActivity extends AppCompatActivity {
                     post.setUserTitlePost(edtTitle.getText().toString());
                     post.setUserContentPost(edtContent.getText().toString());
 
-                    Groups group = new Groups();
-                    post.setPostID(group.getGroupID());
 
                     Users user = new Users();
                     post.setUserID(user.getUserID());
