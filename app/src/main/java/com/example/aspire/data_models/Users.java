@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.aspire.LoginActivity;
 import com.example.aspire.Notification;
 import com.example.aspire.SwitchActivity;
 import com.example.aspire.android_2_func;
@@ -16,11 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,48 +28,14 @@ import java.util.Map;
 
 public class Users {
     private String userID;
-    private String user_name;
-    private String full_name;
+    private String userName;
+    private String fullName;
     private String userPass;
-    private String avatar;
+    private String userAvatar;
     private String email;
     private FirebaseAuth fAuth;
-    private DatabaseReference mDatabase;
-    private Users userMain;
 
     private android_2_func android_2_func;
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public String getUserName() {
-        return user_name;
-    }
-    
-    public String getUserPass() {
-        return userPass;
-    }
-
-    public void setUserPass(String userPass) {
-        this.userPass = userPass;
-    }
-
-    public String getUserAvatar() {
-        return avatar;
-    }
-
-    public String getFullName() {
-        return full_name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
 
     public Users() {
         android_2_func = new android_2_func();
@@ -84,12 +48,12 @@ public class Users {
         }
     }
 
-    public Users(String user_name, String userPass, String email, String full_name) {
-        this.user_name = user_name;
+    public Users(String userName, String userPass, String email, String fullName) {
+        this.userName = userName;
         this.userPass = userPass;
-        this.avatar = Character.toString(full_name.toUpperCase().charAt(0));
+        this.userAvatar = userAvatar;
         this.email = email;
-        this.full_name = full_name;
+        this.fullName = fullName;
         android_2_func = new android_2_func();
 
         if (fAuth.getCurrentUser() != null) {
@@ -97,6 +61,54 @@ public class Users {
             // Get a reference to our posts
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
         }
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getUserPass() {
+        return userPass;
+    }
+
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 
@@ -115,7 +127,6 @@ public class Users {
                     public void run() {
                         if (task.isSuccessful()) {
                             try {
-                                user.setUserID(fAuth.getUid());
                                 addUserInformation(fAuth.getUid(), user);
                             } catch (JSONException e) {
                                 e.printStackTrace();
