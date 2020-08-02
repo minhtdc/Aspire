@@ -25,12 +25,12 @@
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="210dp"
-                android:layout_height="270dp"
+                android:layout_height="330dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@mipmap/logo_pink_define" />
+                app:srcCompat="@mipmap/logo_main_shadow" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -90,7 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="20dp"
+                tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputLayout_username"
@@ -134,6 +135,29 @@
                     android:text="Login"
                     android:textColor="#FFFFFF"
                     android:textSize="28sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Don't have an acount?" />
+
+                    <TextView
+                        android:id="@+id/txt_goToSignUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Sign Up"
+                        android:textColor="@color/colorPrimary" />
+                </LinearLayout>
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

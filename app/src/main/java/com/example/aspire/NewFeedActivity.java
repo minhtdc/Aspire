@@ -1,6 +1,7 @@
 package com.example.aspire;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,16 +63,13 @@ public class NewFeedActivity extends AppCompatActivity {
             }
         });
 
-        btnSearch =findViewById(R.id.btnSearch);
+        btnSearch = findViewById(R.id.btnSearch);
         btnSearch = findViewById(R.id.btnSearch);
         editSearch = findViewById(R.id.edtSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Users users = new Users();
-                if (users.isLogged()) {
-                    editSearch.setText(users.getUserID());
-                }
             }
         });
     }
