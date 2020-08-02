@@ -1,15 +1,21 @@
 package com.example.aspire.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.aspire.R;
 import com.example.aspire.data_models.MemberManage;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -17,6 +23,7 @@ public class AdapterMemberManage extends ArrayAdapter<MemberManage> {
     private Activity context;
     private int layoutID;
     private ArrayList<MemberManage> listMembersManage;
+    private Intent intent;
 
     public AdapterMemberManage(Activity context, int resource,  ArrayList<MemberManage> list) {
         super(context, resource, list);
@@ -48,10 +55,40 @@ public class AdapterMemberManage extends ArrayAdapter<MemberManage> {
         else {
             viewHolder = (AdapterMemberManage.ViewHolder) convertView.getTag();
         }
-
+        final String idGroup = (intent.getBundleExtra("group")).getString("groupID");
         //
         MemberManage memberManage = listMembersManage.get(position);
         viewHolder.txtName.setText(memberManage.getUserName());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //tạo hộp thoại
+                AlertDialog.Builder qs = new AlertDialog.Builder(context);
+                //thiết lập tiêu đề
+                qs.setTitle("Xác nhận");
+                qs.setMessage("Bạn có muốn xóa thành viên không?");
+                //nút đồng ý
+                qs.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("groups").child(idGroup).child("listMembersManage").child(getItem(position).getMemberID());
+                        myRef.setValue("members");
+                        Toast.makeText(context, "Xoá thành công",Toast.LENGTH_SHORT).show();
+                        DatabaseReference del = database.getReference("groups").child(idGroup).child("members").child(getItem(position).getMemberID());
+                        del.removeValue();
+
+                    }
+                });
+                //Tạo dialog
+                AlertDialog al = qs.create();
+                //Hiển thị
+                al.show();
+
+            }
+        });
+
 
 
         return convertView;
