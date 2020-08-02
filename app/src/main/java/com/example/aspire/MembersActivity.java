@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class MembersActivity extends AppCompatActivity {
     private AdapterMemberManage adapter;
-    private ArrayList<MemberManage> listMember;
+    private ArrayList<Requests> listMember;
     ListView listMembersManage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class MembersActivity extends AppCompatActivity {
             ImageView imgUser = (ImageView) findViewById(R.id.userAvatar);
             TextView edtUserName = (TextView) findViewById(R.id.txtName);
 
-            listMember = new ArrayList<MemberManage>();
+            listMember = new ArrayList<Requests>();
 
             adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
         listMembersManage.setAdapter(adapter);
@@ -57,9 +57,9 @@ public class MembersActivity extends AppCompatActivity {
                     //lấy key của dữ liệu
                     String key = data.getKey();
                     //lấy giá trị của key (nội dung)
-                    MemberManage memberManage = data.getValue(MemberManage.class);
-                    memberManage.setAdminID(key);
-                    adapter.add(memberManage);
+                    Requests request = data.getValue(Requests.class);
+                    request.setAdminID(key);
+                    adapter.add(request);
                 }
             }
 

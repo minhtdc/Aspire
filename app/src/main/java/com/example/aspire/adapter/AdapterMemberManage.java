@@ -14,18 +14,19 @@ import android.widget.Toast;
 
 import com.example.aspire.R;
 import com.example.aspire.data_models.MemberManage;
+import com.example.aspire.data_models.Requests;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class AdapterMemberManage extends ArrayAdapter<MemberManage> {
+public class AdapterMemberManage extends ArrayAdapter<Requests> {
     private Activity context;
     private int layoutID;
-    private ArrayList<MemberManage> listMembersManage;
+    private ArrayList<Requests> listMembersManage;
     private Intent intent;
 
-    public AdapterMemberManage(Activity context, int resource,  ArrayList<MemberManage> list) {
+    public AdapterMemberManage(Activity context, int resource,  ArrayList<Requests> list) {
         super(context, resource, list);
         this.context = context;
         this.layoutID = resource;
@@ -57,8 +58,8 @@ public class AdapterMemberManage extends ArrayAdapter<MemberManage> {
         }
         final String idGroup = (intent.getBundleExtra("group")).getString("groupID");
         //
-        MemberManage memberManage = listMembersManage.get(position);
-        viewHolder.txtName.setText(memberManage.getUserName());
+        Requests requests = listMembersManage.get(position);
+        viewHolder.txtName.setText(requests.getMemberID());
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
