@@ -53,7 +53,7 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
         //
         Groups groups = listNew.get(position);
         viewHolder.txtName.setText(groups.getGroupName());
-        viewHolder.txtPeople.setText(groups.getGroupInfo());
+        viewHolder.txtPeople.setText(groups.getAdminName());
 
         //sự kiện click lên list view
         convertView.setOnClickListener(new View.OnClickListener() {

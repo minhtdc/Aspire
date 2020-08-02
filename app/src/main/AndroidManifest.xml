@@ -39,6 +39,10 @@
         <activity android:name=".NonGroupManageActivity">
 
         </activity>
+
+        <activity android:name=".PersonPageActivity">
+
+        </activity>
         <activity android:name=".PostListActivity">
 
         </activity>

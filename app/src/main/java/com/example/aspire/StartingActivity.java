@@ -17,7 +17,7 @@ public class StartingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.starting_layout);
-        //Check user logged
+//        //Check user logged
 //        Users user = new Users();
 //        if (user.isLogged()) {
 //            Intent intent = new Intent(getApplicationContext(), NewFeedActivity.class);
