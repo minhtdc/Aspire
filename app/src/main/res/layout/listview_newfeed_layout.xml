@@ -17,7 +17,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Tên nhóm"
-                android:padding="15dp" />
+                android:padding="15dp"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/txtPeople"
