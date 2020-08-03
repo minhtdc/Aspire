@@ -90,45 +90,4 @@ public class android_2_func {
                 + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
                 + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
     }
-
-    public static boolean isName(String name){
-
-        if (name.equals("")){
-            return false;
-        }else{
-            Character c2 = new Character(' ');
-            int nSpace = 0;
-            for (int i = 0; i < name.length(); i++){
-                Character c1 = name.charAt(i);
-                if (c1.equals(c2)){
-                    nSpace++;
-                }else{
-                    nSpace = 0;
-                }
-
-                if (nSpace == 2){
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    public static boolean isUsername(String name){
-
-        if (name.equals("")){
-            return false;
-        }else{
-            Character c2 = new Character(' ');
-            for (int i = 0; i < name.length(); i++){
-                Character c1 = name.charAt(i);
-                if (c1.equals(c2)){
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
 }
