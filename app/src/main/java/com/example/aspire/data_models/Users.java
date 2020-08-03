@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Users {
+public class Users extends MemberManage {
     private String userID;
     private String userName;
     private String fullName;

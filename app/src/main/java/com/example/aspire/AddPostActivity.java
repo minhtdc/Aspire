@@ -16,8 +16,11 @@ import android.widget.Toast;
 import com.example.aspire.data_models.Groups;
 import com.example.aspire.data_models.Post;
 import com.example.aspire.data_models.Users;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 
@@ -46,18 +49,18 @@ public class AddPostActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(edtTitle.getText().toString() != "" && edtContent.getText().toString() != "")
                 {
                     Post post = new Post();
-                    mDatabase = FirebaseDatabase.getInstance().getReference("posts");
+                    mDatabase = FirebaseDatabase.getInstance().getReference("groups").getParent();
                     String postID = mDatabase.push().getKey();
                     post.setPostID(postID);
-                    post.setUserTitlePost(edtTitle.getText().toString());
-                    post.setUserContentPost(edtContent.getText().toString());
-
+                    post.setPostTitle(edtTitle.getText().toString());
+                    post.setPostContent(edtContent.getText().toString());
 
                     Users user = new Users();
                     post.setUserID(user.getUserID());
