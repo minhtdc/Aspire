@@ -10,4 +10,11 @@ public class SwitchActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         context.startActivity(intent);
     }
+
+    public static void goToSignUp(final Context context) {
+        //Starting a new Intent
+        Intent intent = new Intent(context, SignUpActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
 }
