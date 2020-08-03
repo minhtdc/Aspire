@@ -103,7 +103,7 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
                 });
                 // nếu user chưa có trong nhóm
 
-                //đưa dữ liệu sang màn hình join activity
+                //đưa dữ liệu vào intent
                 Bundle data = new Bundle();
                 data.putString("groupInfo", getItem(position).getGroupInfo());
                 data.putString("adminID", getItem(position).getAdminID());

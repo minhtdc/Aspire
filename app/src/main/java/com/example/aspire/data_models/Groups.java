@@ -20,6 +20,10 @@ public class Groups {
     private ArrayList<String> listIDMember;
 
     public Groups() {
+        this.groupID = "";
+        this.adminID = "";
+        this.groupName = "";
+        this.groupInfo = "";
     }
 
     public Groups(String groupID, String adminID, String groupName, String groupInfo, ArrayList<String> listIDMember) {

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.aspire.adapter.AdapterNewfeed;
 import com.example.aspire.adapter.MyPostListAdapter;
 import com.example.aspire.data_models.Post;
 
@@ -23,6 +24,7 @@ public class PostListActivity extends AppCompatActivity {
     private ArrayList<Post> listPostMember;
     Button cmt;
     Button gotoMember;
+    Button btnSTT;
 
 
     @Override
@@ -33,6 +35,8 @@ public class PostListActivity extends AppCompatActivity {
         listPost = findViewById(R.id.listPost);
         cmt = findViewById(R.id.btnComment);
         gotoMember = findViewById(R.id.btnGoToMember);
+        btnSTT = findViewById(R.id.btnSTT);
+
 
 
         listPostMember = new ArrayList<Post>();
@@ -50,6 +54,16 @@ public class PostListActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+        btnSTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddPostActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+            }
+        });
+
+
         gotoMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

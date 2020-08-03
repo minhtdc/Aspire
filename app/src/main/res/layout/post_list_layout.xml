@@ -62,6 +62,7 @@
             android:padding="5dp">
 
             <Button
+                android:id="@+id/btnSTT"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/my_border"

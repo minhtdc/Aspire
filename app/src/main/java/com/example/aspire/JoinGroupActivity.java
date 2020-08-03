@@ -48,7 +48,6 @@ public class JoinGroupActivity extends AppCompatActivity {
         //Lấy thông tin nhpms từ màn hình newfeed
         intent = AdapterNewfeed.intent;
 
-
         txtGroupInfo.setText((intent.getBundleExtra("group")).getString("groupInfo"));
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
