@@ -33,6 +33,7 @@ public class PostListActivity extends AppCompatActivity {
     Button gotoMember, btnRequestMember;
     Button btnSTT;
     Intent intent;
+    TextView txtGroupName;
 
 
     @Override
@@ -45,6 +46,7 @@ public class PostListActivity extends AppCompatActivity {
         gotoMember = findViewById(R.id.btnGoToMember);
         btnRequestMember = findViewById(R.id.btnRequestMember);
         btnSTT = findViewById(R.id.btnSTT);
+        txtGroupName = findViewById(R.id.nameGroup);
 
 
 
@@ -57,6 +59,9 @@ public class PostListActivity extends AppCompatActivity {
 
         //Lấy groupID từ màn AdapterNewFeed thông qua intent
         final String groupID = intent.getBundleExtra("group").getString("groupID");
+        final String groupName = intent.getBundleExtra("group").getString("groupName");
+        txtGroupName.setText(groupName);
+
 
         //Đưa dữ liệu từ db vào listView chứa các bài post trong nhóm
         FirebaseDatabase database = FirebaseDatabase.getInstance();
