@@ -8,8 +8,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.aspire.adapter.AdapterMemberManage;
 import com.example.aspire.adapter.AdapterNewfeed;
-import com.example.aspire.adapter.MyPostListAdapter;
 import com.example.aspire.data_models.Post;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class PostListActivity extends AppCompatActivity {
     ListView listPost;
-    private MyPostListAdapter adapter;
+    private AdapterMemberManage.MyPostListAdapter adapter;
     private ArrayList<Post> listPostMember;
     Button cmt;
     Button gotoMember;
@@ -38,7 +38,7 @@ public class PostListActivity extends AppCompatActivity {
 
         listPostMember = new ArrayList<Post>();
 
-        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember);
+        adapter = new AdapterMemberManage.MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember);
         listPost.setAdapter(adapter);
 
         //Lấy thông tin của Group từ màn AdapterNewFeed
