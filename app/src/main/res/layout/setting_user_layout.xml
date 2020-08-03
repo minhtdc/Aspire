@@ -8,8 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:gravity="center">
         <TextView
             android:background="@drawable/custom_edittext"
             android:layout_width="match_parent"
@@ -48,38 +49,14 @@
                 android:background="@drawable/custom_edittext" />
         </com.google.android.material.textfield.TextInputLayout>
 
-            <!--        edit text nhập lại mật khẩu mới-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:hintEnabled="true"
-            app:passwordToggleEnabled="true">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtNewPassAgain"
-                style="@style/EditTextPassword"
-                android:hint="@string/edtNewPassAgain"
-                android:inputType="textPassword"
-                android:background="@drawable/custom_edittext" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--        nút button xác nhận  -->
-        <Button
-            android:id="@+id/btnConfirmPassword"
-            android:background="@drawable/button_effect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btnConfirm" />
     </LinearLayout>
-
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:gravity="center">
         <TextView
             android:background="@drawable/custom_edittext"
             android:layout_width="match_parent"
@@ -89,29 +66,26 @@
             android:layout_margin="5dp"
             android:textColor="@color/textColor"/>
 
-        <!--        edt nhập tên cũ-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtOldName"
-                style="@style/EditTextPassword"
-                android:hint="@string/edtOldName"
-                android:background="@drawable/custom_edittext" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <!--        edt nhập tên mới-->
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:id="@+id/edtNewName"
-                style="@style/EditTextPassword"
+                style="@style/EditTextName"
                 android:hint="@string/edtNewName"
                 android:background="@drawable/custom_edittext" />
-        </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--Nút Button xác nhận -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
         <Button
-            android:id="@+id/btnConfirmUsername"
+            android:id="@+id/btnConfirm"
             android:background="@drawable/button_effect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
