@@ -10,56 +10,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddPostActivity">
-
-        </activity>
-        <activity android:name=".CommentsActivity">
-
-        </activity>
-        <activity android:name=".CreateGroupActivity">
-
-        </activity>
-        <activity android:name=".GroupManageActivity">
-
-        </activity>
-        <activity android:name=".JoinGroupActivity">
-
-        </activity>
-
-        <activity android:name=".MemberOptionActivity">
-
-        </activity>
-        <activity android:name=".MembersActivity">
-
-
-        </activity>
-        <activity android:name=".NewFeedActivity">
-
-        </activity>
-        <activity android:name=".NonGroupManageActivity">
-
-        </activity>
-
-        <activity android:name=".PersonPageActivity">
-
-        </activity>
-        <activity android:name=".PostListActivity">
-
-        </activity>
-        <activity android:name=".SettingActivity">
-
-        </activity>
-
+        <activity android:name=".AddPostActivity" />
+        <activity android:name=".CommentsActivity" />
+        <activity android:name=".CreateGroupActivity" />
+        <activity android:name=".GroupManageActivity" />
+        <activity android:name=".JoinGroupActivity" />
+        <activity android:name=".MemberOptionActivity" />
+        <activity android:name=".MembersActivity" />
+        <activity android:name=".NewFeedActivity" />
+        <activity android:name=".NonGroupManageActivity" />
+        <activity android:name=".PostListActivity" />
+        <activity android:name=".SettingActivity" /> <!-- //Tran Minh Phuc -->
         <activity
-            android:name=".LoginActivity"
-            android:theme="@style/Starting">
-
-        </activity>
+            android:name=".signUp.SignUpErrorActivity"
+            android:theme="@style/Signup" />
         <activity
-            android:name=".SignUpActivity"
-            android:theme="@style/Starting">
-
-        </activity>
+            android:name=".signUp.SignUpSuccessActivity"
+            android:theme="@style/Signup" />
+        <activity
+            android:name=".signUp.InputPasswordActivity"
+            android:theme="@style/Signup" />
+        <activity
+            android:name=".signUp.InputEmailActivity"
+            android:theme="@style/Signup" />
+        <activity
+            android:name=".signUp.InputUsernameActivity"
+            android:theme="@style/Signup" />
+        <activity
+            android:name=".signUp.InputFullNameActivity"
+            android:theme="@style/Signup" />
+        <activity
+            android:name=".signUp.StartSignUp"
+            android:theme="@style/Signup" />
         <activity
             android:name=".StartingActivity"
             android:theme="@style/Starting">
@@ -69,9 +51,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <!-- //Tran Minh Phuc -->
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Starting" />
+        <activity
+            android:name=".SignUpActivity"
+            android:theme="@style/Starting" />
+        <activity
+            android:name=".StartActivity"
+            android:theme="@style/Starting" /> <!-- //Tran Minh Phuc -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

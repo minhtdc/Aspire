@@ -55,6 +55,7 @@ public class Users {
         this.email = email;
         this.fullName = fullName;
         android_2_func = new android_2_func();
+        fAuth = FirebaseAuth.getInstance();
 
         if (fAuth.getCurrentUser() != null) {
             this.userID = fAuth.getCurrentUser().getUid();
@@ -112,7 +113,6 @@ public class Users {
     }
 
 
-
     public void createUserWithEmailAndPassword(final Dialog epicDialog, final Context context, final Users user) throws InterruptedException {
         fAuth = FirebaseAuth.getInstance();
         android_2_func.showLoading(context);
@@ -127,14 +127,19 @@ public class Users {
                     public void run() {
                         if (task.isSuccessful()) {
                             try {
-                                addUserInformation(fAuth.getUid(), user);
+                                addUserInformation(fAuth.getUid(), user);//Add information of new user sign up
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            Notification.signUp(epicDialog, context, "Đăng ký thành công", String.format("Bạn đã đăng ký thành công với email là %s, hãy thử đăng nhập ngay nào!", email), true);
+                            SwitchActivity.goToSignUpSuccess(context);
+
                         } else {
-                            Notification.signUp(epicDialog, context, "Đăng ký không thành công", "Có lẻ tài khoản của bạn đã trùng với ai đó hoặc có vấn đề về máy chủ", false);
+                            SwitchActivity.goToSignUpError(context);
                         }
+
+                        //Remove
+                        Activity activity = (Activity) context;
+                        activity.finish();
                         android_2_func.closeLoading();
                     }
                 }, 1000);
