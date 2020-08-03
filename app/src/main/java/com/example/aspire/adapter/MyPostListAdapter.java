@@ -39,13 +39,13 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
 
         Post post = listPost.get(position);
         userAvtCircle.setImageResource(R.drawable.avt);
-        userName.setText(post.getUserName());
-        userPosition.setText(post.getUserPosition());
-        userTimePost.setText(post.getUserTimePost());
-        userTitlePost.setText(post.getUserTitlePost());
-        userContentPost.setText(post.getUserContentPost());
-        userViewPost.setText(post.getUserViewPost());
-        userCountCommentPost.setText(post.getUserCountCommentPost());
+//        userName.setText(post.getUserName());
+//        userPosition.setText(post.getUserPosition());
+//        userTimePost.setText(post.getUserTimePost());
+//        userTitlePost.setText(post.getUserTitlePost());
+//        userContentPost.setText(post.getUserContentPost());
+//        userViewPost.setText(post.getUserViewPost());
+//        userCountCommentPost.setText(post.getUserCountCommentPost());
 
         return convertView;
     }
