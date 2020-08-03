@@ -61,7 +61,7 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
 
         Post post = listPost.get(position);
         userAvtCircle.setImageResource(R.drawable.avt);
-        viewHolder.userName.setText(reference.child(userCurrent.getUid()).child("fullName").toString());
+        viewHolder.userName.setText(post.getUserName());
         viewHolder.userPosition.setText("Thành viên");
         viewHolder.userTitlePost.setText(post.getPostTitle());
         viewHolder.userContentPost.setText(post.getPostContent());

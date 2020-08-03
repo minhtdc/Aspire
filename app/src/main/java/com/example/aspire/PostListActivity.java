@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class PostListActivity extends AppCompatActivity {
     private MyPostListAdapter adapter;
     private ArrayList<Post> listPostMember;
     Button cmt;
-    Button gotoMember;
+    Button gotoMember, btnRequestMember;
     Button btnSTT;
     Intent intent;
 
@@ -42,6 +43,7 @@ public class PostListActivity extends AppCompatActivity {
         listPost = findViewById(R.id.listPost);
         cmt = findViewById(R.id.btnComment);
         gotoMember = findViewById(R.id.btnGoToMember);
+        btnRequestMember = findViewById(R.id.btnRequestMember);
         btnSTT = findViewById(R.id.btnSTT);
 
 
@@ -54,7 +56,7 @@ public class PostListActivity extends AppCompatActivity {
         intent = AdapterNewfeed.intent;
 
         //Lấy groupID từ màn AdapterNewFeed thông qua intent
-        String groupID = intent.getBundleExtra("group").getString("groupID");
+        final String groupID = intent.getBundleExtra("group").getString("groupID");
 
         //Đưa dữ liệu từ db vào listView chứa các bài post trong nhóm
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -63,11 +65,25 @@ public class PostListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 adapter.clear();
-                for(DataSnapshot data : snapshot.getChildren()){
+                for(final DataSnapshot data : snapshot.getChildren()){
                     //String key = data.getKey();
-                    Post post = data.getValue(Post.class);
-                    //post.setPostID(key);
-                    adapter.add(post);
+                    final Post post = data.getValue(Post.class);
+
+                    final String idUsr = post.getUserID();
+                    DatabaseReference UserName = FirebaseDatabase.getInstance().getReference("users").child(idUsr).child("fullName");
+                    UserName.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String data = snapshot.getValue(String.class);
+                            post.setUserName(data);
+                            adapter.add(post);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
 
             }
@@ -95,7 +111,18 @@ public class PostListActivity extends AppCompatActivity {
         });
 
 
+        ///đi đến màn hình thành viên
         gotoMember.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+            }
+        });
+
+        //đi đến màn hình duyệt thành viên
+        btnRequestMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MemberOptionActivity.class);

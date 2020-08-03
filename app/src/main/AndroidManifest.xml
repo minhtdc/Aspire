@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".PersonPageActivity"/>
         <activity android:name=".AddPostActivity" />
         <activity android:name=".CommentsActivity" />
         <activity android:name=".CreateGroupActivity" />
