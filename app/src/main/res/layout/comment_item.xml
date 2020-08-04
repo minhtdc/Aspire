@@ -54,7 +54,7 @@
             android:id="@+id/txtViewCmt"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:text="@string/txt_test_comment_item"
+            android:text="Test"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtViewUsername" />
