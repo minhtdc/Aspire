@@ -1,11 +1,14 @@
 package com.example.aspire.data_models;
 
+import com.example.aspire.R;
+
 public class Comments {
     private int userAvatar;
     private String userName;
     private String userComment;
 
     public Comments(String userName, String userComment) {
+        this.userAvatar = R.drawable.anhdaidien;
         this.userName = userName;
         this.userComment = userComment;
     }

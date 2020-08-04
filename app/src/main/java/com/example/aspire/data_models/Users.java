@@ -38,6 +38,7 @@ public class Users {
     private android_2_func android_2_func;
 
     public Users() {
+        this.fullName = "";
         android_2_func = new android_2_func();
         fAuth = FirebaseAuth.getInstance();
 

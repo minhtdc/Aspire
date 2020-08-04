@@ -1,10 +1,11 @@
 package com.example.aspire;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ public class NewFeedActivity extends AppCompatActivity {
     ListView listViewGroup;
     Button btnSearch;
     EditText editSearch;
+    ImageView imgAVT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class NewFeedActivity extends AppCompatActivity {
         setContentView(R.layout.new_feed_layout);
         setTitle("Trang chủ");
 
+        imgAVT = findViewById(R.id.imgAVT);
         listViewGroup = findViewById(R.id.listNew);
         listGroup = new ArrayList<Groups>();
 
@@ -43,6 +46,7 @@ public class NewFeedActivity extends AppCompatActivity {
         listViewGroup.setAdapter(adapter);
 
 
+        // đưa dữ liệu từ db lên listview
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myGroups = database.getReference("groups");
         myGroups.addValueEventListener(new ValueEventListener() {
@@ -63,13 +67,26 @@ public class NewFeedActivity extends AppCompatActivity {
             }
         });
 
-        btnSearch = findViewById(R.id.btnSearch);
+
+        //click vào hình ảnh
+        imgAVT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NewFeedActivity.this, PersonPageActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+            }
+        });
+
         btnSearch = findViewById(R.id.btnSearch);
         editSearch = findViewById(R.id.edtSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Users users = new Users();
+                if (users.isLogged()) {
+                    editSearch.setText("Chào mừng" + users.getUserID());
+                }
             }
         });
     }

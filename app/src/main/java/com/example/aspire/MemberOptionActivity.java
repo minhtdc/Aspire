@@ -3,6 +3,7 @@ package com.example.aspire;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.aspire.adapter.AdapterMemberOption;
+import com.example.aspire.adapter.AdapterNewfeed;
 import com.example.aspire.data_models.Requests;
 import com.example.aspire.data_models.Users;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +29,7 @@ public class MemberOptionActivity extends AppCompatActivity {
     private ArrayList<Requests> listMembers;
     ListView listView;
     Button btnAccept, btnDeny;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +44,13 @@ public class MemberOptionActivity extends AppCompatActivity {
         listMembers = new ArrayList<Requests>();
         adapter = new AdapterMemberOption(this, R.layout.list_member_option_layout, listMembers);
         listView.setAdapter(adapter);
+        intent = AdapterNewfeed.intent;
+        String idGroup = (intent.getBundleExtra("group")).getString("groupID");
 
         //lấy đối tượng FirebaseDatabase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         //Kết nối tới node có tên là contacts (node này do ta định nghĩa trong CSDL Firebase)
-        DatabaseReference myRef = database.getReference("requests");
+        DatabaseReference myRef = database.getReference("groups").child(idGroup).child("requests");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -56,7 +61,7 @@ public class MemberOptionActivity extends AppCompatActivity {
                     String key = data.getKey();
                     //lấy giá trị của key (nội dung)
                     Requests request = data.getValue(Requests.class);
-                    request.setAdminID(key);
+                    request.setMemberID(key);
                     adapter.add(request);
                 }
             }

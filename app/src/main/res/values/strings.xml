@@ -49,6 +49,5 @@
     <string name="btnTroLai">Trở Lại</string>
     <string name="btnThanhVien">Tất cả thành viên</string>
     <string name="hintSeach">Tìm kiếm</string>
-    <string name="txt_test_comment_item">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</string>
 
 </resources>

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class GroupManageActivity extends AppCompatActivity {
+public class YourGroupActivity extends AppCompatActivity {
     ListView listViewGroup;
     private ArrayList<Groups> listGroup;
     Button addGroup;
@@ -31,13 +30,16 @@ public class GroupManageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.group_manager_layout);
-        setTitle("Nhóm bạn quản lí");
+        setTitle("Nhóm bạn đã tham gia");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
         addGroup = findViewById(R.id.btnAddGroup);
         listViewGroup = findViewById(R.id.listGroupManage);
         listGroup = new ArrayList<Groups>();
+
+        //làm mất nút thêm ửo màn hình chỉ xem thành viên
+        addGroup.setVisibility(View.GONE);
 
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listGroup);
         listViewGroup.setAdapter(adapter);
@@ -50,20 +52,22 @@ public class GroupManageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull final DataSnapshot snapshot1) {
                 adapter.clear();
-                for (final DataSnapshot data : snapshot1.getChildren()) {
-                    String idGroup = data.getKey();
-                    DatabaseReference getAdminID = FirebaseDatabase.getInstance().getReference("groups").child(idGroup).child("adminID");
-                    //lấy id admin của các nhóm ra
-                    getAdminID.addValueEventListener(new ValueEventListener() {
+                for (final DataSnapshot data1 : snapshot1.getChildren()) {
+                    String idGroup = data1.getKey();
+                    DatabaseReference getMembersID = FirebaseDatabase.getInstance().getReference("groups").child(idGroup).child("listMembers");
+                    //lấy id members của các nhóm ra
+                    getMembersID.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot2) {
-                            String adminID = snapshot2.getValue(String.class);
-
-                            //nếu adminId của nhóm bằng với user thì hiển thị lên list view
-                            if(adminID.equals(user.getUserID())){
-                                Groups group = data.getValue(Groups.class);
-                                adapter.add(group);
+                            for (DataSnapshot data2 : snapshot2.getChildren()) {
+                                String memberID = data2.getKey();
+                                //nếu memberID của nhóm bằng với memberID trong nhóm thì hiển thị lên
+                                if(memberID.equals(user.getUserID())){
+                                    Groups group = data1.getValue(Groups.class);
+                                    adapter.add(group);
+                                }
                             }
+
                         }
 
                         @Override
@@ -81,14 +85,6 @@ public class GroupManageActivity extends AppCompatActivity {
             }
         });
 
-        addGroup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupManageActivity.this, CreateGroupActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
-            }
-        });
 
     }
 }

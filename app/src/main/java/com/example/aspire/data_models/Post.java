@@ -1,28 +1,35 @@
 package com.example.aspire.data_models;
 
+import android.util.Log;
+
 import com.example.aspire.R;
+import com.example.aspire.android_2_func;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class Post {
-    int userAvatar;
-    String userName, userPosition, userTimePost, userTitlePost, userContentPost, userViewPost, userCountCommentPost;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    public Post(String userName, String userPosition, String userTimePost, String userTitlePost, String userContentPost, String userViewPost, String userCountCommentPost) {
-        this.userAvatar = R.drawable.avt;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Post extends Groups{
+    String userID, postID, postContent, postTitle, userName;
+
+    public Post() {
+        this.userID = "";
+        this.postID = "";
+        this.postContent = "";
+        this.postTitle = "";
+        this.userName = "";
+    }
+
+    public Post(String userID, String postID, String postContent, String postTitle, String userName) {
+        this.userID = userID;
+        this.postID = postID;
+        this.postContent = postContent;
+        this.postTitle = postTitle;
         this.userName = userName;
-        this.userPosition = userPosition;
-        this.userTimePost = userTimePost;
-        this.userTitlePost = userTitlePost;
-        this.userContentPost = userContentPost;
-        this.userViewPost = userViewPost;
-        this.userCountCommentPost = userCountCommentPost;
-    }
-
-    public int getUserAvatar() {
-        return userAvatar;
-    }
-
-    public void setUserAvatar(int userAvatar) {
-        this.userAvatar = userAvatar;
     }
 
     public String getUserName() {
@@ -33,51 +40,61 @@ public class Post {
         this.userName = userName;
     }
 
-    public String getUserPosition() {
-        return userPosition;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUserPosition(String userPosition) {
-        this.userPosition = userPosition;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getUserTimePost() {
-        return userTimePost;
+    public String getPostID() {
+        return postID;
     }
 
-    public void setUserTimePost(String userTimePost) {
-        this.userTimePost = userTimePost;
+    public void setPostID(String postID) {
+        this.postID = postID;
     }
 
-    public String getUserTitlePost() {
-        return userTitlePost;
+    public String getPostContent() {
+        return postContent;
     }
 
-    public void setUserTitlePost(String userTitlePost) {
-        this.userTitlePost = userTitlePost;
+    public void setPostContent(String postContent) {
+        this.postContent = postContent;
     }
 
-    public String getUserContentPost() {
-        return userContentPost;
+    public String getPostTitle() {
+        return postTitle;
     }
 
-    public void setUserContentPost(String userContentPost) {
-        this.userContentPost = userContentPost;
+    public void setPostTitle(String postTitle) {
+        this.postTitle = postTitle;
     }
 
-    public String getUserViewPost() {
-        return userViewPost;
+
+    public void addPostToDatabase(Post post) throws JSONException {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        Map<String, Object> postValues = null;
+
+        try {
+            postValues = android_2_func.toMap(post.toJSON(post));
+        } catch (JSONException e) {
+            Log.d("JSON Posts: ", post.toJSON(post).toString());
+        }
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/groups/" + post.getGroupID() + "/posts/" + post.getPostID(), postValues);
+
+        mDatabase.updateChildren(childUpdates);
     }
 
-    public void setUserViewPost(String userViewPost) {
-        this.userViewPost = userViewPost;
-    }
-
-    public String getUserCountCommentPost() {
-        return userCountCommentPost;
-    }
-
-    public void setUserCountCommentPost(String userCountCommentPost) {
-        this.userCountCommentPost = userCountCommentPost;
+    public JSONObject toJSON(Post post) throws JSONException {
+        JSONObject json = new JSONObject();
+        json.put("postID", post.getPostID());
+        json.put("postTitle", post.getPostTitle());
+        json.put("postContent", post.getPostContent());
+        json.put("userID", post.getUserID());
+        return json;
     }
 }
