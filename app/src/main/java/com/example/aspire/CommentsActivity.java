@@ -9,31 +9,34 @@ import com.example.aspire.adapter.AdapterComments;
 import com.example.aspire.data_models.Comments;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CommentsActivity extends AppCompatActivity {
-    private AdapterComments adapterComments;
-    private ArrayList<Comments> listComments;
-    ListView listView;
-
+    ListView listViewComments;
+    private ArrayList<Comments> listComment;
+    private AdapterComments adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.comments_layout);
-        //get view from layout
-        listView = findViewById(R.id.listViewComments);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        //test add dữ liệu
-        listComments = new ArrayList<Comments>();
-        Comments cmt1 = new Comments("Huyen Nguyen", "Hi, Min Min. Hi, Nhu Tran :) ");
-        listComments.add(cmt1);
-        Comments cmt2 = new Comments("Minh Tran :v", "Hi, Huyen Chinh :)");
-        listComments.add(cmt2);
-        Comments cmt3 = new Comments("Nhu Nguyen :)", "Hi, Huyen Chinh :)");
-        listComments.add(cmt3);
-        adapterComments = new AdapterComments(this, R.layout.listview_comment_layout, listComments);
-        listView.setAdapter(adapterComments);
+        String contentCommentTest = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters";
+
+        listComment = new ArrayList<Comments>();
+        listComment.add(new Comments("User test", "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."));
+        listComment.add(new Comments("User test 1", contentCommentTest));
+        listComment.add(new Comments("User test 2", "Lorem Ipsum is simply dummy text "));
+        listComment.add(new Comments("User test 4", "The generated"));
+        listComment.add(new Comments("User test 5", "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."));
+        listComment.add(new Comments("User test 5", "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."));
+        listComment.add(new Comments("User test 5", "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."));
+        listComment.add(new Comments("User test 5", "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."));
+        listComment.add(new Comments("User test 5", "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."));
+        listComment.add(new Comments("User test 5", "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."));
+        listComment.add(new Comments("User test 5", "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."));
+
+        //get view from layout
+        listViewComments = findViewById(R.id.listViewComments);
+        adapter = new AdapterComments(this, R.layout.comment_item, listComment);
+        listViewComments.setAdapter(adapter);
     }
 }

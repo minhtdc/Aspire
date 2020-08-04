@@ -1,11 +1,11 @@
 package com.example.aspire.adapter;
 
 import android.app.Activity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 
 import com.example.aspire.R;
 import com.example.aspire.data_models.Comments;
@@ -16,11 +16,13 @@ public class AdapterComments extends ArrayAdapter<Comments> {
     private Activity context;
     private int layoutID;
     private ArrayList<Comments> listComments;
-    LayoutInflater inflater;
-    //
-    de.hdodenhof.circleimageview.CircleImageView userAvatar;
-    TextView txtViewUsername;
-    TextView txtViewComment;
+
+    //define view holder
+    static class ViewHolder {
+        de.hdodenhof.circleimageview.CircleImageView userAvatar;
+        TextView txtViewUsername;
+        TextView txtViewComment;
+    }
 
     public AdapterComments(Activity context, int resource, ArrayList<Comments> list) {
         super(context, resource, list);
@@ -31,17 +33,27 @@ public class AdapterComments extends ArrayAdapter<Comments> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+        AdapterComments.ViewHolder viewHolder;
+
+        if (convertView == null) {
+            viewHolder = new AdapterComments.ViewHolder();
+
             convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
-            userAvatar = (de.hdodenhof.circleimageview.CircleImageView) convertView.findViewById(R.id.imgViewAvatar);
-            txtViewUsername = (TextView) convertView.findViewById(R.id.txtViewUsername);
-            txtViewComment = (TextView) convertView.findViewById(R.id.txtViewCmt);
+            viewHolder.userAvatar = (de.hdodenhof.circleimageview.CircleImageView) convertView.findViewById(R.id.imgViewAvatar);
+            viewHolder.txtViewUsername = (TextView) convertView.findViewById(R.id.txtViewUsername);
+            viewHolder.txtViewComment = (TextView) convertView.findViewById(R.id.txtViewCmt);
 
-            Comments comments =listComments.get(position);
-            userAvatar.setImageResource(R.drawable.anhdaidien);
-            txtViewUsername.setText(comments.getUserName());
-            txtViewComment.setText(comments.getUserComment());
+            //binging the view in convertView coresponding
+            convertView.setTag(viewHolder);
+        }else {
+            viewHolder = (AdapterComments.ViewHolder) convertView.getTag();
+        }
 
+        Comments comments = listComments.get(position);
+        viewHolder.userAvatar.setImageResource(R.drawable.img_avatar_test);
+        viewHolder.txtViewUsername.setText(comments.getUserName());
+        viewHolder.txtViewComment.setText(comments.getUserComment());
 
-       return convertView;
+        return convertView;
     }
 }
