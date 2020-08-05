@@ -9,16 +9,16 @@ import android.widget.TextView;
 
 
 import com.example.aspire.R;
-import com.example.aspire.data_models.Users;
+import com.example.aspire.data_models.MemberManage;
 
 import java.util.ArrayList;
 
-public class AdapterMemberManage extends ArrayAdapter<Users> {
+public class AdapterMemberManage extends ArrayAdapter<MemberManage> {
     private Activity context;
     private int layoutID;
-    private ArrayList<Users> listMembersManage;
+    private ArrayList<MemberManage> listMembersManage;
 
-    public AdapterMemberManage(Activity context, int resource,  ArrayList<Users> list) {
+    public AdapterMemberManage(Activity context, int resource,  ArrayList<MemberManage> list) {
         super(context, resource, list);
         this.context = context;
         this.layoutID = resource;
@@ -50,8 +50,10 @@ public class AdapterMemberManage extends ArrayAdapter<Users> {
         }
 
         //
-        Users member = listMembersManage.get(position);
-        viewHolder.txtName.setText(member.getFullName());
+        MemberManage memberManage = listMembersManage.get(position);
+        viewHolder.txtName.setText(memberManage.getUserName());
+
+
         return convertView;
     }
 

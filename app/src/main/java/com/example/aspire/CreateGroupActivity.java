@@ -58,9 +58,6 @@ public class CreateGroupActivity extends AppCompatActivity {
                     //group.setAdminId("admin");
                     try {
                         group.addGroupToDatabase(group);
-                        //đưa admin tahnfh thành viên của nhóm để có thể vào nhóm
-                        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("groups").child(groupID).child("listMembers").child(user.getUserID());
-                        myRef.setValue("admin");
                         Toast.makeText(CreateGroupActivity.this, "Tạo nhóm thành công!", Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();

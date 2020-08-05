@@ -108,7 +108,6 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
                 data.putString("groupInfo", getItem(position).getGroupInfo());
                 data.putString("adminID", getItem(position).getAdminID());
                 data.putString("groupID", getItem(position).getGroupID());
-                data.putString("groupName", getItem(position).getGroupName());
 
 
 
