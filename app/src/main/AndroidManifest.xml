@@ -10,8 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".YourGroupActivity" />
+        <activity android:name=".PersonPageActivity" />
         <activity android:name=".AddPostActivity" />
-        <activity android:name=".CommentsActivity" />
+
         <activity android:name=".CreateGroupActivity" />
         <activity android:name=".GroupManageActivity" />
         <activity android:name=".JoinGroupActivity" />
@@ -21,6 +23,9 @@
         <activity android:name=".NonGroupManageActivity" />
         <activity android:name=".PostListActivity" />
         <activity android:name=".SettingActivity" /> <!-- //Tran Minh Phuc -->
+        <activity
+            android:name=".CommentsActivity"
+            android:theme="@style/Signup" />
         <activity
             android:name=".signUp.SignUpErrorActivity"
             android:theme="@style/Signup" />

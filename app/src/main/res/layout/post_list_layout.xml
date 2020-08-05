@@ -10,17 +10,29 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/bg_gradient_main"
-        android:gravity="right|center">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
 
         <Button
+            android:id="@+id/btnRequestMember"
+            android:background="@drawable/button_effect"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Duyệt thành viên"
+            android:textAllCaps="false"
+            android:layout_marginRight="200dp"/>
+        <Button
             android:id="@+id/btnGoToMember"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:background="@drawable/button_effect"
             android:padding="10dp"
             android:text="@string/btnGoToMember"
-            android:textAllCaps="true"
-            android:textSize="20dp"></Button>
+            android:textAllCaps="false"></Button>
     </LinearLayout>
 
     <LinearLayout
@@ -30,6 +42,7 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/nameGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Aspire Team"

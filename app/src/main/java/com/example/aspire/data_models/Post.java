@@ -14,20 +14,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Post extends Groups{
-    String userID, postID, postContent, postTitle;
+    String userID, postID, postContent, postTitle, userName;
 
     public Post() {
         this.userID = "";
         this.postID = "";
         this.postContent = "";
         this.postTitle = "";
+        this.userName = "";
     }
 
-    public Post(String userID, String postID, String postContent, String postTitle) {
+    public Post(String userID, String postID, String postContent, String postTitle, String userName) {
         this.userID = userID;
         this.postID = postID;
         this.postContent = postContent;
         this.postTitle = postTitle;
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserID() {
