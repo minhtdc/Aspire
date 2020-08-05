@@ -55,7 +55,7 @@ public class AddPostActivity extends AppCompatActivity {
         intent = AdapterNewfeed.intent;
 
 
-       final String idGroup = (intent.getBundleExtra("group")).getString("groupID");
+        final String idGroup = (intent.getBundleExtra("group")).getString("groupID");
 
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override

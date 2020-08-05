@@ -2,13 +2,14 @@ package com.example.aspire;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.aspire.adapter.AdapterMemberManage;
 import com.example.aspire.adapter.AdapterNewfeed;
@@ -26,47 +27,76 @@ public class MembersActivity extends AppCompatActivity {
     private ArrayList<Users> listMember;
     ListView listMembersManage;
     private Intent intent;
+    private Toolbar toolbar;
+    private TextView txt_inToolbar;
+    private ImageButton imgBtn_inToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.members_layout);
-        setTitle("Thành viên nhóm");
-        listMembersManage = findViewById(R.id.listMember);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        // get view from layout
-        ImageView imgUser = (ImageView) findViewById(R.id.userAvatar);
-        // Button btnXoa = (Button) findViewById(R.id.btnXoa);
-        TextView edtUserName = (TextView) findViewById(R.id.txtName);
-
-        listMember = new ArrayList<Users>();
-
-        adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember);
-        listMembersManage.setAdapter(adapter);
 
         //Lấy groupID từ màn AdapterNewFeed thông qua intent
         intent = AdapterNewfeed.intent;
-        String groupID = intent.getBundleExtra("group").getString("groupID");
+        final String groupID = intent.getBundleExtra("group").getString("groupID");
+
+        //Set information in toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        txt_inToolbar = toolbar.findViewById(R.id.txt_title);
+        imgBtn_inToolbar = toolbar.findViewById(R.id.imgBtn_inToolbar);
+        txt_inToolbar.setText("Duyệt thành viên");
+        imgBtn_inToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SwitchActivity.goToListPost(MembersActivity.this, groupID);
+                finish();
+            }
+        });
+
+        listMembersManage = findViewById(R.id.listMember);
+        listMember = new ArrayList<Users>();
+        adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember, groupID);
+        listMembersManage.setAdapter(adapter);
 
         //hiện thông tin member của nhóm từ db lên listview
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference listMember = database.getReference("groups").child(groupID).child("listMembers");
-        final Users user = new Users(); // để gán fullname
         listMember.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 adapter.clear();
-                for(final DataSnapshot data : snapshot.getChildren()){
+                for (final DataSnapshot data : snapshot.getChildren()) {
+                    final String key = data.getKey();
+                    final String task = data.getValue().toString();
 
-                    String key = data.getKey();
-                    DatabaseReference getFullName = FirebaseDatabase.getInstance().getReference("users").child(key).child("fullName");
+                    DatabaseReference getFullName = FirebaseDatabase.getInstance().getReference("users").child(key);
                     getFullName.addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            String fullName = snapshot.getValue(String.class);
-                            user.setFullName(fullName);
+                        public void onDataChange(@NonNull DataSnapshot snapshot_user) {
+                            Users user = new Users();
+                            user.setTask(task);
+                            for (DataSnapshot data_user : snapshot_user.getChildren()) {
+                                if (data_user.getKey().equals("fullName")) {
+                                    user.setFullName(data_user.getValue().toString());
+                                } else {
+                                    if (data_user.getKey().equals("userAvatar")) {
+                                        user.setUserAvatar(data_user.getValue().toString());
+                                    } else {
+                                        if (data_user.getKey().equals("userName")) {
+                                            user.setUserName(data_user.getValue().toString());
+                                        } else {
+                                            if (data_user.getKey().equals("colorFavorite")) {
+
+                                                if (data_user.getValue().toString().equals("") || data_user.getValue() == null) {
+                                                    user.setColorFavorite(android_2_func.getRandomColor());
+                                                } else {
+                                                    user.setColorFavorite(data_user.getValue().toString());
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                             adapter.add(user);
                         }
 
@@ -76,7 +106,6 @@ public class MembersActivity extends AppCompatActivity {
                         }
                     });
                 }
-
             }
 
             @Override
@@ -84,9 +113,5 @@ public class MembersActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
     }
 }

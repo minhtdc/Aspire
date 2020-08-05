@@ -109,4 +109,15 @@ public class SwitchActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         context.startActivity(intent);
     }
+
+    public static void goToListPost(final Context context, String idGroup){
+        //Starting a new Intent
+        Intent intent = new Intent(context, PostListActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("idGroup", idGroup);
+
+        intent.putExtras(bundle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
 }

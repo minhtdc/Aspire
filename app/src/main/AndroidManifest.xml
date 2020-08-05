@@ -18,11 +18,14 @@
         <activity android:name=".GroupManageActivity" />
         <activity android:name=".JoinGroupActivity" />
         <activity android:name=".MemberOptionActivity" />
-        <activity android:name=".MembersActivity" />
         <activity android:name=".NewFeedActivity" />
         <activity android:name=".NonGroupManageActivity" />
         <activity android:name=".PostListActivity" />
         <activity android:name=".SettingActivity" /> <!-- //Tran Minh Phuc -->
+        <activity
+            android:name=".MembersActivity"
+            android:theme="@style/Signup" />
+
         <activity
             android:name=".CommentsActivity"
             android:theme="@style/Signup" />

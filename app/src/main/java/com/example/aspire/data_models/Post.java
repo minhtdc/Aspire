@@ -72,7 +72,6 @@ public class Post extends Groups{
         this.postTitle = postTitle;
     }
 
-
     public void addPostToDatabase(Post post) throws JSONException {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         Map<String, Object> postValues = null;

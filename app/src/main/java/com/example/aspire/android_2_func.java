@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 public class android_2_func {
@@ -23,7 +24,7 @@ public class android_2_func {
     public static Map<String, Object> jsonToMap(JSONObject json) throws JSONException {
         Map<String, Object> retMap = new HashMap<String, Object>();
 
-        if(json != JSONObject.NULL) {
+        if (json != JSONObject.NULL) {
             retMap = toMap(json);
         }
         return retMap;
@@ -33,15 +34,13 @@ public class android_2_func {
         Map<String, Object> map = new HashMap<String, Object>();
 
         Iterator<String> keysItr = object.keys();
-        while(keysItr.hasNext()) {
+        while (keysItr.hasNext()) {
             String key = keysItr.next();
             Object value = object.get(key);
 
-            if(value instanceof JSONArray) {
+            if (value instanceof JSONArray) {
                 value = toList((JSONArray) value);
-            }
-
-            else if(value instanceof JSONObject) {
+            } else if (value instanceof JSONObject) {
                 value = toMap((JSONObject) value);
             }
             map.put(key, value);
@@ -51,13 +50,11 @@ public class android_2_func {
 
     public static List<Object> toList(JSONArray array) throws JSONException {
         List<Object> list = new ArrayList<Object>();
-        for(int i = 0; i < array.length(); i++) {
+        for (int i = 0; i < array.length(); i++) {
             Object value = array.get(i);
-            if(value instanceof JSONArray) {
+            if (value instanceof JSONArray) {
                 value = toList((JSONArray) value);
-            }
-
-            else if(value instanceof JSONObject) {
+            } else if (value instanceof JSONObject) {
                 value = toMap((JSONObject) value);
             }
             list.add(value);
@@ -65,7 +62,7 @@ public class android_2_func {
         return list;
     }
 
-    public void showLoading(Context context){
+    public void showLoading(Context context) {
 
         activity = (Activity) context;
 
@@ -78,11 +75,11 @@ public class android_2_func {
         dialog.show();
     }
 
-    public void closeLoading(){
+    public void closeLoading() {
         dialog.dismiss();
     }
 
-    public static boolean isValidEmailId(String email){
+    public static boolean isValidEmailId(String email) {
         return Pattern.compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
                 + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
                 + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
@@ -91,22 +88,22 @@ public class android_2_func {
                 + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
     }
 
-    public static boolean isName(String name){
+    public static boolean isName(String name) {
 
-        if (name.equals("")){
+        if (name.equals("")) {
             return false;
-        }else{
+        } else {
             Character c2 = new Character(' ');
             int nSpace = 0;
-            for (int i = 0; i < name.length(); i++){
+            for (int i = 0; i < name.length(); i++) {
                 Character c1 = name.charAt(i);
-                if (c1.equals(c2)){
+                if (c1.equals(c2)) {
                     nSpace++;
-                }else{
+                } else {
                     nSpace = 0;
                 }
 
-                if (nSpace == 2){
+                if (nSpace == 2) {
                     return false;
                 }
             }
@@ -115,20 +112,47 @@ public class android_2_func {
         return true;
     }
 
-    public static boolean isUsername(String name){
+    public static boolean isUsername(String name) {
 
-        if (name.equals("")){
+        if (name.equals("")) {
             return false;
-        }else{
+        } else {
             Character c2 = new Character(' ');
-            for (int i = 0; i < name.length(); i++){
+            for (int i = 0; i < name.length(); i++) {
                 Character c1 = name.charAt(i);
-                if (c1.equals(c2)){
+                if (c1.equals(c2)) {
                     return false;
                 }
             }
         }
 
         return true;
+    }
+
+    public static String getRandomColor() {
+        Random rand = new Random();
+        ArrayList<String> listColors = new ArrayList<String>();
+        listColors.add("red");
+        listColors.add("blue");
+        listColors.add("green");
+        listColors.add("cyan");
+        listColors.add("magenta");
+        listColors.add("yellow");
+        listColors.add("lightgray");
+        listColors.add("darkgray");
+        listColors.add("lightgrey");
+        listColors.add("darkgrey");
+        listColors.add("aqua");
+        listColors.add("fuchsia");
+        listColors.add("lime");
+        listColors.add("maroon");
+        listColors.add("navy");
+        listColors.add("olive");
+        listColors.add("purple");
+        listColors.add("silver");
+        listColors.add("teal");
+
+
+        return listColors.get(rand.nextInt(listColors.size() - 2));
     }
 }

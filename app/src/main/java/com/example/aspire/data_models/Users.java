@@ -36,11 +36,14 @@ public class Users {
     private String userPass;
     private String userAvatar;
     private String email;
+    private String task;
+    private String colorFavorite;
     private FirebaseAuth fAuth;
 
     private android_2_func android_2_func;
 
     public Users() {
+        this.colorFavorite = "";
         this.fullName = "";
         android_2_func = new android_2_func();
         fAuth = FirebaseAuth.getInstance();
@@ -49,9 +52,6 @@ public class Users {
         if (fAuth.getCurrentUser() != null) {
             this.userID = fAuth.getCurrentUser().getUid();
         }
-
-
-        String test = this.fullName;
     }
 
     public Users(String userName, String userPass, String email, String fullName) {
@@ -59,6 +59,7 @@ public class Users {
         this.userPass = userPass;
         this.userAvatar = userAvatar;
         this.email = email;
+        this.colorFavorite = "";
         this.fullName = fullName;
         android_2_func = new android_2_func();
         fAuth = FirebaseAuth.getInstance();
@@ -68,6 +69,22 @@ public class Users {
             // Get a reference to our posts
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
         }
+    }
+
+    public void setColorFavorite(String color) {
+        this.colorFavorite = color;
+    }
+
+    public String getColorFavorite() {
+        return this.colorFavorite;
+    }
+
+    public void setTask(String task) {
+        this.task = task;
+    }
+
+    public String getTask() {
+        return this.task;
     }
 
     public String getUserID() {
@@ -203,9 +220,15 @@ public class Users {
 
     public JSONObject toJSON(Users user) throws JSONException {
         JSONObject json = new JSONObject();
+        String color = user.getColorFavorite();
+        if (color != null || color.equals("")){
+            color = com.example.aspire.android_2_func.getRandomColor();
+        }
+
         json.put("userName", user.getUserName());
         json.put("userID", user.getUserID());
         json.put("fullName", user.getFullName());
+        json.put("colorFavorite",  color);
         json.put("userAvatar", Character.toString(user.getFullName().toUpperCase().charAt(0)));
         return json;
     }

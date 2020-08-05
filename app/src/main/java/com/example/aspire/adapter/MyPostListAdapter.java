@@ -41,7 +41,7 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
     //define view holder
     static class ViewHolder {
         TextView userName, userPosition, userTitlePost, userContentPost;
-        Button btnComment;
+        Button btnComment, btn_deletePost;
     }
 
     @Override
@@ -57,6 +57,7 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
             viewHolder.userTitlePost = (TextView) convertView.findViewById(R.id.txtTitlePostMember);
             viewHolder.userContentPost = (TextView) convertView.findViewById(R.id.txtContentPostMember);
             viewHolder.btnComment = (Button) convertView.findViewById(R.id.btnComment);
+            viewHolder.btn_deletePost = (Button) convertView.findViewById(R.id.btn_deletePost);
             //userCountCommentPost = (TextView) convertView.findViewById(R.id.txtCountCommentMember);
 
             //binging the view in convertView coresponding
@@ -78,6 +79,13 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
             @Override
             public void onClick(View v) {
                 SwitchActivity.goToListComment(context, post.getPostID(), idGroup);
+            }
+        });
+
+        //set event click button to go to list comment activity
+        viewHolder.btn_deletePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
 
