@@ -36,15 +36,10 @@ public class PostListActivity extends AppCompatActivity {
         cmt = findViewById(R.id.btnComment);
         gotoMember = findViewById(R.id.btnGoToMember);
         btnSTT = findViewById(R.id.btnSTT);
-        txtGroupName = findViewById(R.id.nameGroup);
-        txtGroupName.setText(groupName);
 
 
 
         listPostMember = new ArrayList<Post>();
-        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember, groupID);
-        listPost.setAdapter(adapter);
-
 
 
         adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember);
