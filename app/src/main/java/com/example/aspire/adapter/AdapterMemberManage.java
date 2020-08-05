@@ -99,7 +99,7 @@ public class AdapterMemberManage extends ArrayAdapter<Users> {
                     if (!userSelected.getTask().equals("admin")) {
                         AlertDialog.Builder dialogAnswer = new AlertDialog.Builder(context);
                         dialogAnswer.setTitle("Xác nhận");
-                        dialogAnswer.setMessage("Bạn có muốn xoá thành viên này vào nhóm không?");
+                        dialogAnswer.setMessage("Bạn có muốn xoá thành viên này ra khỏi nhóm không?");
 
                         dialogAnswer.setNegativeButton("Xoá thành viên", new DialogInterface.OnClickListener() {
                             @Override
