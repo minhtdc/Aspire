@@ -105,6 +105,7 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
 
                 //đưa dữ liệu vào intent
                 Bundle data = new Bundle();
+                data.putString("idUser", user.getUserID());
                 data.putString("groupInfo", getItem(position).getGroupInfo());
                 data.putString("adminID", getItem(position).getAdminID());
                 data.putString("groupID", getItem(position).getGroupID());

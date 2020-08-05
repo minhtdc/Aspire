@@ -39,6 +39,7 @@ public class MembersActivity extends AppCompatActivity {
         //Lấy groupID từ màn AdapterNewFeed thông qua intent
         intent = AdapterNewfeed.intent;
         final String groupID = intent.getBundleExtra("group").getString("groupID");
+        final String idUser = intent.getBundleExtra("group").getString("idUser");
 
         //Set information in toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -55,7 +56,7 @@ public class MembersActivity extends AppCompatActivity {
 
         listMembersManage = findViewById(R.id.listMember);
         listMember = new ArrayList<Users>();
-        adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember, groupID);
+        adapter = new AdapterMemberManage(this, R.layout.listview_members_manage_layout, listMember, groupID, idUser);
         listMembersManage.setAdapter(adapter);
 
         //hiện thông tin member của nhóm từ db lên listview
@@ -75,6 +76,7 @@ public class MembersActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot_user) {
                             Users user = new Users();
                             user.setTask(task);
+                            user.setUserID(key);
                             for (DataSnapshot data_user : snapshot_user.getChildren()) {
                                 if (data_user.getKey().equals("fullName")) {
                                     user.setFullName(data_user.getValue().toString());

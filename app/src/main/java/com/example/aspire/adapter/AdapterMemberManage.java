@@ -28,15 +28,16 @@ public class AdapterMemberManage extends ArrayAdapter<Users> {
     private int layoutID;
     private ArrayList<Users> listMembersManage;
     private boolean userLoggedIsAdminGroup = false;
-    private String groupID;
+    private String groupID, idUser;
 
-    public AdapterMemberManage(Activity context, int resource, ArrayList<Users> listMemberUser, String groupID) {
+    public AdapterMemberManage(Activity context, int resource, ArrayList<Users> listMemberUser, String groupID, String idUser) {
         super(context, resource, listMemberUser);
         this.context = context;
         this.layoutID = resource;
         this.listMembersManage = listMemberUser;
         this.userLoggedIsAdminGroup = false;
         this.groupID = groupID;
+        this.idUser = idUser;
     }
 
     //define view holder
@@ -51,7 +52,6 @@ public class AdapterMemberManage extends ArrayAdapter<Users> {
         //create new view for the ListView
         final AdapterMemberManage.ViewHolder viewHolder;
         Users member = listMembersManage.get(position);
-        final Users user = new Users();
 
         if (convertView == null) {
             //create new item for listview
@@ -81,13 +81,15 @@ public class AdapterMemberManage extends ArrayAdapter<Users> {
         viewHolder.txt_avatar.setText(Character.toString(member.getFullName().toUpperCase().charAt(0)));
         viewHolder.txt_task.setText(member.getTask().equals("admin") ? "Quản trị viên" : "Thành viên");
 
-
+        Users user = new Users();
         if (!userLoggedIsAdminGroup) {
             for (Users user_item : this.listMembersManage) {
-                if (user_item.getTask().equals("admin") && user.getUserID().equals(user_item.getUserID())) {
+                if (user_item.getTask().equals("admin") && idUser.equals(user_item.getUserID())) {
                     userLoggedIsAdminGroup = true;
                     Toast.makeText(context, "Nhấn vào thành viên để xoá thành viên đó", Toast.LENGTH_SHORT).show();
                     break;
+                }else{
+                    userLoggedIsAdminGroup = false;
                 }
             }
         } else {
