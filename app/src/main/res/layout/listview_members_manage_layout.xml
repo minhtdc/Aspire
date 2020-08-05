@@ -31,5 +31,18 @@
                 android:padding="15dp"
                 android:text="Tên thành viên" />
         </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/deny">
+            </Button>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
