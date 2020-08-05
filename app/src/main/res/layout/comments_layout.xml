@@ -12,28 +12,33 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ll_listComment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        app:layout_constraintVertical_weight="2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/ll_form"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <ListView
             android:id="@+id/listViewComments"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@drawable/bg_item_comment_2"
-            android:dividerHeight="1px" />
-    </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ll_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_listComment">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgViewAvatarFromText"
@@ -50,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/my_border"
+            android:background="@drawable/bg_edt_comment"
             android:hint="@string/edtWriteComments"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -63,13 +68,12 @@
             android:id="@+id/btnPostCmt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
+            android:textSize="14sp"
             android:background="@drawable/bg_button_gradent_main"
-            android:fontFamily="@font/allerta"
+            android:enabled="false"
             android:text="@string/btnPostCmt"
             android:textColor="#FFF"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.aspire.adapter.AdapterComments;
 import com.example.aspire.data_models.Comments;
@@ -57,17 +59,39 @@ public class CommentsActivity extends AppCompatActivity {
         listView.setAdapter(adapterComments);
 
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("groups").child(idGroup).child("posts").child(idPost);
+        databaseReference = database.getReference(String.format("/groups/%s/posts/%s/comments/", idGroup, idPost));
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                adapterComments.clear();
-//                for (DataSnapshot data : snapshot.getChildren()) {
-//                    String key = data.getKey();
-//                    Comments group = data.getValue(Comments.class);
-//                    group.setGroupID(key);
-//                    adapterComments.add(group);
-//                }
+                adapterComments.clear();
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    String key = data.getKey();
+
+                    DatabaseReference db_ref = database.getReference(String.format("/groups/%s/posts/%s/comments/%s/", idGroup, idPost, key));
+                    db_ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Comments comments = new Comments("", "");
+
+                            for (DataSnapshot data : snapshot.getChildren()) {
+
+                                if (data.getKey().equals("userName")) {
+                                    comments.setUserName(data.getValue().toString());
+                                } else {
+                                    if (data.getKey().equals("userComment")) {
+                                        comments.setUserComment(data.getValue().toString());
+                                    }
+                                }
+                            }
+                            adapterComments.add(comments);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
             }
 
             @Override
@@ -86,6 +110,15 @@ public class CommentsActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 getAllInformation();
+
+                String contentComment = text.getText().toString();
+                if (contentComment.equals("")) {
+                    btnPostCmt.setVisibility(View.INVISIBLE);
+                    btnPostCmt.setEnabled(false);
+                }else{
+                    btnPostCmt.setVisibility(View.VISIBLE);
+                    btnPostCmt.setEnabled(true);
+                }
             }
 
             @Override
@@ -100,6 +133,7 @@ public class CommentsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 getAllInformation();
                 String contentComment = text.getText().toString();
+                text.setText("");
                 if (!contentComment.equals("")) {
                     Comments comments = new Comments(username, contentComment);
                     try {
