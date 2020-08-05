@@ -85,8 +85,5 @@ public class MembersActivity extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 }
