@@ -97,4 +97,16 @@ public class SwitchActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         context.startActivity(intent);
     }
+
+    public static void goToListComment(final Context context, String idPost, String idGroup) {
+        //Starting a new Intent
+        Intent intent = new Intent(context, CommentsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("idPost", idPost);
+        bundle.putString("idGroup", idGroup);
+
+        intent.putExtras(bundle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
 }
