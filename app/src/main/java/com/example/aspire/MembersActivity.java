@@ -88,11 +88,14 @@ public class MembersActivity extends AppCompatActivity {
                                             user.setUserName(data_user.getValue().toString());
                                         } else {
                                             if (data_user.getKey().equals("colorFavorite")) {
-
                                                 if (data_user.getValue().toString().equals("") || data_user.getValue() == null) {
                                                     user.setColorFavorite(android_2_func.getRandomColor());
                                                 } else {
                                                     user.setColorFavorite(data_user.getValue().toString());
+                                                }
+                                            } else {
+                                                if (data_user.getKey().equals("userAvatar")) {
+                                                    user.setUserAvatar(data_user.getValue().toString());
                                                 }
                                             }
                                         }

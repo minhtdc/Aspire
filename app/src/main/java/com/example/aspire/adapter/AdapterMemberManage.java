@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.core.content.ContextCompat;
 
 import com.example.aspire.R;
+import com.example.aspire.android_2_func;
 import com.example.aspire.data_models.Users;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -43,7 +44,7 @@ public class AdapterMemberManage extends ArrayAdapter<Users> {
     //define view holder
     static class ViewHolder {
         TextView txt_fullName;
-        TextView txt_avatar;
+        de.hdodenhof.circleimageview.CircleImageView img_avatar;
         TextView txt_task;
     }
 
@@ -58,13 +59,8 @@ public class AdapterMemberManage extends ArrayAdapter<Users> {
             viewHolder = new AdapterMemberManage.ViewHolder();
             convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
 
+            viewHolder.img_avatar = convertView.findViewById(R.id.img_avatar);
             viewHolder.txt_fullName = (TextView) convertView.findViewById(R.id.txt_fullName);
-            viewHolder.txt_avatar = (TextView) convertView.findViewById(R.id.txt_avatar);
-
-            Drawable test = ContextCompat.getDrawable(context, R.drawable.bg_circle_avatar);
-            test.setColorFilter(Color.parseColor(member.getColorFavorite()), PorterDuff.Mode.MULTIPLY );
-            viewHolder.txt_avatar.setBackground(test);
-
             viewHolder.txt_task = (TextView) convertView.findViewById(R.id.txt_task);
 
             //binging the view in convertView coresponding
@@ -78,7 +74,7 @@ public class AdapterMemberManage extends ArrayAdapter<Users> {
 
         //
         viewHolder.txt_fullName.setText(member.getFullName());
-        viewHolder.txt_avatar.setText(Character.toString(member.getFullName().toUpperCase().charAt(0)));
+        viewHolder.img_avatar.setImageResource(android_2_func.getFileImgByName(member.getUserAvatar()));
         viewHolder.txt_task.setText(member.getTask().equals("admin") ? "Quản trị viên" : "Thành viên");
 
         Users user = new Users();

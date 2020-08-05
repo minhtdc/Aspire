@@ -5,73 +5,40 @@
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/bg_gradient_main"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp">
-
-        <Button
-            android:id="@+id/btnRequestMember"
-            android:background="@drawable/button_effect"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Duyệt thành viên"
-            android:textAllCaps="false"
-            android:layout_marginRight="200dp"/>
-        <Button
-            android:id="@+id/btnGoToMember"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_effect"
-            android:padding="10dp"
-            android:text="@string/btnGoToMember"
-            android:textAllCaps="false"></Button>
-    </LinearLayout>
+        android:layout_height="56dp"
+        android:background="#FFF" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/nameGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Aspire Team"
-            android:textSize="20dp"
-            android:textStyle="bold"></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:background="@drawable/border_bottom"
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:gravity="center"
             android:padding="5dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_avatar_userLogged"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/avt"></de.hdodenhof.circleimageview.CircleImageView>
+                android:src="@drawable/img_user_alt">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
+            android:elevation="5dp"
             android:padding="5dp">
 
             <Button
@@ -79,8 +46,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/my_border"
-                android:hint="@string/edtHintPost"
-                android:paddingLeft="10dp"></Button>
+                android:paddingLeft="10dp"
+                android:text="@string/edtHintPost"
+                android:textSize="16sp"></Button>
         </LinearLayout>
     </LinearLayout>
 
@@ -94,6 +62,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
     </LinearLayout>
-
 
 </LinearLayout>

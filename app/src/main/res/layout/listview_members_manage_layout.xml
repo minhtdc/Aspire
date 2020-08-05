@@ -7,18 +7,16 @@
     android:layout_height="match_parent">
 
 
-    <TextView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:textColor="#FFF"
-        android:id="@+id/txt_avatar"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:id="@+id/img_avatar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:background="@drawable/bg_circle_avatar"
         android:gravity="center"
         android:src="@mipmap/ic_launcher"
         android:text="T"
         android:textSize="70sp"
-        android:paddingRight="20sp"
-        android:paddingLeft="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +28,7 @@
         android:layout_weight="2"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txt_avatar"
+        app:layout_constraintStart_toEndOf="@+id/img_avatar"
         tools:layout_editor_absoluteY="20dp">
 
         <TextView

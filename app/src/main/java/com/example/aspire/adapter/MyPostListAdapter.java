@@ -8,12 +8,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.aspire.R;
 import com.example.aspire.SwitchActivity;
+import com.example.aspire.android_2_func;
 import com.example.aspire.data_models.Post;
+import com.example.aspire.data_models.Users;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -24,7 +32,6 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
     private String idGroup;
     private int layoutID;
     private ArrayList<Post> listPost;
-    CircleImageView userAvtCircle;
 
     protected FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser userCurrent = auth.getCurrentUser();
@@ -40,8 +47,9 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
 
     //define view holder
     static class ViewHolder {
-        TextView userName, userPosition, userTitlePost, userContentPost;
+        TextView userName, userPosition, userTitlePost, userContentPost, txtCountCommentMember;
         Button btnComment, btn_deletePost;
+        CircleImageView userAvtCircle;
     }
 
     @Override
@@ -51,11 +59,12 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
             //create new item for listview
             viewHolder = new ViewHolder();
             convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
-            userAvtCircle = (CircleImageView) convertView.findViewById(R.id.imgCircleAvtMem);
+            viewHolder.userAvtCircle = (CircleImageView) convertView.findViewById(R.id.imgCircleAvtMem);
             viewHolder.userName = (TextView) convertView.findViewById(R.id.txtNameMember);
             viewHolder.userPosition = (TextView) convertView.findViewById(R.id.txtPositionMember);
             viewHolder.userTitlePost = (TextView) convertView.findViewById(R.id.txtTitlePostMember);
             viewHolder.userContentPost = (TextView) convertView.findViewById(R.id.txtContentPostMember);
+            viewHolder.txtCountCommentMember = (TextView) convertView.findViewById(R.id.txtCountCommentMember);
             viewHolder.btnComment = (Button) convertView.findViewById(R.id.btnComment);
             viewHolder.btn_deletePost = (Button) convertView.findViewById(R.id.btn_deletePost);
             //userCountCommentPost = (TextView) convertView.findViewById(R.id.txtCountCommentMember);
@@ -68,11 +77,12 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
         }
 
         final Post post = listPost.get(position);
-        userAvtCircle.setImageResource(R.drawable.avt);
+
         viewHolder.userName.setText(post.getUserName());
         viewHolder.userPosition.setText("Thành viên");
         viewHolder.userTitlePost.setText(post.getPostTitle());
         viewHolder.userContentPost.setText(post.getPostContent());
+        viewHolder.txtCountCommentMember.setText(post.getCommentCount() + " bình luận");
 
         //set event click button to go to list comment activity
         viewHolder.btnComment.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +96,21 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
         viewHolder.btn_deletePost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            }
+        });
+
+        //Set avatar for user this post
+        DatabaseReference db_ref_userLogged = FirebaseDatabase.getInstance()
+                .getReference(String.format("/users/%s/userAvatar/", post.getUserID()));
+        db_ref_userLogged.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                viewHolder.userAvtCircle.setImageResource(android_2_func.getFileImgByName(snapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 

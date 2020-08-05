@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -28,7 +29,7 @@ public class NewFeedActivity extends AppCompatActivity {
 
     private ArrayList<Groups> listGroup;
     ListView listViewGroup;
-    Button btnSearch;
+    ImageButton btnSearch;
     EditText editSearch;
     ImageView imgAVT;
 
@@ -87,6 +88,22 @@ public class NewFeedActivity extends AppCompatActivity {
                 if (users.isLogged()) {
                     editSearch.setText("Chào mừng" + users.getUserID());
                 }
+            }
+        });
+
+        //Set avatar for user logged
+        DatabaseReference db_ref_userLogged = FirebaseDatabase.getInstance()
+                .getReference(String.format("/users/%s/userAvatar/", Users.ID_USER_LOGGED_IN));
+        db_ref_userLogged.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                de.hdodenhof.circleimageview.CircleImageView imgViewAva = findViewById(R.id.imgAVT);
+                imgViewAva.setImageResource(android_2_func.getFileImgByName(snapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

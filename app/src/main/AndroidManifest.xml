@@ -18,38 +18,38 @@
         <activity android:name=".GroupManageActivity" />
         <activity android:name=".JoinGroupActivity" />
         <activity android:name=".MemberOptionActivity" />
-        <activity android:name=".NewFeedActivity" />
+        <activity android:name=".NewFeedActivity" android:theme="@style/android_2_style"/>
         <activity android:name=".NonGroupManageActivity" />
-        <activity android:name=".PostListActivity" />
+        <activity android:name=".PostListActivity" android:theme="@style/android_2_style"/>
         <activity android:name=".SettingActivity" /> <!-- //Tran Minh Phuc -->
         <activity
             android:name=".MembersActivity"
-            android:theme="@style/Signup" />
+            android:theme="@style/android_2_style" />
 
         <activity
             android:name=".CommentsActivity"
-            android:theme="@style/Signup" />
+            android:theme="@style/android_2_style" />
         <activity
             android:name=".signUp.SignUpErrorActivity"
-            android:theme="@style/Signup" />
+            android:theme="@style/android_2_style" />
         <activity
             android:name=".signUp.SignUpSuccessActivity"
-            android:theme="@style/Signup" />
+            android:theme="@style/android_2_style" />
         <activity
             android:name=".signUp.InputPasswordActivity"
-            android:theme="@style/Signup" />
+            android:theme="@style/android_2_style" />
         <activity
             android:name=".signUp.InputEmailActivity"
-            android:theme="@style/Signup" />
+            android:theme="@style/android_2_style" />
         <activity
             android:name=".signUp.InputUsernameActivity"
-            android:theme="@style/Signup" />
+            android:theme="@style/android_2_style" />
         <activity
             android:name=".signUp.InputFullNameActivity"
-            android:theme="@style/Signup" />
+            android:theme="@style/android_2_style" />
         <activity
             android:name=".signUp.StartSignUp"
-            android:theme="@style/Signup" />
+            android:theme="@style/android_2_style" />
         <activity
             android:name=".StartingActivity"
             android:theme="@style/Starting">

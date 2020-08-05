@@ -25,7 +25,7 @@
                 android:id="@+id/imgCircleAvtAd"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/avt">
+                android:src="@drawable/img_user_alt">
             </de.hdodenhof.circleimageview.CircleImageView>
         </LinearLayout>
         <LinearLayout

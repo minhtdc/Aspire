@@ -155,4 +155,57 @@ public class android_2_func {
 
         return listColors.get(rand.nextInt(listColors.size() - 2));
     }
+
+    public static String getImgAvatar() {
+        Random rand = new Random();
+        return String.format("user_%d", rand.nextInt(20));
+    }
+
+    public static int getFileImgByName(String name) {
+        switch (name) {
+            case "user_1":
+                return R.drawable.user_1;
+            case "user_2":
+                return R.drawable.user_2;
+            case "user_3":
+                return R.drawable.user_3;
+            case "user_4":
+                return R.drawable.user_4;
+            case "user_5":
+                return R.drawable.user_5;
+            case "user_6":
+                return R.drawable.user_6;
+            case "user_7":
+                return R.drawable.user_7;
+            case "user_8":
+                return R.drawable.user_8;
+            case "user_9":
+                return R.drawable.user_9;
+            case "user_10":
+                return R.drawable.user_10;
+            case "user_11":
+                return R.drawable.user_11;
+            case "user_12":
+                return R.drawable.user_12;
+            case "user_13":
+                return R.drawable.user_13;
+            case "user_14":
+                return R.drawable.user_14;
+            case "user_15":
+                return R.drawable.user_15;
+            case "user_16":
+                return R.drawable.user_16;
+            case "user_17":
+                return R.drawable.user_17;
+            case "user_18":
+                return R.drawable.user_18;
+            case "user_19":
+                return R.drawable.user_19;
+            case "user_20":
+                return R.drawable.user_20;
+
+            default:
+                return 0;
+        }
+    }
 }

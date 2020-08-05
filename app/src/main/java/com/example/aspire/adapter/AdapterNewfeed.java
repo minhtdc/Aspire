@@ -2,6 +2,9 @@ package com.example.aspire.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import com.example.aspire.CreateGroupActivity;
 import com.example.aspire.GroupManageActivity;
@@ -18,6 +22,7 @@ import com.example.aspire.NewFeedActivity;
 import com.example.aspire.PersonPageActivity;
 import com.example.aspire.PostListActivity;
 import com.example.aspire.R;
+import com.example.aspire.android_2_func;
 import com.example.aspire.data_models.Groups;
 import com.example.aspire.data_models.Users;
 import com.google.firebase.database.DataSnapshot;
@@ -45,6 +50,7 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
     static class ViewHolder {
         TextView txtName;
         TextView txtPeople;
+        TextView txt_avatarGroup;
     }
 
     @Override
@@ -58,6 +64,11 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
 
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.txtuserName);
             viewHolder.txtPeople = (TextView) convertView.findViewById(R.id.txtPeople);
+            viewHolder.txt_avatarGroup = (TextView) convertView.findViewById(R.id.txt_avatarGroup);
+
+            Drawable test = ContextCompat.getDrawable(context, R.drawable.bg_circle_avatar);
+            test.setColorFilter(Color.parseColor(android_2_func.getRandomColor()), PorterDuff.Mode.MULTIPLY );
+            viewHolder.txt_avatarGroup.setBackground(test);
 
             //binging the view in convertView coresponding
             convertView.setTag(viewHolder);
@@ -71,6 +82,7 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
         Groups groups = listNew.get(position);
         viewHolder.txtName.setText(groups.getGroupName());
         viewHolder.txtPeople.setText(groups.getGroupInfo());
+        viewHolder.txt_avatarGroup.setText(Character.toString(viewHolder.txtName.getText().toString().toUpperCase().charAt(0)));
 
         //sự kiện click lên list view
         convertView.setOnClickListener(new View.OnClickListener() {
@@ -111,19 +123,10 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
                 data.putString("groupID", getItem(position).getGroupID());
                 data.putString("groupName", getItem(position).getGroupName());
 
-
-
                 intent = new Intent(context, JoinGroupActivity.class);
                 intent.putExtra("group", data);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 context.startActivity(intent);
-
-
-
-
-
-
-
             }
         });
 

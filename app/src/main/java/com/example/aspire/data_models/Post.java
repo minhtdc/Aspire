@@ -13,8 +13,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Post extends Groups{
+public class Post extends Groups {
     String userID, postID, postContent, postTitle, userName;
+    int commentCount;
 
     public Post() {
         this.userID = "";
@@ -22,14 +23,24 @@ public class Post extends Groups{
         this.postContent = "";
         this.postTitle = "";
         this.userName = "";
+        this.commentCount = 0;
     }
 
-    public Post(String userID, String postID, String postContent, String postTitle, String userName) {
+    public Post(String userID, String postID, String postContent, String postTitle, String userName, int commentCount) {
         this.userID = userID;
         this.postID = postID;
         this.postContent = postContent;
         this.postTitle = postTitle;
         this.userName = userName;
+        this.commentCount = commentCount;
+    }
+
+    public int getCommentCount() {
+        return this.commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 
     public String getUserName() {

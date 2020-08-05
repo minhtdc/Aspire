@@ -16,52 +16,39 @@ import java.util.Map;
 
 public class Comments {
     private String idComment;
-    private int userAvatar;
-    private String userName;
-    private String userComment;
+    private String userID;
+    private String content;
     private ArrayList<Comments> listComments;
-    FirebaseDatabase database;
     DatabaseReference mDatabase;
 
-    public Comments(String userName, String userComment) {
-        this.userAvatar = R.drawable.anhdaidien;
-        this.userName = userName;
-        this.userComment = userComment;
-    }
-
-    public int getUserAvatar() {
-        return userAvatar;
+    public Comments(String userID, String content) {
+        this.userID = userID;
+        this.content = content;
     }
 
     public void setIdComment(String idComment) {
         this.idComment = idComment;
     }
 
-    public void setUserAvatar(int userAvatar) {
-        this.userAvatar = userAvatar;
+    public String getUserID() {
+        return userID;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getContent() {
+        return content;
     }
-
-    public String getUserComment() {
-        return userComment;
-    }
-
-    public void setUserComment(String userComment) {
-        this.userComment = userComment;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public JSONObject toJSON(Comments comment) throws JSONException {
         JSONObject json = new JSONObject();
-        json.put("userName", comment.getUserName());
-        json.put("userComment", comment.getUserComment());
-        json.put("userAvatar", Character.toString(comment.getUserName().toUpperCase().charAt(0)));
+        json.put("userID", Users.ID_USER_LOGGED_IN);
+        json.put("content", comment.getContent());
         return json;
     }
 

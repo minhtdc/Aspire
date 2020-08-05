@@ -72,14 +72,12 @@ public class CommentsActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             Comments comments = new Comments("", "");
-
                             for (DataSnapshot data : snapshot.getChildren()) {
-
-                                if (data.getKey().equals("userName")) {
-                                    comments.setUserName(data.getValue().toString());
+                                if (data.getKey().equals("userID")) {
+                                    comments.setUserID(data.getValue().toString());
                                 } else {
-                                    if (data.getKey().equals("userComment")) {
-                                        comments.setUserComment(data.getValue().toString());
+                                    if (data.getKey().equals("content")) {
+                                        comments.setContent(data.getValue().toString());
                                     }
                                 }
                             }
@@ -115,7 +113,7 @@ public class CommentsActivity extends AppCompatActivity {
                 if (contentComment.equals("")) {
                     btnPostCmt.setVisibility(View.INVISIBLE);
                     btnPostCmt.setEnabled(false);
-                }else{
+                } else {
                     btnPostCmt.setVisibility(View.VISIBLE);
                     btnPostCmt.setEnabled(true);
                 }
@@ -155,6 +153,21 @@ public class CommentsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SwitchActivity.goToListComment(CommentsActivity.this, idPost, idGroup);
                 finish();
+            }
+        });
+
+        DatabaseReference db_ref_userLogged = FirebaseDatabase.getInstance()
+                .getReference(String.format("/users/%s/userAvatar/", Users.ID_USER_LOGGED_IN));
+        db_ref_userLogged.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                de.hdodenhof.circleimageview.CircleImageView imgViewAva = findViewById(R.id.img_avatar_userLogged);
+                imgViewAva.setImageResource(android_2_func.getFileImgByName(snapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

@@ -37,14 +37,15 @@
         android:id="@+id/ll_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/borber_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_listComment">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgViewAvatarFromText"
+            android:id="@+id/img_avatar_userLogged"
             android:layout_width="50dp"
             android:layout_height="60dp"
-            android:src="@drawable/anhdaidien"
+            android:src="@drawable/img_user_alt"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +62,7 @@
             android:paddingRight="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnPostCmt"
-            app:layout_constraintStart_toEndOf="@+id/imgViewAvatarFromText"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar_userLogged"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button

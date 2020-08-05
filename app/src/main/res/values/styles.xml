@@ -41,9 +41,9 @@
         <item name="colorAccent">#81BEFF</item>
     </style>
 
-    <style name="Signup" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="android_2_style" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/textColor</item>
-        <item name="colorPrimaryDark">#FFB0EF</item>
+        <item name="colorPrimaryDark">#00A6FF</item>
         <item name="colorAccent">#81BEFF</item>
     </style>
 

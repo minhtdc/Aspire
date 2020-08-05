@@ -39,6 +39,7 @@ public class Users {
     private String task;
     private String colorFavorite;
     private FirebaseAuth fAuth;
+    public static String ID_USER_LOGGED_IN;
 
     private android_2_func android_2_func;
 
@@ -66,8 +67,6 @@ public class Users {
 
         if (fAuth.getCurrentUser() != null) {
             this.userID = fAuth.getCurrentUser().getUid();
-            // Get a reference to our posts
-            final FirebaseDatabase database = FirebaseDatabase.getInstance();
         }
     }
 
@@ -202,6 +201,7 @@ public class Users {
                         if (task.isSuccessful()) {
                             SwitchActivity.goToNewFeed(context);
                             Activity activity = (Activity) context;
+                            ID_USER_LOGGED_IN = fAuth.getUid();
                             activity.finish();
                         } else {
                             Notification.error(epicDialog, context, "Đăng nhập không thành công", "Tài khoản này không được xác định từ máy chủ của chúng tôi");
@@ -215,7 +215,11 @@ public class Users {
 
     public boolean isLogged() {
         fAuth = FirebaseAuth.getInstance();
-        return fAuth.getCurrentUser() != null;
+        if (fAuth.getCurrentUser() != null){
+            ID_USER_LOGGED_IN = fAuth.getUid();
+            return true;
+        }
+        return false;
     }
 
     public JSONObject toJSON(Users user) throws JSONException {
@@ -229,7 +233,7 @@ public class Users {
         json.put("userID", user.getUserID());
         json.put("fullName", user.getFullName());
         json.put("colorFavorite",  color);
-        json.put("userAvatar", Character.toString(user.getFullName().toUpperCase().charAt(0)));
+        json.put("userAvatar", com.example.aspire.android_2_func.getImgAvatar());
         return json;
     }
 }
