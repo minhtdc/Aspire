@@ -41,26 +41,26 @@ public class PostListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_list_layout);
 
+        //Lấy thông tin của Group từ màn AdapterNewFeed
+        intent = AdapterNewfeed.intent;
+        //Lấy groupID từ màn AdapterNewFeed thông qua intent
+        final String groupID = intent.getBundleExtra("group").getString("groupID");
+        final String groupName = intent.getBundleExtra("group").getString("groupName");
+
         listPost = findViewById(R.id.listPost);
         cmt = findViewById(R.id.btnComment);
         gotoMember = findViewById(R.id.btnGoToMember);
         btnRequestMember = findViewById(R.id.btnRequestMember);
         btnSTT = findViewById(R.id.btnSTT);
         txtGroupName = findViewById(R.id.nameGroup);
+        txtGroupName.setText(groupName);
 
 
 
         listPostMember = new ArrayList<Post>();
-        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember);
+        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember, groupID);
         listPost.setAdapter(adapter);
 
-        //Lấy thông tin của Group từ màn AdapterNewFeed
-        intent = AdapterNewfeed.intent;
-
-        //Lấy groupID từ màn AdapterNewFeed thông qua intent
-        final String groupID = intent.getBundleExtra("group").getString("groupID");
-        final String groupName = intent.getBundleExtra("group").getString("groupName");
-        txtGroupName.setText(groupName);
 
 
         //Đưa dữ liệu từ db vào listView chứa các bài post trong nhóm
