@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Comments {
+    private String idComment;
     private int userAvatar;
     private String userName;
     private String userComment;
@@ -30,6 +31,10 @@ public class Comments {
 
     public int getUserAvatar() {
         return userAvatar;
+    }
+
+    public void setIdComment(String idComment) {
+        this.idComment = idComment;
     }
 
     public void setUserAvatar(int userAvatar) {
