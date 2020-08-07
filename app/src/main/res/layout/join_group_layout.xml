@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".JoinGroupActivity"
     android:orientation="vertical"
-    android:background="@drawable/bg_gradient_main"
     android:padding="10dp">
 
     //Group infomation
