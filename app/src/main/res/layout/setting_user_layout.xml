@@ -74,7 +74,7 @@
                 android:id="@+id/edtNewName"
                 style="@style/EditTextName"
                 android:hint="@string/edtNewName"
-                android:background="@drawable/custom_edittext" />
+                android:background="@drawable/my_border" />
         </LinearLayout>
     </LinearLayout>
 
