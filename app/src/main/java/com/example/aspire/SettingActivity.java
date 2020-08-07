@@ -106,10 +106,6 @@ public class SettingActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             changUsername(btnConfirm);
                                             changePassword(btnConfirm);
-                                            finish();
-
-                                            //Author: Tran Minh Phuc 07-08-2020
-                                            SwitchActivity.goToPersonPage(SettingActivity.this);
                                         }
                                         //Nếu không thành công có nghĩa mật khẩu cũ đã nhập sai
                                         else {
@@ -122,15 +118,9 @@ public class SettingActivity extends AppCompatActivity {
                 //Nếu ô nhập tên mới không rỗng
                 else if(!edtNewName.getText().toString().equals("")){
                     changUsername(btnConfirm);
-
-                    //Author: Tran Minh Phuc 07-08-2020
-                    SwitchActivity.goToPersonPage(SettingActivity.this);
-                    finish();
                 }
             }
         });
-
-
     }
 
     //Hàm đổi mật khẩu

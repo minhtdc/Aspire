@@ -43,8 +43,9 @@ public class LoginActivity extends AppCompatActivity {
                 String password = edt_password.getText().toString();
 
                 //Check validate form login
-                if (email.equals("") && password.equals("")) {
+                if (email.equals("") || password.equals("")) {
                     Toast.makeText(LoginActivity.this, "Vui lòng nhập đủ và đúng thông tin đăng nhập!", Toast.LENGTH_SHORT).show();
+                    edt_email.requestFocus();
                 } else {
                     if (android_2_func.isValidEmailId(email)) {
                         try {
@@ -55,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }else{
                         Toast.makeText(LoginActivity.this, "Email nhập không đúng như định dạng", Toast.LENGTH_SHORT).show();
+                        edt_email.requestFocus();
                     }
                 }
             }
