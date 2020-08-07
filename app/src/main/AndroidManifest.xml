@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".YourGroupActivity" />
         <activity android:name=".PersonPageActivity" android:theme="@style/android_2_style"/>
-        <activity android:name=".AddPostActivity" />
+        <activity android:name=".AddPostActivity" android:theme="@style/android_2_style"/>
 
         <activity android:name=".CreateGroupActivity" />
         <activity android:name=".GroupManageActivity" />

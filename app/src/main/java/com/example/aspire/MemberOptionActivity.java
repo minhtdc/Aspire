@@ -80,7 +80,6 @@ public class MemberOptionActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                android_2_func.showLoading(MemberOptionActivity.this);
                 adapter.clear();
                 //vòng lặp để lấy dữ liệu khi có sự thay đổi trên Firebase
                 for (DataSnapshot data : snapshot.getChildren()) {
@@ -127,7 +126,6 @@ public class MemberOptionActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             adapter.add(request);
-                            android_2_func.closeLoading();
                         }
                     },500);
                 }

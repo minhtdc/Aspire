@@ -17,7 +17,7 @@
     <string name="btnPost">Đăng bài</string>
     <string name="txtViewName">Tên</string>
     <string name="txtHindTitle">Nhập tiêu đề bài viết</string>
-    <string name="txtHintDes">Nhập nội dung bài viết</string>
+    <string name="txtHintDes">Bạn đang nghĩ gì?</string>
     <string name="txtViewChangePass">Đổi mật khẩu</string>
     <string name="txtViewChangeName">Đổi tên</string>
     <string name="edtOldPass">Nhập mật khẩu cũ</string>

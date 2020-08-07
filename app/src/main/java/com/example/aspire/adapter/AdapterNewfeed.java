@@ -115,6 +115,7 @@ public class AdapterNewfeed extends ArrayAdapter<Groups> {
                         if (snapshot.getValue() != null) {
                             data.putString("idUser", user.getUserID());
                             data.putString("groupID", getItem(position).getGroupID());
+                            data.putString("adminID", getItem(position).getAdminID());
                             data.putString("groupName", getItem(position).getGroupName());
 
                             intent = new Intent(context, PostListActivity.class);

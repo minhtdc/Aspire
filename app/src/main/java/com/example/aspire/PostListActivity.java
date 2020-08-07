@@ -3,6 +3,7 @@ package com.example.aspire;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +37,7 @@ public class PostListActivity extends AppCompatActivity {
     Button btnSTT;
     ImageView imgBtn_back;
 
-    private String groupID, groupName;
+    private String groupID, groupName, adminID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class PostListActivity extends AppCompatActivity {
         //Lấy groupID từ màn AdapterNewFeed thông qua intent
         groupID = bundle.getString("groupID");
         groupName = bundle.getString("groupName");
+        adminID = bundle.getString("adminID");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(groupName.toUpperCase());
@@ -60,7 +62,7 @@ public class PostListActivity extends AppCompatActivity {
         imgBtn_back = findViewById(R.id.imgBtn_back);
 
         listPostMember = new ArrayList<Post>();
-        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember, groupID);
+        adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember, groupID, adminID);
         listPost.setAdapter(adapter);
 
 
@@ -99,7 +101,14 @@ public class PostListActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             String data = snapshot.getValue(String.class);
                             post.setUserName(data);
-                            adapter.add(post);
+
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    adapter.add(post);
+                                }
+                            }, 500);
                         }
 
                         @Override
@@ -115,14 +124,7 @@ public class PostListActivity extends AppCompatActivity {
 
             }
         });
-//        cmt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), CommentsActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                startActivity(intent);
-//            }
-//        });
+
         btnSTT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,26 +142,6 @@ public class PostListActivity extends AppCompatActivity {
             }
         });
     }
-    //Nút Bình luận trong bài Post
-//        cmt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), CommentsActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                startActivity(intent);
-//            }
-//        });
-
-//        //Nút Thành Viên
-//        gotoMember.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), MemberOptionActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                startActivity(intent);
-//            }
-//        });
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

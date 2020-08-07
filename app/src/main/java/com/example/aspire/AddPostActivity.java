@@ -2,6 +2,7 @@ package com.example.aspire;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,11 @@ import java.security.acl.Group;
 public class AddPostActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
+    //Author: Tran Minh Phuc 06-08-2020
+    Toolbar toolbar;
+    TextView txt_inToolbar;
+    ImageButton imgBtn_inToolbar;
+
     Button btnPost;
     de.hdodenhof.circleimageview.CircleImageView imgViewAva;
     TextView txtViewUsername;
@@ -42,24 +49,34 @@ public class AddPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_post_layout);
 
-        btnPost = findViewById(R.id.btnPost);
-        imgViewAva = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.imgViewAvatar);
-        txtViewUsername = findViewById(R.id.txtViewUsername);
-        edtTitle = findViewById(R.id.edtTitle);
-        edtContent = findViewById(R.id.edtDescription);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
         //Extract the data…
         bundle = getIntent().getExtras();
         final String idGroup = bundle.getString("groupID");
         final String idUser = Users.ID_USER_LOGGED_IN;
 
+        //Author: Tran Minh Phuc 06-08-2020
+        btnPost = findViewById(R.id.btnPost);
+        imgViewAva = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.imgViewAvatar);
+        txtViewUsername = findViewById(R.id.txtViewUsername);
+        edtTitle = findViewById(R.id.edtTitle);
+        edtContent = findViewById(R.id.edtDescription);
+        //Set information in toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        txt_inToolbar = toolbar.findViewById(R.id.txt_title);
+        imgBtn_inToolbar = toolbar.findViewById(R.id.imgBtn_inToolbar);
+        txt_inToolbar.setText("Tạo bài viết");
+        imgBtn_inToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SwitchActivity.goToListPost(AddPostActivity.this, idGroup);
+                finish();
+            }
+        });
+
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtTitle.getText().toString() != "" && edtContent.getText().toString() != "") {
+                if (!edtTitle.getText().toString().equals("") && !edtContent.getText().toString().equals("")) {
                     Post post = new Post();
                     mDatabase = FirebaseDatabase.getInstance().getReference("groups").child(idGroup).child("posts");
                     String postID = mDatabase.push().getKey();
@@ -75,6 +92,8 @@ public class AddPostActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     Toast.makeText(AddPostActivity.this, "Tạo bài viết thành công", Toast.LENGTH_SHORT).show();
+                    SwitchActivity.goToListPost(AddPostActivity.this, idGroup);
+                    finish();
 
                 } else {
                     Toast.makeText(AddPostActivity.this, "Không được để trống", Toast.LENGTH_SHORT).show();
@@ -84,10 +103,37 @@ public class AddPostActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = new Intent(getApplicationContext(), PostListActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intent);
-        return super.onOptionsItemSelected(item);
+    protected void onResume() {
+        super.onResume();
+        edtTitle.requestFocus();
+        //Set avatar for user logged
+        DatabaseReference db_ref_userLogged = FirebaseDatabase.getInstance()
+                .getReference(String.format("/users/%s/", Users.ID_USER_LOGGED_IN));
+        db_ref_userLogged.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    switch (data.getKey()) {
+                        case "colorFavorite":
+                            break;
+                        case "userAvatar":
+                            imgViewAva.setImageResource(android_2_func.getFileImgByName(data.getValue().toString()));
+                            break;
+                        case "fullName":
+                            txtViewUsername.setText(data.getValue().toString());;
+                            break;
+                        case "userName":
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
