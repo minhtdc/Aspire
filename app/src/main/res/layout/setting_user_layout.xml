@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:gravity="center">
         <TextView
-            android:background="@drawable/custom_edittext"
+            android:background="@drawable/my_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txtViewChangePass"
@@ -30,7 +30,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@id/edtOldPass"
                 style="@style/EditTextPassword"
-                android:background="@drawable/custom_edittext"
+                android:background="@drawable/my_border"
                 android:hint="@string/edtOldPass"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -46,7 +46,7 @@
                 style="@style/EditTextPassword"
                 android:hint="@string/edtNewPass"
                 android:inputType="textPassword"
-                android:background="@drawable/custom_edittext" />
+                android:background="@drawable/my_border"
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
@@ -58,7 +58,7 @@
         android:orientation="vertical"
         android:gravity="center">
         <TextView
-            android:background="@drawable/custom_edittext"
+            android:background="@drawable/my_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txtViewChangeName"
@@ -74,7 +74,7 @@
                 android:id="@+id/edtNewName"
                 style="@style/EditTextName"
                 android:hint="@string/edtNewName"
-                android:background="@drawable/custom_edittext" />
+                android:background="@drawable/my_border" />
         </LinearLayout>
     </LinearLayout>
 
