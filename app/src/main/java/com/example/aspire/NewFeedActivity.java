@@ -83,10 +83,7 @@ public class NewFeedActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Users users = new Users();
-                if (users.isLogged()) {
-                    editSearch.setText("Chào mừng" + users.getUserID());
-                }
+
             }
         });
     }

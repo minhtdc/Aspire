@@ -4,7 +4,7 @@
     //join group
     <string name="btnJoin">Tham gia</string>
     <string name="btnCancel">Hủy</string>
-    <string name="hintJoinGroup">Lý do tại sao bạn muốn xin vào group</string>
+    <string name="hintJoinGroup">Ngọn gió nào đưa bạn đến group này?</string>
 
     //create group
     <string name="createGroupName">Tên Nhóm</string>

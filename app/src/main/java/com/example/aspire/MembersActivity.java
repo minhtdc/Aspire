@@ -53,18 +53,17 @@ public class MembersActivity extends AppCompatActivity {
         //hiện thông tin member của nhóm từ db lên listview
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference listMember = database.getReference("groups").child(groupID).child("listMembers");
-        final Users user = new Users(); // để gán fullname
         listMember.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 adapter.clear();
                 for(final DataSnapshot data : snapshot.getChildren()){
-
-                    String key = data.getKey();
+                    final String key = data.getKey();
                     DatabaseReference getFullName = FirebaseDatabase.getInstance().getReference("users").child(key).child("fullName");
                     getFullName.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Users user = new Users(); // để gán fullname
                             String fullName = snapshot.getValue(String.class);
                             user.setFullName(fullName);
                             adapter.add(user);

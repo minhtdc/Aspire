@@ -38,7 +38,7 @@ public class YourGroupActivity extends AppCompatActivity {
         listViewGroup = findViewById(R.id.listGroupManage);
         listGroup = new ArrayList<Groups>();
 
-        //làm mất nút thêm ửo màn hình chỉ xem thành viên
+        //làm mất nút thêm ở màn hình chỉ xem thành viên
         addGroup.setVisibility(View.GONE);
 
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listGroup);
