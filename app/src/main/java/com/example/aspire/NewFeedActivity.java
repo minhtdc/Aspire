@@ -55,29 +55,6 @@ public class NewFeedActivity extends AppCompatActivity {
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listGroup);
         listViewGroup.setAdapter(adapter);
 
-
-        // đưa dữ liệu từ db lên listview
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myGroups = database.getReference("groups");
-        myGroups.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                adapter.clear();
-                for (DataSnapshot data : snapshot.getChildren()) {
-                    String key = data.getKey();
-                    Groups group = data.getValue(Groups.class);
-                    group.setGroupID(key);
-                    adapter.add(group);
-                }
-                android_2_func.closeLoading();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-
-
         //click setting
         img_setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +86,50 @@ public class NewFeedActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.clear();
+                if (editSearch.getText().toString().equals("")) {
+                    // đưa dữ liệu từ db lên listview
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myGroups = database.getReference("groups");
+                    myGroups.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            adapter.clear();
+                            for (DataSnapshot data : snapshot.getChildren()) {
+                                String key = data.getKey();
+                                Groups group = data.getValue(Groups.class);
+                                group.setGroupID(key);
+                                adapter.add(group);
+                            }
+                            android_2_func.closeLoading();
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                } else {
+                    // đưa dữ liệu từ db lên listview
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myGroups = database.getReference("groups");
+                    myGroups.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot data : snapshot.getChildren()) {
+                                String key = data.getKey();
+                                Groups group = data.getValue(Groups.class);
+                                if (android_2_func.isStrLike(editSearch.getText().toString(), group.getGroupName())) {
+                                    group.setGroupID(key);
+                                    adapter.add(group);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                }
             }
 
             @Override
@@ -136,6 +156,27 @@ public class NewFeedActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 de.hdodenhof.circleimageview.CircleImageView imgViewAva = findViewById(R.id.imgAVT);
                 imgViewAva.setImageResource(android_2_func.getFileImgByName(snapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        // đưa dữ liệu từ db lên listview
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myGroups = database.getReference("groups");
+        myGroups.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                adapter.clear();
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    String key = data.getKey();
+                    Groups group = data.getValue(Groups.class);
+                    group.setGroupID(key);
+                    adapter.add(group);
+                }
+                android_2_func.closeLoading();
             }
 
             @Override

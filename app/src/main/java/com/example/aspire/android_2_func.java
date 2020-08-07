@@ -208,4 +208,22 @@ public class android_2_func {
                 return 0;
         }
     }
+
+    public static boolean isStrLike(String str_compare, String str_toCompare) {
+        str_compare = str_compare.toLowerCase();
+        str_toCompare = str_toCompare.toLowerCase();
+        try {
+            for (int i = 0; i < str_compare.length(); i++) {
+                if (!Character.toString(str_compare.charAt(i))
+                        .equals(
+                                Character.toString(str_toCompare.charAt(i))
+                        )
+                ) {
+                    return false;
+                }
+            }
+        } catch (Exception ex) {
+        }
+        return true;
+    }
 }
