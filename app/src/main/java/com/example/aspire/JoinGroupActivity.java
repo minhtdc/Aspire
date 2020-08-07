@@ -31,7 +31,7 @@ public class JoinGroupActivity extends AppCompatActivity {
         final TextView txtGroupInfo;
         final EditText edtGroupJoin;
         final Button btnJoin, btnCancel;
-        final Intent intent;
+        final Bundle bundle;
 
 
         super.onCreate(savedInstanceState);
@@ -41,38 +41,26 @@ public class JoinGroupActivity extends AppCompatActivity {
         btnJoin = findViewById(R.id.btnJoin);
         btnCancel = findViewById(R.id.btnCancel);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        final Requests request = new Requests();
-
         //Lấy thông tin nhpms từ màn hình newfeed
-        intent = AdapterNewfeed.intent;
+        bundle = getIntent().getExtras();
 
-        txtGroupInfo.setText((intent.getBundleExtra("group")).getString("groupInfo"));
+        txtGroupInfo.setText(bundle.getString("groupInfo"));
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btnJoin.getText().toString() == "Hủy yêu cầu") {
-                    DatabaseReference remove = FirebaseDatabase.getInstance().getReference("requests").child(request.getGroupID());
-                    remove.removeValue();
-                    Toast.makeText(JoinGroupActivity.this, "Hủy yêu cầu thành công", Toast.LENGTH_SHORT).show();
-
-                    btnJoin.setText("Tham gia");
+                if (btnJoin.getText().toString() == "Hủy yêu cầu") {
+//                    DatabaseReference remove = FirebaseDatabase.getInstance().getReference("requests").child(request.getGroupID());
+//                    remove.removeValue();
+//                    Toast.makeText(JoinGroupActivity.this, "Hủy yêu cầu thành công", Toast.LENGTH_SHORT).show();
+//
+//                    btnJoin.setText("Tham gia");
                 }
                 //
-                else{
-                    request.setGroupID((intent.getBundleExtra("group")).getString("groupID"));
-                    request.setAdminID((intent.getBundleExtra("group")).getString("adminID"));
-                    request.setContent(edtGroupJoin.getText().toString());
+                else {
+
                     Users user = new Users();
-                    request.setMemberID(user.getUserID());
-                        try {
-                            request.addRequestsToDatabase(request);
-                            Toast.makeText(JoinGroupActivity.this, "Gửi yêu càu thành công", Toast.LENGTH_SHORT).show();
-                            btnJoin.setText("Hủy yêu cầu");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+//                    request.setMemberID(user.getUserID());
+
                 }
 
             }

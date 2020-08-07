@@ -35,7 +35,7 @@ public class AddPostActivity extends AppCompatActivity {
     de.hdodenhof.circleimageview.CircleImageView imgViewAva;
     TextView txtViewUsername;
     EditText edtTitle, edtContent;
-    private Intent intent;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,17 +51,15 @@ public class AddPostActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        //lấy id group từ intent ở màn hình newfeed
-        intent = AdapterNewfeed.intent;
-
-
-        final String idGroup = (intent.getBundleExtra("group")).getString("groupID");
+        //Extract the data…
+        bundle = getIntent().getExtras();
+        final String idGroup = bundle.getString("groupID");
+        final String idUser = Users.ID_USER_LOGGED_IN;
 
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edtTitle.getText().toString() != "" && edtContent.getText().toString() != "")
-                {
+                if (edtTitle.getText().toString() != "" && edtContent.getText().toString() != "") {
                     Post post = new Post();
                     mDatabase = FirebaseDatabase.getInstance().getReference("groups").child(idGroup).child("posts");
                     String postID = mDatabase.push().getKey();
@@ -78,8 +76,7 @@ public class AddPostActivity extends AppCompatActivity {
                     }
                     Toast.makeText(AddPostActivity.this, "Tạo bài viết thành công", Toast.LENGTH_SHORT).show();
 
-                }
-                else {
+                } else {
                     Toast.makeText(AddPostActivity.this, "Không được để trống", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -33,10 +33,6 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
     private int layoutID;
     private ArrayList<Post> listPost;
 
-    protected FirebaseAuth auth = FirebaseAuth.getInstance();
-    FirebaseUser userCurrent = auth.getCurrentUser();
-    DatabaseReference reference;
-
     public MyPostListAdapter(Activity context, int resource, ArrayList<Post> list, String idGroup) {
         super(context, resource, list);
         this.context = context;
@@ -47,8 +43,8 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
 
     //define view holder
     static class ViewHolder {
-        TextView userName, userPosition, userTitlePost, userContentPost, txtCountCommentMember;
-        Button btnComment, btn_deletePost;
+        TextView userName, userPosition, userTitlePost, userContentPost, txtCountCommentMember, txtBtn_comment, txtBtn_like;
+        Button btn_deletePost;
         CircleImageView userAvtCircle;
     }
 
@@ -65,7 +61,7 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
             viewHolder.userTitlePost = (TextView) convertView.findViewById(R.id.txtTitlePostMember);
             viewHolder.userContentPost = (TextView) convertView.findViewById(R.id.txtContentPostMember);
             viewHolder.txtCountCommentMember = (TextView) convertView.findViewById(R.id.txtCountCommentMember);
-            viewHolder.btnComment = (Button) convertView.findViewById(R.id.btnComment);
+            viewHolder.txtBtn_comment = (TextView) convertView.findViewById(R.id.txtBtn_comment);
             viewHolder.btn_deletePost = (Button) convertView.findViewById(R.id.btn_deletePost);
             //userCountCommentPost = (TextView) convertView.findViewById(R.id.txtCountCommentMember);
 
@@ -82,10 +78,10 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
         viewHolder.userPosition.setText("Thành viên");
         viewHolder.userTitlePost.setText(post.getPostTitle());
         viewHolder.userContentPost.setText(post.getPostContent());
-        viewHolder.txtCountCommentMember.setText(post.getCommentCount() + " bình luận");
+        viewHolder.txtCountCommentMember.setText(post.getCommentCount() + " bình luận");//Total comment this post
 
         //set event click button to go to list comment activity
-        viewHolder.btnComment.setOnClickListener(new View.OnClickListener() {
+        viewHolder.txtBtn_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SwitchActivity.goToListComment(context, post.getPostID(), idGroup);

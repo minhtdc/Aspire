@@ -11,13 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".YourGroupActivity" />
-        <activity android:name=".PersonPageActivity" />
+        <activity android:name=".PersonPageActivity" android:theme="@style/android_2_style"/>
         <activity android:name=".AddPostActivity" />
 
         <activity android:name=".CreateGroupActivity" />
         <activity android:name=".GroupManageActivity" />
         <activity android:name=".JoinGroupActivity" />
-        <activity android:name=".MemberOptionActivity" />
+        <activity android:name=".MemberOptionActivity" android:theme="@style/android_2_style"/>
         <activity android:name=".NewFeedActivity" android:theme="@style/android_2_style"/>
         <activity android:name=".NonGroupManageActivity" />
         <activity android:name=".PostListActivity" android:theme="@style/android_2_style"/>

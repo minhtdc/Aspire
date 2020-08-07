@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,16 +28,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class PostListActivity extends AppCompatActivity {
-
-    de.hdodenhof.circleimageview.CircleImageView userAvtCircle;
-    TextView userName, userPosition, userTimePost, userTitlePost, userContentPost, userViewPost, userCountCommentPost;
     ListView listPost;
     private MyPostListAdapter adapter;
     private ArrayList<Post> listPostMember;
-    Button cmt;
+    private Bundle bundle;;
+    TextView txtBtn_comment;
     Button btnSTT;
-    Intent intent;
-    TextView txtGroupName;
+    ImageView imgBtn_back;
+
+    private String groupID, groupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +44,10 @@ public class PostListActivity extends AppCompatActivity {
         setContentView(R.layout.post_list_layout);
 
         //Lấy thông tin của Group từ màn AdapterNewFeed
-        intent = AdapterNewfeed.intent;
+        bundle = getIntent().getExtras();
         //Lấy groupID từ màn AdapterNewFeed thông qua intent
-        final String groupID = intent.getBundleExtra("group").getString("groupID");
-        final String groupName = intent.getBundleExtra("group").getString("groupName");
+        groupID = bundle.getString("groupID");
+        groupName = bundle.getString("groupName");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(groupName.toUpperCase());
@@ -55,8 +55,9 @@ public class PostListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         listPost = findViewById(R.id.listPost);
-        cmt = findViewById(R.id.btnComment);
+        txtBtn_comment = findViewById(R.id.txtBtn_comment);
         btnSTT = findViewById(R.id.btnSTT);
+        imgBtn_back = findViewById(R.id.imgBtn_back);
 
         listPostMember = new ArrayList<Post>();
         adapter = new MyPostListAdapter(this, R.layout.post_detail_member_layout, listPostMember, groupID);
@@ -126,24 +127,16 @@ public class PostListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddPostActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
+                SwitchActivity.goToAddPost(PostListActivity.this, groupID);
             }
         });
 
-        //Set avatar for user logged
-        DatabaseReference db_ref_userLogged = FirebaseDatabase.getInstance()
-                .getReference(String.format("/users/%s/userAvatar/", Users.ID_USER_LOGGED_IN));
-        db_ref_userLogged.addValueEventListener(new ValueEventListener() {
+        //Get event click back to go to new feed
+        imgBtn_back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                de.hdodenhof.circleimageview.CircleImageView imgViewAva = findViewById(R.id.img_avatar_userLogged);
-                imgViewAva.setImageResource(android_2_func.getFileImgByName(snapshot.getValue().toString()));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onClick(View v) {
+                SwitchActivity.goToNewFeed(PostListActivity.this);
+                finish();
             }
         });
     }
@@ -180,18 +173,35 @@ public class PostListActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_gotoListMember:
-                intent = new Intent(getApplicationContext(), MembersActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
+                SwitchActivity.goToMembersActivity(PostListActivity.this, groupID);
                 return true;
 
             case R.id.action_gotoListRequest:
-                intent = new Intent(getApplicationContext(), MemberOptionActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
+                SwitchActivity.goToMemberOption(PostListActivity.this, groupID);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Set avatar for user logged
+        Users user = new Users();
+        DatabaseReference db_ref_userLogged = FirebaseDatabase.getInstance()
+                .getReference(String.format("/users/%s/userAvatar/", user.getUserID()));
+        db_ref_userLogged.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                de.hdodenhof.circleimageview.CircleImageView imgViewAva = findViewById(R.id.img_avatar_userLogged);
+                imgViewAva.setImageResource(android_2_func.getFileImgByName(snapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

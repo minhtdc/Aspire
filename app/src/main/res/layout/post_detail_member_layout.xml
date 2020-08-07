@@ -111,9 +111,14 @@
             android:id="@+id/txtContentPostMember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="         Đây là nội dung bài post alo alo nghe không nghe
-không mọi người oiwiiiiii. Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+            android:text="Content post"
             android:textSize="16dp"></TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/user_14" />
     </LinearLayout>
 
     <LinearLayout
@@ -146,19 +151,36 @@ không mọi người oiwiiiiii. Hellooooooooooooooooooooooooooooooooooooooooooo
                 android:text="Bình luận"></TextView>
         </LinearLayout>
 
-
-        <Button
-            android:id="@+id/btnComment"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_gradent_main"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Bình luận"
-            android:textColor="#FFF"
-            android:textSize="20dp"></Button>
+            android:background="@drawable/my_border"
+            android:padding="5dp"
+            android:weightSum="2">
 
+            <Button
+                android:id="@+id/btnLike"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:gravity="center"
+                android:text="Bỏ thích"
+                android:textColor="#2196F3"
+                android:textSize="15dp"></Button>
+
+            <Button
+                android:id="@+id/txtBtn_comment"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:gravity="center"
+                android:text="Bình luận"
+                android:textColor="#202020"
+                android:textSize="13dp"></Button>
+        </LinearLayout>
     </LinearLayout>
-
-
 </LinearLayout>

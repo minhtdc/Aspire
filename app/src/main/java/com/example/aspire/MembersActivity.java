@@ -30,6 +30,7 @@ public class MembersActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView txt_inToolbar;
     private ImageButton imgBtn_inToolbar;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +38,16 @@ public class MembersActivity extends AppCompatActivity {
         setContentView(R.layout.members_layout);
 
         //Lấy groupID từ màn AdapterNewFeed thông qua intent
-        intent = AdapterNewfeed.intent;
-        final String groupID = intent.getBundleExtra("group").getString("groupID");
-        final String idUser = intent.getBundleExtra("group").getString("idUser");
+        //Extract the data…
+        bundle = getIntent().getExtras();
+        final String groupID = bundle.getString("groupID");
+        final String idUser = Users.ID_USER_LOGGED_IN;
 
         //Set information in toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         txt_inToolbar = toolbar.findViewById(R.id.txt_title);
         imgBtn_inToolbar = toolbar.findViewById(R.id.imgBtn_inToolbar);
-        txt_inToolbar.setText("Duyệt thành viên");
+        txt_inToolbar.setText("Danh sách các thành viên");
         imgBtn_inToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

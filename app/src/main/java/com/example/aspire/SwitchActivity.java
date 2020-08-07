@@ -120,4 +120,37 @@ public class SwitchActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         context.startActivity(intent);
     }
+
+    public static void goToMembersActivity(final Context context, String groupID){
+        //Starting a new Intent
+        Intent intent = new Intent(context, MembersActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("groupID", groupID);
+
+        intent.putExtras(bundle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
+
+    public static void goToAddPost(final Context context, String groupID){
+        //Starting a new Intent
+        Intent intent = new Intent(context, AddPostActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("groupID", groupID);
+
+        intent.putExtras(bundle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
+
+    public static void goToMemberOption(final Context context, String groupID){
+        //Starting a new Intent
+        Intent intent = new Intent(context, MemberOptionActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("groupID", groupID);
+
+        intent.putExtras(bundle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
 }

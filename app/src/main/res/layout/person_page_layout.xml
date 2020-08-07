@@ -1,85 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bg_gradient_main">
+    android:background="#FFF"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgViewAvatar"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:src="@mipmap/anhdaidien"
-                android:padding="5dp" />
-        <LinearLayout
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgViewAvatar"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:padding="5dp"
+            android:src="@drawable/img_user_alt" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="left"
             android:orientation="vertical"
-            android:gravity="center"
             android:padding="20dp">
+
             <TextView
                 android:id="@+id/txtViewUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/txtViewUsername"
-                android:textColor="@color/textColor"></TextView>
+                android:textColor="#1E1E1E"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></TextView>
+
             <TextView
                 android:id="@+id/txtViewUserId"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtViewUserId"
-                android:textColor="@color/textColor"></TextView>
-        </LinearLayout>
+                android:textColor="#707070"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewUsername"></TextView>
+
+            <ImageView
+                android:id="@+id/img_checked_hide_idUser"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_eye_checked"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewUsername" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <Button
             android:id="@+id/btnYourGroup"
-            android:background="@drawable/button_effect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:background="@drawable/button_effect"
             android:padding="8dp"
             android:text="@string/btnYourGroup"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/btnManageGroup"
-            android:background="@drawable/button_effect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:background="@drawable/button_effect"
             android:padding="8dp"
             android:text="@string/btnManageGroup"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/btnSetting"
-            android:background="@drawable/button_effect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:background="@drawable/button_effect"
             android:padding="8dp"
             android:text="@string/btnSetting"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/btnLogOut"
-            android:background="@drawable/button_effect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:background="@drawable/button_effect"
             android:padding="8dp"
             android:text="@string/btnLogOut"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </LinearLayout>

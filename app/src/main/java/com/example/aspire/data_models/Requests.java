@@ -14,6 +14,7 @@ import java.util.Map;
 
 public class Requests {
     private String memberID, adminID, groupID, content;
+    private Users user;
 
     public Requests() {
     }
@@ -31,6 +32,14 @@ public class Requests {
 
     public void setMemberID(String memberID) {
         this.memberID = memberID;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+    public Users getUser() {
+        return user;
     }
 
     public String getAdminID() {

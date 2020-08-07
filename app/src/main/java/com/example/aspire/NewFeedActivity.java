@@ -2,12 +2,14 @@ package com.example.aspire;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,25 +26,32 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class NewFeedActivity extends AppCompatActivity {
-
+    private android_2_func android_2_func;
     private AdapterNewfeed adapter;
-
     private ArrayList<Groups> listGroup;
     ListView listViewGroup;
     ImageButton btnSearch;
     EditText editSearch;
-    ImageView imgAVT;
+    ImageView img_setting;
+    TextView txt_nameApp;
+    boolean searching = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_feed_layout);
-        setTitle("Trang chủ");
 
-        imgAVT = findViewById(R.id.imgAVT);
+        //Loading
+        android_2_func = new android_2_func();
+        android_2_func.showLoading(NewFeedActivity.this);
+
+        txt_nameApp = findViewById(R.id.txt_nameApp);
+        img_setting = findViewById(R.id.img_setting);
+        btnSearch = findViewById(R.id.btnSearch);
+        editSearch = findViewById(R.id.edtSearch);
         listViewGroup = findViewById(R.id.listNew);
-        listGroup = new ArrayList<Groups>();
 
+        listGroup = new ArrayList<Groups>();
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listGroup);
         listViewGroup.setAdapter(adapter);
 
@@ -60,17 +69,17 @@ public class NewFeedActivity extends AppCompatActivity {
                     group.setGroupID(key);
                     adapter.add(group);
                 }
+                android_2_func.closeLoading();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
 
-        //click vào hình ảnh
-        imgAVT.setOnClickListener(new View.OnClickListener() {
+        //click setting
+        img_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NewFeedActivity.this, PersonPageActivity.class);
@@ -79,21 +88,49 @@ public class NewFeedActivity extends AppCompatActivity {
             }
         });
 
-        btnSearch = findViewById(R.id.btnSearch);
-        editSearch = findViewById(R.id.edtSearch);
+        //Get event click button search group
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Users users = new Users();
-                if (users.isLogged()) {
-                    editSearch.setText("Chào mừng" + users.getUserID());
+                if (searching) {
+                    txt_nameApp.setVisibility(View.INVISIBLE);
+                    editSearch.setVisibility(View.VISIBLE);
+                    searching = false;
+                } else {
+                    searching = true;
+                    editSearch.setText("");
+                    txt_nameApp.setVisibility(View.VISIBLE);
+                    editSearch.setVisibility(View.INVISIBLE);
                 }
             }
         });
 
+        editSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         //Set avatar for user logged
+        Users user = new Users();
         DatabaseReference db_ref_userLogged = FirebaseDatabase.getInstance()
-                .getReference(String.format("/users/%s/userAvatar/", Users.ID_USER_LOGGED_IN));
+                .getReference(String.format("/users/%s/userAvatar/", user.getUserID()));
         db_ref_userLogged.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -103,9 +140,7 @@ public class NewFeedActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
-
 }

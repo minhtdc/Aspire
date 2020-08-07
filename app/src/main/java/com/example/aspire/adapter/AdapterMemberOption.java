@@ -16,12 +16,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
+
 import com.example.aspire.MemberOptionActivity;
 import com.example.aspire.R;
+import com.example.aspire.android_2_func;
 import com.example.aspire.data_models.Requests;
 import com.example.aspire.data_models.Users;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -30,13 +36,15 @@ public class AdapterMemberOption extends ArrayAdapter<Requests> {
     private int layoutID;
     private ArrayList<Requests> listMembers;
     private Intent intent;
+    private String idGroup;
 
 
-    public AdapterMemberOption(Activity context, int resource, ArrayList<Requests> list) {
+    public AdapterMemberOption(Activity context, int resource, ArrayList<Requests> list, String idGroup) {
         super(context, resource, list);
         this.context = context;
         this.layoutID = resource;
         this.listMembers = list;
+        this.idGroup = idGroup;
     }
 
     //define view holder
@@ -67,17 +75,14 @@ public class AdapterMemberOption extends ArrayAdapter<Requests> {
         }
 
         //
-       Requests requests = listMembers.get(position);
-        viewHolder.userName.setText(requests.getMemberID());
-        viewHolder.userDetail.setText(requests.getContent());
-
-        intent = AdapterNewfeed.intent;
-        final String idGroup = (intent.getBundleExtra("group")).getString("groupID");
+        Requests requests = listMembers.get(position);
+        viewHolder.userDetail.setText(requests.getContent().equals("") ? "Nội xin vào nhóm rỗng" : requests.getContent());
+        viewHolder.userAvata.setImageResource(android_2_func.getFileImgByName(requests.getUser().getUserAvatar()));
+        viewHolder.userName.setText(requests.getUser().getFullName());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //tạo hộp thoại
                 AlertDialog.Builder qs = new AlertDialog.Builder(context);
                 //thiết lập tiêu đề
@@ -90,7 +95,7 @@ public class AdapterMemberOption extends ArrayAdapter<Requests> {
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = database.getReference("groups").child(idGroup).child("listMembers").child(getItem(position).getMemberID());
                         myRef.setValue("member");
-                        Toast.makeText(context, "Thêm thành công",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
                         DatabaseReference del = database.getReference("groups").child(idGroup).child("requests").child(getItem(position).getMemberID());
                         del.removeValue();
 
@@ -104,7 +109,7 @@ public class AdapterMemberOption extends ArrayAdapter<Requests> {
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = database.getReference("groups").child(idGroup).child("requests").child(getItem(position).getMemberID());
                         myRef.removeValue();
-                        Toast.makeText(context, "Từ chối thành công",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Từ chối thành công", Toast.LENGTH_SHORT).show();
 
                     }
                 });
