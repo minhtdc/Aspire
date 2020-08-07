@@ -46,7 +46,7 @@
                 style="@style/EditTextPassword"
                 android:hint="@string/edtNewPass"
                 android:inputType="textPassword"
-                android:background="@drawable/my_border"
+                android:background="@drawable/my_border"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
@@ -74,7 +74,7 @@
                 android:id="@+id/edtNewName"
                 style="@style/EditTextName"
                 android:hint="@string/edtNewName"
-                android:background="@drawable/my_border" />
+                android:background="@drawable/custom_edittext" />
         </LinearLayout>
     </LinearLayout>
 
