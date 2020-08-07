@@ -10,18 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".YourGroupActivity" />
+        <activity android:name=".YourGroupActivity"  android:theme="@style/android_2_style"/>
         <activity android:name=".PersonPageActivity" android:theme="@style/android_2_style"/>
         <activity android:name=".AddPostActivity" android:theme="@style/android_2_style"/>
 
-        <activity android:name=".CreateGroupActivity" />
-        <activity android:name=".GroupManageActivity" />
-        <activity android:name=".JoinGroupActivity" />
+        <activity android:name=".CreateGroupActivity" android:theme="@style/android_2_style"/>
+        <activity android:name=".GroupManageActivity" android:theme="@style/android_2_style"/>
+        <activity android:name=".JoinGroupActivity"  android:theme="@style/android_2_style"/>
         <activity android:name=".MemberOptionActivity" android:theme="@style/android_2_style"/>
         <activity android:name=".NewFeedActivity" android:theme="@style/android_2_style"/>
-        <activity android:name=".NonGroupManageActivity" />
+        <activity android:name=".NonGroupManageActivity"  android:theme="@style/android_2_style"/>
         <activity android:name=".PostListActivity" android:theme="@style/android_2_style"/>
-        <activity android:name=".SettingActivity" /> <!-- //Tran Minh Phuc -->
+        <activity android:name=".SettingActivity" android:theme="@style/android_2_style"/> <!-- //Tran Minh Phuc -->
         <activity
             android:name=".MembersActivity"
             android:theme="@style/android_2_style" />

@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,22 +35,38 @@ public class SettingActivity extends AppCompatActivity {
     FirebaseUser userCurrent = auth.getCurrentUser();
     DatabaseReference reference;
 
+    //Author: Tran Minh Phuc 06-08-2020
+    Toolbar toolbar;
+    TextView txt_inToolbar;
+    ImageButton imgBtn_inToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_user_layout);
 
         reference = FirebaseDatabase.getInstance().getReference("users");
-
         dialog = new ProgressDialog(this);
-
         btnConfirm = findViewById(R.id.btnConfirm);
         edtNewPass = findViewById(R.id.edtNewPass);
         edtOldPass = findViewById(R.id.edtOldPass);
         edtNewName = findViewById(R.id.edtNewName);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        /*
+         * Author: Tran Minh Phuc 06-08-2020
+         * Set information in toolbar
+         */
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        txt_inToolbar = toolbar.findViewById(R.id.txt_title);
+        imgBtn_inToolbar = toolbar.findViewById(R.id.imgBtn_inToolbar);
+        txt_inToolbar.setText("Cài đặt thông tin");
+        imgBtn_inToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SwitchActivity.goToPersonPage(SettingActivity.this);
+                finish();
+            }
+        });
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +106,10 @@ public class SettingActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             changUsername(btnConfirm);
                                             changePassword(btnConfirm);
+                                            finish();
+
+                                            //Author: Tran Minh Phuc 07-08-2020
+                                            SwitchActivity.goToPersonPage(SettingActivity.this);
                                         }
                                         //Nếu không thành công có nghĩa mật khẩu cũ đã nhập sai
                                         else {
@@ -99,6 +122,10 @@ public class SettingActivity extends AppCompatActivity {
                 //Nếu ô nhập tên mới không rỗng
                 else if(!edtNewName.getText().toString().equals("")){
                     changUsername(btnConfirm);
+
+                    //Author: Tran Minh Phuc 07-08-2020
+                    SwitchActivity.goToPersonPage(SettingActivity.this);
+                    finish();
                 }
             }
         });

@@ -1,11 +1,14 @@
 package com.example.aspire;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aspire.data_models.Groups;
@@ -23,6 +26,11 @@ public class CreateGroupActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private String Id;
 
+    //Author: Tran Minh Phuc 06-08-2020
+    Toolbar toolbar;
+    TextView txt_inToolbar;
+    ImageButton imgBtn_inToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +40,23 @@ public class CreateGroupActivity extends AppCompatActivity {
         final EditText edtGroupName;
         final EditText edtGroupInfo;
 
+        //Set information in toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        txt_inToolbar = toolbar.findViewById(R.id.txt_title);
+        imgBtn_inToolbar = toolbar.findViewById(R.id.imgBtn_inToolbar);
+        txt_inToolbar.setText("Tạo nhóm mới");
+        imgBtn_inToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SwitchActivity.goToGroupManage(CreateGroupActivity.this);
+                finish();
+            }
+        });
+
+
         btnCreateGroup = findViewById(R.id.btnCreateGroup);
         edtGroupName = (EditText) findViewById(R.id.edtGroupName);
         edtGroupInfo = (EditText) findViewById(R.id.edtGroupInfo);
-        setTitle("Tạo nhóm");
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
 
         btnCreateGroup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +79,8 @@ public class CreateGroupActivity extends AppCompatActivity {
                         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("groups").child(groupID).child("listMembers").child(user.getUserID());
                         myRef.setValue("admin");
                         Toast.makeText(CreateGroupActivity.this, "Tạo nhóm thành công!", Toast.LENGTH_SHORT).show();
+                        SwitchActivity.goToNewFeed(CreateGroupActivity.this);
+                        finish();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

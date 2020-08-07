@@ -62,12 +62,16 @@ public class InputPasswordActivity extends AppCompatActivity {
                         re_password = edt_re_password.getText().toString();
 
                 if (password.equals(re_password) && !password.equals("")) {
-                    epicDialog = new Dialog(InputPasswordActivity.this);
-                    Users userAuth = new Users(userName, password, email, fullName);
-                    try {
-                        userAuth.createUserWithEmailAndPassword(epicDialog, InputPasswordActivity.this, userAuth);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    if (password.length() >= 6) {
+                        epicDialog = new Dialog(InputPasswordActivity.this);
+                        Users userAuth = new Users(userName, password, email, fullName);
+                        try {
+                            userAuth.createUserWithEmailAndPassword(epicDialog, InputPasswordActivity.this, userAuth);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Toast.makeText(InputPasswordActivity.this, "Mật khẩu phải có độ dài bằng hoặc lớn hơn 6 ký tự", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(InputPasswordActivity.this, "Vui lòng nhập đúng mật khẩu", Toast.LENGTH_SHORT).show();

@@ -153,4 +153,20 @@ public class SwitchActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         context.startActivity(intent);
     }
+
+    public static void goToPersonPage(final Context context){
+        //Starting a new Intent
+        Intent intent = new Intent(context, PersonPageActivity.class);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
+
+    public static void goToGroupManage(final Context context){
+        //Starting a new Intent
+        Intent intent = new Intent(context, GroupManageActivity.class);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
 }

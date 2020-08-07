@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.aspire.adapter.AdapterNewfeed;
 import com.example.aspire.data_models.Groups;
@@ -27,13 +29,25 @@ public class GroupManageActivity extends AppCompatActivity {
     Button addGroup;
     private AdapterNewfeed adapter;
 
+    //Author: Tran Minh Phuc 06-08-2020
+    private Toolbar toolbar;
+    ImageButton btn_backInActionbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.group_manager_layout);
-        setTitle("Nhóm bạn quản lí");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
+        //Set information in toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        btn_backInActionbar = toolbar.findViewById(R.id.imgBtn_inToolbar);
+        btn_backInActionbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SwitchActivity.goToPersonPage(GroupManageActivity.this);
+                finish();
+            }
+        });
 
         addGroup = findViewById(R.id.btnAddGroup);
         listViewGroup = findViewById(R.id.listGroupManage);
@@ -41,6 +55,20 @@ public class GroupManageActivity extends AppCompatActivity {
 
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listGroup);
         listViewGroup.setAdapter(adapter);
+
+        addGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GroupManageActivity.this, CreateGroupActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         final Users user = new Users(); // để lấu userid so sánh
         // đưa dữ liệu từ db lên listview
@@ -80,15 +108,5 @@ public class GroupManageActivity extends AppCompatActivity {
 
             }
         });
-
-        addGroup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupManageActivity.this, CreateGroupActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
-            }
-        });
-
     }
 }

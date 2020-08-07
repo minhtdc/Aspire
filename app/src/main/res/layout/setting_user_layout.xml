@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <!--    -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
         <TextView
-            android:background="@drawable/my_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txtViewChangePass"
-            android:padding="20dp"
             android:layout_margin="3dp"
-            android:textColor="@color/textColor"/>
+            android:background="@drawable/my_border"
+            android:padding="20dp"
+            android:text="@string/txtViewChangePass"
+            android:textColor="@color/textColor" />
 
         <!--      edit text  nhập mật khẩu cũ-->
         <com.google.android.material.textfield.TextInputLayout
@@ -30,7 +35,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@id/edtOldPass"
                 style="@style/EditTextPassword"
-                android:background="@drawable/my_border"
                 android:hint="@string/edtOldPass"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -41,12 +45,12 @@
             android:layout_height="wrap_content"
             app:hintEnabled="true"
             app:passwordToggleEnabled="true">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtNewPass"
                 style="@style/EditTextPassword"
                 android:hint="@string/edtNewPass"
-                android:inputType="textPassword"
-                android:background="@drawable/my_border"/>
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
@@ -55,26 +59,27 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
         <TextView
-            android:background="@drawable/my_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txtViewChangeName"
-            android:padding="20dp"
             android:layout_margin="5dp"
-            android:textColor="@color/textColor"/>
+            android:background="@drawable/my_border"
+            android:padding="20dp"
+            android:text="@string/txtViewChangeName"
+            android:textColor="@color/textColor" />
 
         <!--        edt nhập tên mới-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtNewName"
                 style="@style/EditTextName"
-                android:hint="@string/edtNewName"
-                android:background="@drawable/my_border" />
+                android:hint="@string/edtNewName" />
         </LinearLayout>
     </LinearLayout>
 
@@ -85,11 +90,13 @@
         android:layout_weight="1"
         android:gravity="center"
         android:padding="10dp">
+
         <Button
             android:id="@+id/btnConfirm"
-            android:background="@drawable/button_effect"
             android:layout_width="match_parent"
+            android:textColor="#FFF"
             android:layout_height="wrap_content"
-            android:text="@string/btnConfirm"/>
+            android:background="@drawable/button_effect"
+            android:text="@string/btnConfirm" />
     </LinearLayout>
 </LinearLayout>

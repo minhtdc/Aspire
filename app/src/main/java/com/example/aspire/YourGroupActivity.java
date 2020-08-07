@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.aspire.adapter.AdapterNewfeed;
 import com.example.aspire.data_models.Groups;
@@ -26,23 +29,46 @@ public class YourGroupActivity extends AppCompatActivity {
     Button addGroup;
     private AdapterNewfeed adapter;
 
+    //Author: Tran Minh Phuc 06-08-2020
+    Toolbar toolbar;
+    TextView txt_inToolbar;
+    ImageButton imgBtn_inToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.group_manager_layout);
-        setTitle("Nhóm bạn đã tham gia");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
 
         addGroup = findViewById(R.id.btnAddGroup);
         listViewGroup = findViewById(R.id.listGroupManage);
         listGroup = new ArrayList<Groups>();
+
+        /*
+        * Author: Tran Minh Phuc 06-08-2020
+        * Set information in toolbar
+        */
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        txt_inToolbar = toolbar.findViewById(R.id.txt_title);
+        imgBtn_inToolbar = toolbar.findViewById(R.id.imgBtn_inToolbar);
+        txt_inToolbar.setText("Nhóm bạn đã tham gia");
+        imgBtn_inToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SwitchActivity.goToPersonPage(YourGroupActivity.this);
+                finish();
+            }
+        });
 
         //làm mất nút thêm ửo màn hình chỉ xem thành viên
         addGroup.setVisibility(View.GONE);
 
         adapter = new AdapterNewfeed(this, R.layout.listview_newfeed_layout, listGroup);
         listViewGroup.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         final Users user = new Users(); // để lấu userid so sánh
         // đưa dữ liệu từ db lên listview
@@ -84,7 +110,5 @@ public class YourGroupActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 }
