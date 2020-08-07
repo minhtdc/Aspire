@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
     private String idGroup, adminID;
     private int layoutID;
     private ArrayList<Post> listPost;
+    boolean show = false;
 
     public MyPostListAdapter(Activity context, int resource, ArrayList<Post> list, String idGroup, String adminID) {
         super(context, resource, list);
@@ -54,6 +56,7 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
     static class ViewHolder {
         TextView userName, userPosition, userTitlePost, userContentPost, txtCountCommentMember, txtBtn_comment, txt_countLike;
         Button btn_deletePost, btnLike;
+        ImageButton imgBtn_menu;
         CircleImageView userAvtCircle;
     }
 
@@ -74,6 +77,7 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
             viewHolder.txtBtn_comment = (TextView) convertView.findViewById(R.id.txtBtn_comment);
             viewHolder.btnLike = (Button) convertView.findViewById(R.id.btnLike);
             viewHolder.btn_deletePost = (Button) convertView.findViewById(R.id.btn_deletePost);
+            viewHolder.imgBtn_menu = (ImageButton) convertView.findViewById(R.id.imgBtn_menu);
             //userCountCommentPost = (TextView) convertView.findViewById(R.id.txtCountCommentMember);
 
             //binging the view in convertView coresponding
@@ -99,7 +103,7 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
         });
 
         //Set total like
-        DatabaseReference db_def_CountUserLiked = FirebaseDatabase.getInstance()
+        final DatabaseReference db_def_CountUserLiked = FirebaseDatabase.getInstance()
                 .getReference(String.format("/groups/%s/posts/%s/like/", idGroup, post.getPostID()));
         db_def_CountUserLiked.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
@@ -176,6 +180,40 @@ public class MyPostListAdapter extends ArrayAdapter<Post> {
 
             }
         });
+
+        //Set menu
+        if (post.getUserID().equals(Users.ID_USER_LOGGED_IN) || adminID.equals(Users.ID_USER_LOGGED_IN)){
+            viewHolder.imgBtn_menu.setVisibility(View.VISIBLE);
+            viewHolder.imgBtn_menu.setEnabled(true);
+            viewHolder.imgBtn_menu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (show){
+                        viewHolder.btn_deletePost.setVisibility(View.VISIBLE);
+                        viewHolder.btn_deletePost.setEnabled(true);
+                        show = false;
+                    }else{
+                        viewHolder.btn_deletePost.setVisibility(View.INVISIBLE);
+                        viewHolder.btn_deletePost.setEnabled(false);
+                        show = true;
+                    }
+                }
+            });
+
+            viewHolder.btn_deletePost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final DatabaseReference db_def_postToDel = FirebaseDatabase.getInstance()
+                            .getReference(String.format("/groups/%s/posts/%s/", idGroup, post.getPostID()));
+                    db_def_postToDel.removeValue();
+                    Toast.makeText(context, "Bạn đã xoá 1 bài viết trong nhóm", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            viewHolder.imgBtn_menu.setVisibility(View.INVISIBLE);
+            viewHolder.imgBtn_menu.setEnabled(false);
+        }
+
 
         return convertView;
     }
